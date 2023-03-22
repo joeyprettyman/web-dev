@@ -1,0 +1,405 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url( './fonts/minecraft.ttf' );
+}
+
+
+
+
+
+html {
+	width: 100%;
+	height: 100%;
+}
+body {
+	background: #000000; /* Black */
+}
+
+old.h1 {
+	font-family: Impact;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #ffffff;
+	font-weight: bold;
+	letter-spacing: 3px;
+	background: -webkit-linear-gradient(#4a4a4a, #080808);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-size: 50px;
+	text-align: center;
+	margin-top: -50px;
+	margin-bottom: 15px;
+}
+
+old.h2 {
+	color: #8d1adc;
+	font-family: Impact;
+	text-shadow: 0px 0px 10px #8d1adc;
+	-webkit-text-fill-color: #8d1adc;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #e2c1fe;
+	font-weight: bold;
+	letter-spacing: 3px;
+	text-align: center;
+	margin-top: 15px;
+	font-size: 40px;
+	margin-bottom: 75px;
+}
+
+old.span {
+	font-family: Consolas;
+	font-weight: bold;
+	color: #fff;
+	background: #a351ff;
+	padding: 2px 7px;
+	border-radius: 5px;
+	margin: 0px 5px;
+}
+
+span#num {
+	color: #a351ff;
+	background: none;
+	font-size: 20px;
+	vertical-align: middle;
+}
+
+span#value {
+	color: #ffffff;
+	background: #008542;
+}
+
+old.p {
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 14px;
+	line-height: 30px;
+	background: rgb( 255, 255, 255, 0.10);
+	border-radius: 10px;
+	padding: 10px;
+	margin: 20px 0px;
+}
+
+a:link,
+a:active,
+a:visited {
+	color: #8d1adc;
+}
+
+a:hover {
+	color: #b041fc;
+}
+
+.wrapper {
+	display: block;
+	position: relative;
+	left: 50%;
+	transform: translateX( -50%);
+	text-align: left;
+	max-width: 700px;
+}
+
+img#logo {
+	display: block;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+img#center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 25px;
+}
+
+img#logo2 {
+	display: block;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 400px;
+	margin-top: -75px;
+	margin-bottom: 20px;
+	min-width: 200px;
+}
+
+
+
+.instruction-wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	background: rgba( 255, 255, 255, 0.10 );
+	border-radius: 5px;
+	color: rgba( 255, 255, 255, 1.00 );
+	font-family: Arial;
+	display: block;
+}
+
+#month {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 10px;
+	text-align: center;
+	background: red;
+	display: block;
+	padding: 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	letter-spacing: 0.5px;
+	font-family: Arial;
+	color: rgba( 255, 255, 255, 1.00 );
+	text-align: center;
+	width: 70px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#day {
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba( 0, 0, 0, 1.00 );
+	padding: 10px;
+	background: white;
+	font-family: consolas;
+	display: block;
+	line-height: 40px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	text-align: center;
+	width: 70px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#title {
+	display: block;
+	font-size: 30px;
+	color: #11990a;
+	vertical-align: top;
+	width: auto;
+	font-family: 'Minecraft';
+	font-weight: bold;
+	letter-spacing: 2px;
+	text-shadow: 5px 5px 0px #000000;
+}
+
+#instruction {
+	display: block;
+	vertical-align: top;
+	width: auto;
+	letter-spacing: 0.5px;
+	padding: 10px 20px;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 14px;
+	line-height: 20px;
+	background: rgb(5,94,0);
+	background: linear-gradient(180deg, rgba(5,94,0,1) 0%, rgba(8,124,2,1) 25%);
+	border-radius: 5px;
+	margin-top: 20px;
+	border-bottom: 5px solid rgba( 0, 0, 0, 0.60 );
+	border-right: 5px solid rgba( 0, 0, 0, 0.70 );
+	border-top: 1px solid rgba( 255, 255, 255, 0.25 );
+	border-left: 1px solid rgba( 255, 255, 255, 0.10 );
+	text-shadow: 1px 1px 1px #000000;
+}
+
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	background: rgba( 255, 255, 255, 0.10 );
+	border-radius: 5px;
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 25px;
+}
+
+td {
+	padding: 20px 15px;
+	height: 100%;
+	vertical-align: top;
+}
+
+td#calendar {
+	width: 120px;
+	background: rgba( 255, 255, 255, 0.05 );
+}
+
+#time {
+	color: white;
+	font-size: 15px;
+	font-family: Consolas;
+	padding: 10px 0px;
+	text-align: center;
+}
+
+span#pst {
+	color: #e6959b;
+	display: block;
+}
+
+span#mst {
+	color: #ddd776;
+	display: block;
+}
+
+span#cst {
+	color: #89e37d;
+	display: block;
+}
+
+span#est {
+	color: #8adce6;
+	display: block;
+}
+
+ul#to-do-list {
+	margin-top: 0px !important;
+	margin-bottom: 0px;
+	background: rgba( 255, 255, 255, 0.25 );
+	border-radius: 5px;
+	border-left: 1px solid rgba( 255, 255, 255, 0.15 );
+	border-bottom: 2px solid rgba( 255, 255, 255, 0.25 );
+	border-top: 2px solid rgba( 0, 0, 0, 0.50 );
+	border-right: 1px solid rgba( 0, 0, 0, 0.50);
+}
+
+ul#to-do-list li {
+	margin-bottom: 15px;
+	line-height: 19px;
+	color: rgba( 0, 0, 0, 1.00 );
+	text-shadow: 1px 1px 1px rgba( 255, 255, 255, 0.20 );
+	font-weight: bold;
+	font-size: 15px;
+	margin-right: 40px;
+}
+
+ul#to-do-list li:first-child {
+	padding-top: 30px;
+}
+
+ul#to-do-list li:last-child {
+	padding-bottom: 10px;
+}
+
+p#tldr {
+	padding: 10px;
+	background: #5f412c;
+	border-radius: 5px;
+	border: 1px solid #523925;
+	border-left: 1px solid rgba( 255, 255, 255, 0.15 );
+	border-bottom: 2px solid rgba( 255, 255, 255, 0.25 );
+	border-top: 2px solid rgba( 0, 0, 0, 0.50 );
+	border-right: 1px solid rgba( 0, 0, 0, 0.50);
+}
+
+p#tldr b {
+	background: magenta;
+	color: white;
+	padding: 3px 5px 3px 5px;
+	border-radius: 5px;
+	letter-spacing: 1px;
+	vertical-align: middle;
+}
+
+p#countdown {
+	color: white;
+	font-family: 'Consolas';
+	font-size: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	line-height: 30px;
+	vertical-align: top;
+	padding-bottom: 15px;
+}
+
+.countdown-wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	display: block;
+	margin-bottom: 50px;
+	border: 1px solid #835ab4;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.countdown-wrapper p {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-family: 'Minecraft' !important;
+	font-size: 35px !important;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.countdown-wrapper h1 {
+	color: white;
+	font-family: Tahoma;
+	margin: 0px;
+	padding: 0px;
+	color: #11990a;
+}
+
+.norms {
+	background: -webkit-linear-gradient(180deg, rgba(158,158,158,1) 0%, rgba(255,255,255,1) 25%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	vertical-align: middle;
+}
+
+.smallers {
+	color: #835ab4 !important;
+	font-size: 25px;
+	font-family: 'Minecraft';
+	text-transform: uppercase;
+	vertical-align: middle;
+}
+
+#first-one {
+	/* color: #afbccc; */
+	color: #11990a;
+}
+
+#second-one {
+	/* color: #d7ac7f; */
+	color: #11990a;
+}
+
+.download {
+	border-radius: 5px;
+	background: green;
+	display: block;
+}
+
+.download a:link,
+.download a:visited,
+.download a:active {
+	padding: 20px 10px;
+	display: block;
+	text-align: center;
+	width: auto;
+	background: rgb(84,47,129);
+	background: linear-gradient(180deg, rgba(84,47,129,1) 0%, rgba(131,90,180,1) 25%, rgba(131,90,180,1) 75%, rgba(76,39,121,1) 100%);
+	margin-bottom: 30px;
+	border-radius: 5px;
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+	font-family: 'Minecraft';
+	letter-spacing: 5px;
+	text-shadow: 2px 2px 1px rgba( 0, 0, 0, 0.50 );
+}
+
+.download a:hover {
+	color: white;
+	background: rgb(114,74,162);
+	background: linear-gradient(180deg, rgba(114,74,162,1) 0%, rgba(161,121,208,1) 25%, rgba(161,121,208,1) 75%, rgba(114,74,162,1) 100%);
+}

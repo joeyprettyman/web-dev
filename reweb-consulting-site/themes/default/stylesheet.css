@@ -1,0 +1,176 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* CUSTOM FONTS */
+@font-face
+{
+	font-family: "Oswald-Medium";
+	src: url('./fonts/Oswald-Medium.ttf'),
+	url('./fonts/Oswald-Medium.ttf');
+}
+
+@font-face
+{
+	font-family: "Oswald-Light";
+	src: url('./fonts/Oswald-Light.ttf'),
+	url('./fonts/Oswald-Light.ttf');
+}
+
+@font-face
+{
+	font-family: "Oswald-ExtraLight";
+	src: url('./fonts/Oswald-ExtraLight.ttf'),
+	url('./fonts/Oswald-ExtraLight.ttf');
+}
+
+
+/* BODY SECTION */
+body {
+	background: #850000;
+}
+
+/* HEADER SECTION */
+.header {
+	background: url(./img/people-coffee-notes-tea.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	min-height: 50%;
+}
+
+.header #logo {
+	background: url(./img/reweb_logo.png) no-repeat center 5%;
+	background-size: 30% auto;
+	background-position: center;
+}
+
+.subHeader {
+	background: #1a1a1a; /* Charcoal */
+	height: 75px;
+	width: 100%;
+	color: #ffffff; /* White */
+	text-align: center;
+	line-height: 75px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+}
+
+.subHeader ul {
+	list-style-type: none;
+}
+
+.subHeader li {
+	display: inline;
+	padding: 24px;
+}
+
+.subHeader li:hover {
+	padding-bottom: 24px;
+	padding-top: 24px;
+	cursor: pointer;
+    -webkit-transition: all 150ms ease 100ms;
+    -moz-transition: all 150ms ease 100ms;
+    -o-transition: all 150ms ease 100ms;
+    transition: all 150ms ease 100ms;
+	background: #850000;
+}
+
+.pageContent {
+	background: #850000;
+	color: white;
+	padding: 40px 50px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	line-height: 20px;
+}
+
+.pageContent #flashCard {
+	background: #ffffff;
+	color: #1a1a1a;
+	padding: 25px;
+	margin: 10px;
+	height: 250px;
+	width: 200px;
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid #420000;
+}
+
+.pageContent #flashCard h1 {
+	font-family: 'Oswald-Medium', sans-serif;
+	font-size: 35px;
+	margin-top: 35px;
+}
+
+
+@media only screen and (max-width: 1058px) {
+	.header {
+		background: url(./img/people-coffee-notes-tea.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		min-height: 40%;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

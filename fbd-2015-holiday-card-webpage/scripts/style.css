@@ -1,0 +1,593 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html, body
+{
+	height: 100%;
+	width: 100%;
+	min-height: 100%;
+	min-width: 100%;
+	font-family: calibri, lucida grande;
+}
+
+/** Seasonal Background Images ******************************************/
+.seasons
+{
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: calc(100%);
+	width: calc(100%);
+	position: absolute;
+}
+
+.seasons#winter
+{
+	background: url(../img/winter.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: calc(100%);
+	width: calc(100%);
+	position: absolute;
+	opacity: 1.0;
+}
+
+.seasons#spring
+{
+	background: url(../img/spring.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: calc(100%);
+	width: calc(100%);
+	position: absolute;
+	opacity: 0;
+}
+
+.seasons#summer
+{
+	background: url(../img/summer.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: calc(100%);
+	width: calc(100%);
+	position: absolute;
+	opacity: 0;
+}
+
+.seasons#fall
+{
+	background: url(../img/fall.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: calc(100%);
+	width: calc(100%);
+	position: absolute;
+	opacity: 0;
+}
+
+
+
+/** Container Information ***********************************************/
+.container#greeting
+{
+	position: absolute;
+	top: calc(100% - 60%);
+	width: 100%;
+    -webkit-transition: all 500ms ease 150ms;
+    -moz-transition: all 500ms ease 150ms;
+    -o-transition: all 500ms ease 150ms;
+    transition: all 500ms ease 150ms;
+}
+
+.container#down-arrow
+{
+	position: absolute;
+	top: calc(100% - 40%);
+	left: calc(0%);
+	width: 100%;
+}
+
+#click-here
+{
+	display: inline-block;
+	color: white;
+	font-size: 35px;
+	margin-top: 20px;
+}
+
+
+
+/** Greeting Information ************************************************/
+.greeting#first,
+.greeting#second,
+.greeting#third,
+.greeting#fourth
+{
+	position: relative;
+	font-size: 35px;
+	color: white; 
+	font-family: Calibri, Lucida Grande;
+	opacity: 0;
+	height: calc(50%);
+	margin-left: calc(5%);
+	margin-right: calc(5%);
+}
+
+#click-arrow
+{
+	display: inline-block;
+	max-height: 59px;
+	max-width: 306px;
+	height: calc(85%);
+	width: calc(85%);
+    -webkit-transition: all 500ms ease 150ms;
+    -moz-transition: all 500ms ease 150ms;
+    -o-transition: all 500ms ease 150ms;
+    transition: all 500ms ease 150ms;
+}
+
+#click-hover
+{
+	display: inline-block;
+	max-height: 59px;
+	max-width: 306px;
+	height: calc(85%);
+	width: calc(85%);
+    -webkit-transition: all 500ms ease 150ms;
+    -moz-transition: all 500ms ease 150ms;
+    -o-transition: all 500ms ease 150ms;
+    transition: all 500ms ease 150ms;
+}
+
+#pointer
+{
+	position: absolute;
+	top: calc(100% - 34.5%);
+	left: 49%;
+    -webkit-transition: all 500ms ease 150ms;
+    -moz-transition: all 500ms ease 150ms;
+    -o-transition: all 500ms ease 150ms;
+    transition: all 500ms ease 150ms;
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 15px solid white;
+}
+
+
+
+
+/** FBD Logo Information ************************************************/
+.logos
+{
+	display: inline-block;
+	height: calc(40%);
+	width: calc(40%);
+	vertical-align: top;
+}
+
+#fbd
+{
+	max-height: 116px;
+	max-width: 374px;
+	margin-left: calc(5%);
+	margin-right: calc(5%);
+}
+
+#fbdc
+{
+	max-height: 97px;
+	max-width: 280px;
+	margin-left: calc(5%);
+	margin-right: calc(5%)
+}
+
+
+/** Page Headings *******************************************************/
+.headings
+{
+	color: white;
+	padding: 5px;
+	text-align: center;
+}
+
+.headings#first
+{
+	color: #44aa42;
+}
+
+.headings#second
+{
+	color: #00345e;
+}
+
+.headings#third
+{
+	color: #00345e;
+}
+
+h2
+{
+	font-size: 20px;
+	font-weight: bold;
+	font-family: calibri, lucida grande;
+    -webkit-transition: all 500ms ease 150ms;
+    -moz-transition: all 500ms ease 150ms;
+    -o-transition: all 500ms ease 150ms;
+    transition: all 500ms ease 150ms;
+}
+
+p
+{
+	font-size: 14px;
+	font-weight: none;
+    -webkit-transition: all 500ms ease 150ms;
+    -moz-transition: all 500ms ease 150ms;
+    -o-transition: all 500ms ease 150ms;
+    transition: all 500ms ease 150ms;
+	font-family: calibri, lucida grande;
+	margin-top: 5%;
+	line-height: 16px;
+}
+
+table.options
+{
+	width: calc(100% - 30%);
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+}
+
+table.options2
+{
+	width: calc(100% - 30%);
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+}
+
+@media all and (max-height: 500px) {
+	.container#greeting
+	{
+		position: absolute;
+		top: calc(100% - 85%);
+		width: 100%;
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+	}
+.container#down-arrow
+{
+	position: absolute;
+	top: calc(100% - 55%);
+	width: 100%;
+	-webkit-transition: all 500ms ease 150ms;
+	-moz-transition: all 500ms ease 150ms;
+	-o-transition: all 500ms ease 150ms;
+	transition: all 500ms ease 150ms;
+}
+
+	#click-arrow
+	{
+		display: inline-block;
+		max-height: 59px;
+		max-width: 306px;
+		height: calc(85%);
+		width: calc(85%);
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+	}
+	
+	
+	#click-here
+	{
+	position: absolute;
+	top:0%;
+	left: calc(60%);
+	display: inline-block;
+	height: calc(50%);
+	-webkit-transition: all 500ms ease 150ms;
+	-moz-transition: all 500ms ease 150ms;
+	-o-transition: all 500ms ease 150ms;
+	transition: all 500ms ease 150ms;
+	}
+	
+	.greeting#first,
+	.greeting#second,
+	.greeting#third,
+	.greeting#fourth
+	{
+		font-size: 35px;
+	}
+}
+
+@media all and (max-height: 600px) and (min-width: 900px) {
+	.container#greeting
+	{
+		position: absolute;
+		top: calc(0%);
+		width: 100%;
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+	}
+.container#down-arrow
+{
+	position: absolute;
+	top: calc(100% - 55%);
+	width: 100%;
+	-webkit-transition: all 500ms ease 150ms;
+	-moz-transition: all 500ms ease 150ms;
+	-o-transition: all 500ms ease 150ms;
+	transition: all 500ms ease 150ms;
+}
+
+	#click-arrow
+	{
+		display: inline-block;
+		max-height: 59px;
+		max-width: 306px;
+		height: calc(100%);
+		width: calc(100%);
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+	}
+	
+	
+	#click-here
+	{
+	position: absolute;
+	top:0%;
+	left: calc(60%);
+	display: inline-block;
+	height: calc(50%);
+	-webkit-transition: all 500ms ease 150ms;
+	-moz-transition: all 500ms ease 150ms;
+	-o-transition: all 500ms ease 150ms;
+	transition: all 500ms ease 150ms;
+	}
+	
+	.greeting#first,
+	.greeting#second,
+	.greeting#third,
+	.greeting#fourth
+	{
+		font-size: 35px;
+	}
+}
+
+@media all and (min-width: 500px) {
+	h2 
+	{
+		font-size: 22px;
+		font-weight: bold;
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+	}
+	
+	p
+	{
+		font-size: 16px;
+		font-weight: none;
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+		line-height: 18px;
+	}
+	
+	.greeting#first,
+	.greeting#second,
+	.greeting#third,
+	.greeting#fourth
+	{
+		font-size: 45px;
+	}
+
+	#click-arrow
+	{
+		display: inline-block;
+		max-height: 59px;
+		max-width: 306px;
+		height: calc(100%);
+		width: calc(100%);
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+	}
+
+}
+
+@media all and (min-width: 720px) {
+	h2 {
+	font-size: 24px;
+	font-weight: bold;
+    -webkit-transition: all 500ms ease 150ms;
+    -moz-transition: all 500ms ease 150ms;
+    -o-transition: all 500ms ease 150ms;
+    transition: all 500ms ease 150ms;
+	}
+	
+	p
+	{
+		font-size: 18px;
+		font-weight: none;
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+		line-height: 20px;
+	}
+	
+	.greeting#first,
+	.greeting#second,
+	.greeting#third,
+	.greeting#fourth
+	{
+		font-size: 55px;
+	}
+}
+	
+@media all and (min-width: 900px) {
+	h2 {
+	font-size: 26px;
+	font-weight: bold;
+    -webkit-transition: all 500ms ease 150ms;
+    -moz-transition: all 500ms ease 150ms;
+    -o-transition: all 500ms ease 150ms;
+    transition: all 500ms ease 150ms;
+	}
+	
+	p
+	{
+		font-size: 20px;
+		font-weight: none;
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+		line-height: 25px;
+		display: block;
+		-webkit-margin-before: 1em;
+		-webkit-margin-after: 1em;
+		-webkit-margin-start: 0px;
+		-webkit-margin-end: 0px;
+	}
+	
+	table.options
+	{
+		width: calc(32.5%);
+		display: inline-block;
+		vertical-align: top;
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+		margin-right: 2.5%;
+	}
+	
+	table.options2
+	{
+		width: calc(32.5%);
+		display: inline-block;
+		vertical-align: top;
+		-webkit-transition: all 500ms ease 150ms;
+		-moz-transition: all 500ms ease 150ms;
+		-o-transition: all 500ms ease 150ms;
+		transition: all 500ms ease 150ms;
+		margin-left: 2.5%;
+	}
+	.greeting#first,
+	.greeting#second,
+	.greeting#third,
+	.greeting#fourth
+	{
+		font-size: 65px;
+	}
+}
+
+#buttons
+{
+	display: inline-block;
+    TEXT-DECORATION: none !important;
+    color: White!important;
+    background-color: #4ca342;
+    font-size: 16px;
+    padding: 10px 15px;
+}
+
+#buttons:link
+{
+	text-decoration: none;
+}
+
+/** Vertical and Horizontal Lines *******************/
+
+.vertical-line
+{
+	background: white;
+	height: calc(100%);
+	width: 1px;
+	display: inline-block;
+	position: absolute;
+	left: calc(50%);
+	opacity: 0.1;
+}
+
+.horizontal-line
+{
+	background: white;
+	height: 1px;
+	width: calc(100%);
+	display: inline-block;
+	position: absolute;
+	top: calc(50%);
+	opacity: 0.1;
+}

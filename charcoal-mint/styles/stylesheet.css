@@ -1,0 +1,198 @@
+body {
+    font-family: 'Segoe UI', 'Myriad Pro';
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+    min-width: 875px;
+    background: #f0f0f0;
+}
+
+.wrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper #col0 {
+    width: 100%;
+}
+
+.wrapper #col1 {
+    min-width: calc(70%);
+    float: left;
+    display: table;
+}
+
+.wrapper #col2 {
+    width: calc(30%);
+    float: right;
+    display: block;
+    min-width: 195px;
+}
+
+.header {
+    background: #2e2e2e;
+    color: #ffffff;
+    padding: 20px 0px 20px 0px;
+    width: 100%;
+    position: fixed;
+}
+
+.header table {
+    width: 100%;
+}
+
+.header #site_name {
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.header #site_name a:link,
+.header #site_name a:visited,
+.header #site_name a:active,
+.header #site_name a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.header #site_links {
+    text-align: right;
+    font-size: 16px;
+    text-decoration: underline;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.header #site_links a:link,
+.header #site_links a:visited,
+.header #site_links a:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.header #site_links a:hover {
+    text-decoration: underline;
+}
+
+.carousel {
+    -webkit-transition: background 0.2s;
+    transition: background 0.2s;
+    background: #4c9895;
+    color: #ffffff;
+    padding: 130px 0px 50px 0px;
+}
+
+.carousel:hover {
+    -webkit-transition: background 0.2s;
+    transition: background 0.2s;
+    background: #5ab2af;
+    color: #ffffff;
+    padding: 130px 0px 50px 0px;
+}
+
+.carousel #heading {
+    font-size: 50px;
+    text-align: center;
+}
+
+.carousel #sub_heading {
+    font-size: 18px;
+    text-align: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.carousel #button1 {
+    -webkit-transition: background 0.2s;
+    transition: background 0.2s;
+    padding: 5px 10px 5px 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 2px solid white;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.carousel #button1:hover {
+    background: white;
+    -webkit-transition: background 0.2s;
+    transition: background 0.2s;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+    color: #4c9895;
+}
+
+.carousel #button2 {
+    -webkit-transition: background 0.2s;
+    transition: background 0.2s;
+    background: #ffffff;
+    color: #4c9895;
+    padding: 5px 10px 5px 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 2px solid white;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.carousel #button2:hover {
+    background: #4c9895;
+    -webkit-transition: background 0.2s;
+    transition: background 0.2s;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+    color: white;
+}
+
+.content {
+    background: #f0f0f0;
+    padding: 50px 0px 50px 0px;
+    overflow: auto;
+}
+
+.content #article {
+    float: left;
+    background: #ffffff;
+    padding: 10px;
+    vertical-align: top;
+    overflow: auto;
+    width: 100%;
+}
+
+.content #title {
+    color: #969696;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.content #description {
+    color: #606060;
+}
+
+.content #description img {
+    margin-right: 10px;
+    float: left;
+}
+
+.sidelinks {
+    float: right;
+    background: #ffffff;
+    padding: 10px;
+    vertical-align: top;
+    margin-bottom: 20px;
+    vertical-align: top;
+    overflow: auto;
+}
+
+.sidelinks img {
+    float: left;
+    margin-right: 10px;
+}

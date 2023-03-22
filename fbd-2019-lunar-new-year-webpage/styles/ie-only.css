@@ -1,0 +1,5 @@
+@media only screen and (max-width: 450px) {
+	.org-table td img {
+		display: none;
+	}		
+}

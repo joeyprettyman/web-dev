@@ -1,0 +1,302 @@
+html {
+    height: 100%;
+    background: 100%;
+}
+
+body {
+    background: #eeeeee;
+}
+
+/* For COVER wallpapers.
+body {
+    background: url( './imgs/wallpaper-cover.png' );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+*/
+
+/* For PATTERN wallpapers.
+body {
+    background: #1e55a5;
+    background: url( './imgs/wallpaper-pattern.png' );
+}
+*/
+
+/************************************/
+/* CLASSES */
+/************************************/
+/* POSITIONING CLASSES */
+/* Box positioning left. */
+.position-left {
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+/* Box positioning center. */
+.position-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Box positioning right. */
+.position-right {
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+
+/* Text positioning left. */
+.text-left {
+    text-align: left;
+}
+
+/* Text positioning center. */
+.text-center {
+    text-align: center;
+}
+
+/* Text positioning right. */
+.text-right {
+    text-align: right;
+}
+
+
+/* FRAMEWORK DISPLAY CLASSES */
+/* FRAMEWORK DISPLAY IDs */
+
+#page {
+	width: 800px;
+	background: white;
+	padding: 0px;
+}
+
+#header {
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+}
+
+#logo {
+	display: inline-block;
+	padding: 15px;
+}
+
+#logo img {
+	width: 500px;
+}
+
+#right-content {
+	width: 230px;
+	display: inline-block;
+	vertical-align: top;
+	padding: 15px;
+}
+
+#archives {
+	display: block;
+	vertical-align: top;
+}
+
+#volume {
+	display: block;
+	vertical-align: bottom;
+	margin-top: 40px;
+	font-size: 14px;
+	color: #192c45;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#date {
+	display: block;
+	vertical-align: bottom;
+	font-size: 16px;
+	color: #192c45;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#side-menu {
+	width: 225px;
+    vertical-align: middle;
+	display: inline-block;
+	margin-left: 3px;
+}
+
+#side-menu-header {
+	font-size: 18px;
+    font-weight: normal;
+    color: #324258 !important;
+	text-shadow: #ffffff 0px 1px 0px;
+	background: #c2cad5;
+	border-top: 1px solid #abb4c1;
+	border-left: 1px solid #9ba5b6;
+	border-bottom: 1px solid #9ba5b6;
+	border-right: 1px solid #9ba5b6;
+	vertical-align: middle;
+	padding: 20px;
+	margin-top: 3px;
+	width: 100% - 6px;
+}
+
+#side-menu-header img {
+	right: 0px;
+	display: inline;
+	vertical-align: middle;
+}
+
+#side-menu-title {
+	display: inline;
+	vertical-align: middle;
+	margin-left: 5px;
+}
+
+#side-menu-links {
+	background: #dee2e8;
+	vertical-align: middle;
+	padding: 10px;
+	border-top: 1px solid #ffffff;
+	border-left: 1px solid #bac2cc;
+	border-bottom: 1px solid #bbc3cf;
+	border-right: 1px solid #bac2cc;
+	font-size: 12px;
+	color: #56667d;
+	line-height: 18px;
+	font-weight: bold;
+}
+
+#side-menu-links a:link::before {
+	background: url( 'https://roughnotes.com/in_action/images/bullet.png' );
+	background-repeat: no-repeat;
+	content: "";
+	padding: 5px;
+	margin-top: 5px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#side-menu-links a:link,
+#side-menu-links a:active,
+#side-menu-links a:visited {
+	display: block;
+	vertical-align: middle;
+	margin: 15px 0px;
+	color: #801c27;
+	font-weight: normal;
+}
+
+#side-menu-links a:hover {
+	font-family: 'Arial', sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#main-article {
+	display: inline-block;
+	width: 565px;
+	vertical-align: top;
+}
+
+#main-article-header {
+	font-size: 18px;
+    font-weight: normal;
+    color: #324258 !important;
+	text-shadow: #ffffff 0px 1px 0px;
+	background: #c2cad5;
+	border-top: 1px solid #abb4c1;
+	border-left: 1px solid #9ba5b6;
+	border-bottom: 1px solid #9ba5b6;
+	border-right: 1px solid #9ba5b6;
+	vertical-align: middle;
+	padding: 20px;
+	margin-top: 3px;
+}
+
+#main-article-content {
+	background: #edeff2;
+	padding: 15px;
+	border-left: 1px solid #bac2cc;
+	border-bottom: 1px solid #bac2cc;
+	border-right: 1px solid #bac2cc;
+	border-top: 1px solid #ffffff;
+}
+
+#main-article-content img {
+	max-width: 525px;
+	border: 3px solid #9ba5b6;
+	margin-bottom: 25px;
+}
+
+#main-article-content p {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: normal;
+    color: #56667d;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#main-article-content a:link,
+#main-article-content a:visited,
+#main-article-content a:active {
+	color: #801c27;
+	font-weight: normal;
+}
+
+#main-article-content a:hover {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#main-article-content ul {
+	font-family: Tahoma;
+	margin-bottom: 25px;
+}
+
+#main-article-content ul:last-child {
+	margin-bottom: 0px;
+}
+
+#main-article-content li {
+	margin: 5px 0px;
+}
+
+#main-article-content li::before {
+	content: "•";
+	margin-right: 10px;
+}
+
+#footer {
+	background: #e7eaee;
+	border-top: 1px solid #b6bec9;
+	border-left: 1px solid #b6bec9;
+	border-bottom: 1px solid #b6bec9;
+	border-right: 1px solid #b6bec9;
+	margin: 3px;
+	padding: 15px;
+}
+
+#footer p {
+    font-size: 10px;
+    font-weight: bold;
+    color: #96a2b3;
+    font-family: Arial;
+    line-height: 18px;
+}
+
+
+
+/* PAGE STYLIZATION */
+body {
+	font-family: 'Arial', sans-serif;
+	font-size: 13px;
+}
+
+
+@media screen and (max-width: 800px) {
+	#side-menu {
+		width: 100px;
+		-webkit-transition: all 250ms ease 150ms;
+	}
+}

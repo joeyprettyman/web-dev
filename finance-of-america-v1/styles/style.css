@@ -1,0 +1,441 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/***************************************************/
+
+header {
+	height: 75px;
+	width: calc( 100% - 40px );
+	background: #fff;
+	padding: 15px 20px;
+	position: relative;
+	-webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow:    0px 3px 5px rgba(0, 0, 0, 0.25);
+	box-shadow:         0px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+header a:link {
+	text-decoration: none;
+}
+
+header img {
+	padding-right: 35px;
+	display: inline;
+	vertical-align: middle;
+}
+
+header table {
+	width: 100%;
+}
+
+header #callUs {
+	font-size: 25px;
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	color: #01a5e2;
+	padding-right: 10px;
+	vertical-align: middle;
+}
+
+header td:nth-child(2) {
+	text-align: right;
+}
+
+header #callUsNumber {
+	font-size: 35px;
+	font-weight: bold;
+	font-family: Arial;
+	color: #05355d;
+	vertical-align: middle;
+}
+
+.bodyContent {
+	width: 100%;
+}
+
+.bodyContent table {
+	width: 100%;
+}
+
+.bodyContent td {
+	vertical-align: top;
+}
+
+.bodyContent td:nth-child(odd) {
+	width: 50%;
+}
+
+.bodyContent td:nth-child(even) {
+	width: 50%;
+}
+
+.bodyContent #imageNoBlur {
+	background-image: url( "./img/image_no_blur_no_right_space.jpg" );
+	min-height: 480px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.bodyContent #bodyForm {
+	text-align: center;
+	background-image: url( "./img/image_blurred.jpg" );
+	width: calc( 100% );
+	min-height: 480px;
+}
+
+.bodyContent #formContainer {
+	padding: 15px 50px;
+	text-align: left;
+	width: 470px;
+}
+
+.bodyContent h1 {
+	color: #fff;
+	font-size: 22px;
+	font-family: Arial;
+	margin-top: 30px;
+	padding-left: 5px;
+}
+
+.bodyContent h2 {
+	font-style: italic;
+	font-size: 22px;
+	color: #07abe8;
+	margin-top: 15px;
+	font-family: Verdana;
+	padding-left: 5px;
+}
+
+.bodyContent p {
+	font-family: Verdana;
+	font-size: 12px;
+	color: #fff;
+	line-height: 16px;
+	margin-top: 15px;
+	letter-spacing: 0.5px;
+	margin-bottom: 20px;
+	padding-left: 5px;
+}
+
+.bodyContent input,
+.bodyContent select {
+	border: none;
+	padding: 5px 10px;
+	color: #003f69;
+	font-weight: bold;
+	font-size: 12px;
+	letter-spacing: 0.5px;
+	width: 30%;
+	margin: 5px 5px;
+}
+
+.bodyContent #s1 {
+	width: 142.5px;
+	height: 26px;
+}
+
+.bodyContent #s2 {
+	width: 220px;
+	height: 26px;
+}
+
+.bodyContent #s3 {
+	width: 103px;
+	height: 26px;
+}
+
+.bodyContent #s4 {
+	width: 220px;
+	height: 98px;
+	background: #03a6e1;
+	color: #fff;
+	font-size: 20px;
+	white-space: normal;
+	cursor: hand;
+}
+
+.bodyContent #s4:hover {
+	background: #27bef5;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #7caecf;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #7caecf;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #7caecf;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #7caecf;
+}
+
+
+.learnMore {
+	font-family: Tahoma;
+	font-size: 18px;
+	text-align: center;
+	margin: 20px 0px;
+}
+
+#downChevron {
+	font-size: 30px;
+}
+
+.socialMedia {
+	position: absolute;
+	top: 230px;
+	left: 5px;
+	width: 75px;
+	text-align: center;
+	font-family: Arial;
+	font-size: 16px;
+	font-weight: bold;
+	z-index: 2;
+	color: #003b5b;
+}
+
+.socialMedia img {
+	margin-top: 10px;
+}
+
+.ghost {
+	background: #fff;
+	z-index: 1;
+	height: 250px;
+	width: 85px;
+	position: absolute;
+	top: 205px;
+	opacity: 0.65;
+}
+
+.copyright {
+	font-style: italic;
+	color: #0c3365;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+@media only screen and (max-width: 1065px) {
+	.bodyContent td {
+		display: block;
+		width: 100% !important;
+	}
+	
+	header {
+		height: 150px;
+	}
+	
+	header td {
+		display: block;
+		text-align: center !important;
+	}
+	
+	header td:nth-child(2) {
+		margin-top: 20px;
+	}
+	
+	header img:nth-child(1) {
+		margin-left: 30px;
+	}
+	
+	header #callUs {
+		font-size: 35px;
+		padding-right: 15px;
+	}
+	
+	header #callUsNumber {
+		font-size: 40px;
+		padding-left: 15px;
+	}
+	
+	.bodyContent #imageNoBlur {
+		min-height: 300px;
+	}
+
+	.bodyContent #formContainer {
+		width: 600px;
+		height: 635px;
+	}
+	
+	.bodyContent #s1 {
+		width: 185px;
+		height: 50px;
+		font-size: 18px;
+	}
+
+	.bodyContent #s2 {
+		width: 285px;
+		height: 50px;
+		font-size: 18px;
+	}
+
+	.bodyContent #s3 {
+		width: 135px;
+		height: 50px;
+		font-size: 18px;
+	}
+
+	.bodyContent #s4 {
+		width: 585px;
+		height: 98px;
+		background: #03a6e1;
+		color: #fff;
+		font-size: 18px;
+		white-space: normal;
+		cursor: hand;
+	}
+	
+	.bodyContent #s2:nth-child(8) {
+		width: 585px;
+	}
+	.bodyContent br:nth-child(2) {
+		display: none;
+	}
+	
+	.bodyContent input {
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	header {
+		height: 170px;
+	}
+	
+	header img {
+		padding-right: 0px;
+	}
+	
+	header img:nth-child(1) {
+		width: 200px;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	header img:nth-child(2) {
+		width: 160px;
+		display: block;
+		margin-top: 10px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	header #callUs {
+		font-size: 20px;
+		display: block;
+		padding-right: 0px;
+	}
+	
+	header #callUsNumber {
+		font-size: 20px;
+		padding-left: 0px;
+		display: block;
+	}
+	
+	.bodyContent #formContainer {
+		width: 400px !important;
+	}
+	
+	.bodyContent #bodyForm {
+		min-height: 1050px;
+	}
+	
+	.bodyContent #s1,
+	.bodyContent #s2,
+	.bodyContent #s3,
+	.bodyContent #s4 {
+		width: 400px !important;
+	}
+	
+	.socialMedia {
+		top: 250px;
+	}
+
+	.ghost {
+		top: 225px;
+	}
+}
+
+@media only screen and (max-width: 525px) {
+	.bodyContent #formContainer {
+		width: 230px !important;
+	}
+	
+	.bodyContent #s1,
+	.bodyContent #s2,
+	.bodyContent #s3,
+	.bodyContent #s4 {
+		width: 230px !important;
+	}
+	
+	.bodyContent #bodyForm {
+		min-height: 1165px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

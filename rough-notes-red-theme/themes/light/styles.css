@@ -1,0 +1,550 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+
+/***************************************************/
+/* BODY STYLES
+/***************************************************/
+@font-face {
+    font-family: 'Trooper Roman';
+    src: url( './fonts/TrooperRoman.ttf' );
+}
+
+@font-face {
+    font-family: 'Zilla Slab';
+    src: url( './fonts/ZillaSlab-Regular.ttf' );
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    color: black;
+    background: #edf0f5; /* Eggshell White */
+    animation: fadeIn 0.15s;
+    -webkit-animation: fadeIn 0.15s;
+    -moz-animation: fadeIn 0.15s;
+    -o-animation: fadeIn 0.15s;
+    -ms-animation: fadeIn 0.15s;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/***************************************************/
+/* LOGIN STYLES
+/***************************************************/
+h1 {
+    font-family: 'Trooper Roman', 'Georgia', 'Garamond', 'Times New Roman', serif;
+    font-size: 35px;
+}
+
+.page-wrapper {
+    width: calc( 100% - 20px - 10% );
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page-wrapper:first-child {
+    margin-top: 150px;
+}
+
+.page-wrapper2 {
+    width: calc( 100% - 20px - 10% );
+    border-left: 1px solid rgba( 0, 0, 0, 0.10 );
+    margin-left: auto;
+    margin-right: 10px;
+    background: red;
+}
+
+#login-container {
+    width: 500px;
+    background: rgba( 255, 255, 255, 1.0 );
+    box-shadow: 0px 20px 40px -10px rgba( 28, 35, 49, 0.15 ),
+                0px 0px 0px 1px rgba( 28, 35, 49, 0.05 );
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 100%;
+    padding: 5%;
+    border-radius: 5px;
+}
+
+#login-container h1 {
+    color: #900028;
+    font-size: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 77.6%;
+    display: block;
+    text-align: center;
+}
+
+#login-container input {
+    margin: 0 auto;
+    width: 77.6%;
+    display: block;
+    border: 1px solid #dce0ea;
+    padding: 20px 10px;
+    font-size: 16px;
+    color: #757575;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+#login-container input:hover {
+    border: 1px solid #8e99ab;
+}
+
+#login-container input:focus {
+    outline: 3px solid #e9c4cf;
+    border: 1px solid #900028;
+}
+
+/*
+#login-container button {
+    margin: 0 auto;
+    width: calc( 77.6% + 22px );
+    display: block;
+    padding: 20px 10px;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #900028;
+    border: 0px;
+    clear: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}*/
+
+#login-container button {
+    margin: 0 auto;
+    width: calc( 77.6% + 22px );
+    display: block;
+    padding: 20px 10px;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #284d85;
+    border: 0px;
+    clear: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#login-container a:link {
+    margin: 0 auto;
+    width: calc( 77.6% + 2px );
+    display: block;
+    padding: 20px 10px;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #900028;
+    border: 0px;
+    clear: left;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-decoration: none;
+}
+
+#login-container a:visited, a:hover, a:active {
+    color: white;
+}
+
+.column1 {
+    display: inline-block;
+    background: green;
+    padding: 5px;
+    display: flex;
+}
+
+.column2 {
+    background: red;
+    padding: 5px;
+    display: flex;
+}
+
+.column3 {
+    background: blue;
+    padding: 5px;
+    display: flex;
+}
+
+.column4 {
+    background: cyan;
+    padding: 5px;
+    display: flex;
+}
+
+.column5 {
+    background: yellow;
+    padding: 5px;
+    display: flex;
+}
+
+#page-container {
+    width: calc( 100% - 160px );
+    background: rgba( 255, 255, 255, 1.0 );
+
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 100%;
+    padding: 5%;
+    border-radius: 5px;
+}
+
+/*.header {
+    height: 50px;
+    background: #ffffff;
+    border-bottom: 1px solid #d5d8dc;
+}*/
+
+.flash-menu {
+    background: #900028;
+    width: 10%;
+    height: 100%;
+    top: 0px;
+    bottom: 0;
+    position: fixed;
+    overflow-y: hidden;
+    overflow-x :hidden;
+}
+
+.flash-menu li {
+    font-weight: bold;
+    border-top: 1px solid black;
+    font-size: 11px;
+}
+
+.flash-menu li:hover {
+    background: rgba( 255, 255, 255, 0.25 );
+    cursor: pointer;
+}
+
+.flash-menu li a:link,
+.flash-menu li a:hover,
+.flash-menu li a:visited,
+.flash-menu li a:active {
+    color: white;
+    text-decoration: none;
+}
+
+.flash-menu ul li a:link {
+    display: block;
+    top: 0;
+    left: 0;
+    padding: 10px;
+}
+
+#logo {
+    font-family: 'Trooper Roman', 'Georgia', 'Garamond', 'Times New Roman', serif;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+
+#logo a:link,
+#logo a:hover,
+#logo a:visited,
+#logo a:active {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+h1 {
+    color: #284d85;
+    margin-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.search-bar {
+    border: 0px;
+    background: #dce0ea;
+    border-radius: 5px;
+    width: 50%;
+    padding: 3px 0px;
+    color: #686d76;
+}
+
+.search-bar i {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+#search {
+    border: 0px;
+    background: #dfe4ec;
+    border-radius: 5px;
+    padding: 10px;
+    width: calc( 100% - 53px );
+}
+
+/*.header {
+    padding: 10px;
+}*/
+
+.header input:focus {
+    outline: 3px solid #e9c4cf;
+    border: 1px solid #900028;
+}
+
+.header #search:focus {
+    background: #edf0f4;
+}
+
+.header input:hover {
+    border: 1px solid #8e99ab;
+}
+
+#page-container p {
+    margin-bottom: 30px;
+    font-size: 18px;
+    line-height: 26px;
+    font-family: 'Lora', 'Georgia', serif;
+}
+
+#page-container ul li::before {
+    content: "•";
+    margin-inline-end: 1ch;
+    font-size: 25px;
+    vertical-align: bottom;
+    font-family: 'Lora', 'Georgia', serif;
+}
+
+#page-container ol li {
+    list-style-type: decimal;
+    margin-inline-end: 1ch;
+    font-size: 18px;
+    vertical-align: bottom;
+    margin-left: 15px;
+    line-height: 26px;
+    font-family: 'Lora', 'Georgia', serif;
+}
+
+#page-container ul,
+#page-container ol {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.footer {
+    text-align: center;
+    padding: 5px;
+    line-height: 18px;
+    margin-top: 25px;
+}
+
+.footer a:link,
+.footer a:visited,
+.footer a:active,
+.footer a:hover {
+    color: #900028;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.admin-bar {
+    background: #284d85;
+    height: 50px;
+    color: white;
+    border-bottom: 1px solid rgba( 0, 0, 0, 0.50 );
+    text-align: right;
+    position: sticky;
+}
+
+.admin-bar p {
+    background: #284d85;
+    padding: 5px 10px;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    border-left: 1px solid rgba( 255, 255, 255, 0.50 );
+}
+
+.admin-bar p:hover {
+    background: #325b99;
+}
+
+.admin-bar p:hover {
+    cursor: pointer;
+}
+
+#error {
+    width: calc( 77.6% + 2px );
+    padding: 20px 10px;
+    margin: 0 auto;
+    background: #fef2f5;
+    border-radius: 5px;
+    border: 1px solid #f2baca;
+}
+
+/***************************************************/
+/* RESPONSIVE SIZING
+/***************************************************/
+@media only screen and ( max-width: 800px ) {
+
+}
+
+@media only screen and ( max-width: 650px ) {
+    .page-wrapper {
+        width: 90%;
+    }
+
+    #login-container {
+        width: auto;
+    }
+
+    #login-container h1 {
+        width: auto;
+        font-size: 40px;
+    }
+
+    #login-container input {
+        width: calc( 100% - 20px );
+        display: block;
+    }
+
+    #login-container a:link {
+        width: auto;
+    }
+
+    #error {
+        width: calc( 100% - 20px );
+        padding: 20px 10px;
+        margin: 0 auto;
+        background: #fef2f5;
+        border-radius: 5px;
+        border: 1px solid #f2baca;
+    }
+    
+}
+
+
+
+
+
+
+/***************************************************/
+/* ALL-STAR STYLING
+/***************************************************/
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.left {
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+.right {
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+.page-wrapper {
+    height: 100%;
+    position: relative;
+    z-index: 500;
+    overflow: hidden;
+    background: blue;
+}

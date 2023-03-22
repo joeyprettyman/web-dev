@@ -1,0 +1,2 @@
+<?php
+    $CONFIG['https']    = "enabled";

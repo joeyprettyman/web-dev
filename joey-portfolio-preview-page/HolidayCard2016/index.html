@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<head>
+	<!-- PAGE TITLE -------------------->
+	<title>Season's Greetings from FaegreBD</title>
+	
+	<!-- SITE FAVICON ------------------>
+	<link rel="shortcut icon" href="http://www.faegrebd.com/favicon.ico" type="image/icon" />
+	<link rel="favicon" href="http://www.faegrebd.com/favicon.ico" type="image/icon" />
+
+	<!-- SITE VIEWPORT ----------------->
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	
+	<!-- META TAGS --------------------->
+	<meta charset="UTF-8">
+	<meta name="description" content="<INSERT HOLIDAY DESCRIPTION HERE>">
+	<meta name="keywords" content="<INSERT SITE KEYWORDS HERE>">
+	
+	<!-- SITE STYLES ------------------->
+	<link type="text/css" rel="stylesheet" media="all" href="./styles/stylesheet.css" />
+	<link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
+	
+	<!-- SITE SCRIPTS ------------------>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+	<script src="./lib/rotating-ornament.js"></script>
+	
+	<!-- SITE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+	
+	
+	<!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="./styles/ie-only.css" />
+	<![endif]-->	
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	
+	<!-- [BEADS] LEFT -->
+	<img class="beads1" src="./imgs/beads1.png">
+	<img class="beads3" src="./imgs/beads3.png">
+	<img class="beads5" src="./imgs/beads5.png">
+	<img class="beads7" src="./imgs/beads7.png">
+
+	<!-- [BEADS] RIGHT -->
+	<img class="beads2" src="./imgs/beads2.png">
+	<img class="beads4" src="./imgs/beads4.png">
+	<img class="beads8" src="./imgs/beads8.png">
+	
+	<!-- ORNAMENTS -->
+		<!-- Rotating Ornament -->
+		<img class="string" id="string1" src="./imgs/string.png">
+		<div class="rotating-ornament"></div>
+
+		<!-- Snowflake 2 -->
+		<img class="string" id="string2" src="./imgs/string.png">
+		<img class="snowFlake2" src="./imgs/snowflake-2.png">
+
+		<!-- Snowflake 3 -->
+		<img class="string" id="string3" src="./imgs/string.png">
+		<img class="snowFlake3" src="./imgs/snowflake-3.png">
+
+		<!-- Empowering Women Ornament -->
+		<img class="string" id="string4" src="./imgs/string.png">
+		<img class="women" src="./imgs/women-icon.png">
+	
+	<!-- TYPE TREATMENTS -->
+		<!-- FBD Logos -->
+		<table class="logo-table">
+			<tr>
+				<td align="left">
+					<img src="./imgs/fbd_logo.png" class="fbd-logo">
+				</td>
+				<td style="vertical-align: bottom;">
+					<a href="#parralax-begin" style="text-decoration: none;">
+						<img src="./imgs/arrow.png" class="arrow bounce">
+					</a>
+				</td>
+				<td align="right">
+					<img src="./imgs/fbdc_logo.png" class="fbdc-logo">
+				</td>
+			</tr>
+		</table>
+		
+		
+		<!-- FBD Logos -->
+		<table class="logo-table3">
+			<tr>
+				<td>
+					<img src="./imgs/fbd_logo.png" class="fbd-logo">
+				</td>
+				<td>
+					<img src="./imgs/fbdc_logo.png" class="fbdc-logo">
+				</td>
+				<td>
+					<a href="#parralax-begin" style="text-decoration: none;">
+						<img src="./imgs/arrow.png" class="arrow bounce">
+					</a>
+				</td>
+			</tr>
+		</table>
+		
+		<!-- It's the Season for Celebrating -->
+		<img class="bounceIn animated words" id="its-the" src="./imgs/its-the.png">
+		<img class="zoomIn animated words" id="season" src="./imgs/season.png">
+		<img class="zoomIn animated words" id="for" src="./imgs/for.png">
+		<img class="bounceInUp animated words" id="celebration" src="./imgs/celebration.png">
+
+			
+	<div class="snow-accumulation"></div>
+	
+	<div id="parralax-begin"></div>
+
+	<div class="second-section">
+		<h2>Help us Decide Where to Direct Our Charitable Donations</h2>
+		<p>Faegre Baker Daniels is pleased to continue our tradition of giving back during this season. This year we celebrate organizations that share our passion for advancing women in business and in the legal profession. <span id="link"><a href="http://www.faegrebd.com/giving-back?utm_source=2016HolidayCardLandingPg&utm_medium=2016HolidayCardLandingPgTextLink&utm_content=GivingBackPage&utm_campaign=2016HolidayCard" target="_blank">Learn more about past organizations we have supported</a></span>.</p>
+		
+		<p>We will make a $5/£4 donation to the organization of your choice and will donate up to $5,000 to each organization.</p>
+		
+		<h2>Why Organizations That Advance Women?</h2>
+		<p>Women are less than 22 percent of partners and 18 percent of managing partners at American law firms (according to the ABA’s Commission on Women in the Profession) and only 4 percent of CEOs at Fortune 500 companies (according to <em>Fortune</em>).</p>
+		
+		<p><span id="link"><a href="http://www.faegrebdfiles.com/etimages/website_docs/advancing-women-legal-profession-ver9-links.pdf?utm_source=2016HolidayCardLandingPg&utm_medium=2016HolidayCardLandingPgTextLink&utm_content=AdvancingWomenPDF&utm_campaign=2016HolidayCard" target="_blank">Learn more about FaegreBD's efforts</a></span> to close the gender gap.</p>
+		
+		<div id="ribbon">
+			<a href="#parralax-begin2">
+				<h2>PLEASE SELECT AN ORGANIZATION</h2>
+				<p>Please click the checkbox next to an organization to direct a donation!</p>
+				<div class="arrow2 bounce"></div>
+			</a>
+		</div>
+		
+		<div id="parralax-begin2">&nbsp;</div>
+		
+		<table class="selection-table">
+			<!-- ROW 1 -->
+			<tr>
+				<td class="first-td">
+					<table width="100%" class="org-table">
+						<tr>
+							<td>
+								<img src="./imgs/catalyst-logo-site.png" alt="Catalyst Logo">
+							</td>
+							<td valign="top" class="check-td">
+								<div class="check-container">
+									<input type="checkbox" id="catalyst" />
+									<label for="catalyst" class="check-box"></label>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr>
+							<td class="text-cell">
+								<a href="http://www.catalyst.org/" target="_blank" title="Catalyst Webite">Catalyst</a> is the leading nonprofit organization accelerating progress for women through workplace inclusion. With operations in the United States, Canada, Europe, India, Australia, and Japan, and more than 800 supporting organizations, Catalyst is the trusted resource for research, information and advice about women at work.
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td class="second-td">
+					<table width="100%" class="org-table">
+						<tr>
+							<td>
+								<img src="./imgs/CCWC-logo-site.png" alt="Corporate Counsel Women of Color Logo">
+							</td>
+							<td valign="top" class="check-td">
+								<div class="check-container">
+									<input type="checkbox" id="ccwc" />
+									<label for="ccwc" class="check-box2"></label>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr>
+							<td class="text-cell">
+								<a href="http://ccwomenofcolor.org/ccwc.html" target="_blank" title="Corporate Counsel Women of Color Website">Corporate Counsel Women of Color</a> (CCWC) is a support network to in-house women of color that facilitates networking, promotes career advancement and the success of in-house women of color, and promotes global diversity in the legal profession and workplace. It includes more than 3,500 in-house women attorneys of color worldwide.
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			
+			<!-- ROW 2 -->
+			<tr>
+				<td class="third-td">
+					<table width="100%" class="org-table">
+						<tr valign="top">
+							<td valign="bottom">
+								<img src="./imgs/DFA_logo-site.png" alt="Diversity & Flexibility Alliance Logo">
+							</td>
+							<td valign="top" class="check-td">
+								<div class="check-container">
+									<input type="checkbox" id="tdfa" />
+									<label for="tdfa" class="check-box3"></label>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr>
+							<td class="text-cell">
+								<a href="http://dfalliance.com/" target="_blank" title="Diversity & Flexibility Alliance Website">The Diversity & Flexibility Alliance</a> is a think tank dedicated to creating inclusive cultures that leverage diversity and flexibility to attract and retain top talent. It builds opportunities that support the advancement of women and flexible work cultures through research, solutions and strategies to promote high performance environments. Alliance members cover over 30 percent of the <em>AmLaw 100</em>.
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td class="fourth-td">
+					<table width="100%" class="org-table">
+						<tr>
+							<td>
+								<img src="./imgs/NAWL-logo-site.png" alt="National Association of Women Lawyers Logo">
+							</td>
+							<td valign="top" class="check-td">
+								<div class="check-container">
+									<input type="checkbox" id="nawl" />
+									<label for="nawl" class="check-box4"></label>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<table width="100%">
+						<tr>
+							<td class="text-cell">
+								<a href="http://www.nawl.org/" target="_blank" title="National Association of Women Lawyers Website">The National Association of Women Lawyers</a> (NAWL) provides leadership, a collective voice and essential resources to advance women in the legal profession and advocate for the equality of women under the law. NAWL’s membership includes corporate legal departments, law firms, law schools and bar associations. 
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		
+		
+		<div class="submit-container">
+			<a href="#please-select" id="select-donation" style="display: none;">Direct Donations Here</a>
+		</div>
+		
+	<br><br><br><br><br>
+	</div>
+		
+
+		
+	<!-- Created by Joey Prettyman | 2016 -->
+	<script src="./lib/custom.js"></script>
+	
+	<!-- end wrapper div -->
+
+    <!-- GA -->
+    <div id="ctl00_gaScript" style="display: none !important;>
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-26463569-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>	
+    </div><!-- end ga -->
+
+</body>
+</html>

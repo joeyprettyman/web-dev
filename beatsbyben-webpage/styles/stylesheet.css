@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+    font-family: 'MajorMonoDisplay';
+    src: url( './fonts/MajorMonoDisplay-Regular.ttf' );
+}
+
+@font-face {
+    font-family: 'JetBrains';
+    src: url( './fonts/JetBrainsMono-Regular.ttf' );
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+body {
+	/* background: #000000; /* Black */
+	background: radial-gradient( circle at 50% -70%, #00224b 40%, #000b18 60% );
+	/* background: #00224b; */
+	font-family: Arial;
+	background-size: cover;
+	margin: 0px;
+}
+
+.header {
+	background: rgba( 0, 0, 0, 0.50 );
+	padding: 15px;
+	color: white;
+	display: block;
+	font-size: 18px;
+	font-weight: bold;
+	/* border-bottom: 1px solid #00316f; */
+	border-bottom: 1px solid #000000;
+}
+
+.wrapper {
+	display: block;
+	position: relative;
+	left: 50%;
+	transform: translateX( -50%);
+	text-align: left;
+	max-width: 700px;
+	background: rgba( 255, 255, 255, 0.00 );
+}
+
+.beatsbyben-logo {
+	font-family: 'Comfortaa', cursive;
+	color: #0072ff;
+	font-size: 150px;
+	text-align: center;
+}
+
+.beatsbyben-logo a:link,
+.beatsbyben-logo a:active,
+.beatsbyben-logo a:visited {
+	text-decoration: none;
+	color: #0072ff;
+	transition: 0.20s;
+	transition-timing-function: ease-in-out;
+}
+
+.beatsbyben-logo a:hover {
+	color: #a2cafd;
+	transition: 0.15s;
+	transition-timing-function: ease-in-out;
+}
+
+.beatsbyben-title {
+	font-family: 'Comfortaa', cursive;
+	color: #0072ff;
+	font-size: 25px;
+	text-align: center;
+}
+
+.summary-section {
+	/* background: #00132a; */
+	background: radial-gradient( circle at 50% -70%, #00224b 20%, #003a82 40% );
+	border-radius: 25px;
+	padding: 25px;
+	color: #ffffff;
+	font-family: 'JetBrains', serif;
+	margin-top: 50px;
+	border: 1px solid #0072ff;
+}
+
+.summary-section a:link,
+.summary-section a:active,
+.summary-section a:visited {
+	color: #0072ff;
+	transition: 0.20s;
+	transition-timing-function: ease-in-out;
+}
+
+.summary-section a:hover {
+	color: #00ff12;
+	transition: 0.15s;
+	transition-timing-function: ease-in-out;
+}
+
+.summary-section1 {
+	background: #00132a;
+	border-radius: 25px;
+	padding: 25px;
+	color: #0072ff;
+	font-family: 'JetBrains', serif;
+	margin-top: 50px;
+}
+
+.summary-section2 {
+	background: #00132a;
+	border-radius: 25px;
+	padding: 25px;
+	color: #f600ff;
+	font-family: 'JetBrains', serif;
+	margin-top: 50px;
+}
+
+.summary-section3 {
+	background: #00132a;
+	border-radius: 25px;
+	padding: 25px;
+	color: #ffffff;
+	font-family: 'JetBrains', serif;
+	margin-top: 50px;
+}
+
+/* #00ff12 GREEN */
+
+@media only screen and (max-width: 475px) {
+	.quick-server-info #seed-number {
+		font-size: 20px;
+	}
+	
+	.quick-server-info #server-address {
+		font-size: 20px;
+	}
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- RENDER IN EDGE / CHROME ENGINE -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<!-- USE UTF-8 FOR ENCODING -->
+		<meta charset="utf-8">
+		
+		<!-- PAGE TITLE -->
+		<title>Truncation Tool</title>
+		
+		<!-- EMAIL FAVICONS -->
+		<link rel="shortcut icon" href="../styles/img/favicon.ico" type="image/x-icon" />
+		<link rel="favicon" href="../styles/img/favicon.ico" type="image/x-icon" />
+		
+		<!-- USE WEB FONTS -->
+		<script type="text/javascript" src="https://fast.fonts.net/jsapi/5829111d-7d17-4fa3-b6c2-18f6194b463d.js"></script>
+		
+		<!-- USE FONT AWESOME CDN -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+		
+		<!-- EMBEDDED CSS -->
+		<link rel="stylesheet" href="../styles/styles.css" >
+		
+		<!-- CUSTOM CSS -->
+		<style type="text/css">
+			input.trimText:hover {
+				background-color: #003150 !important;
+				color: #ffffff;
+			}
+			
+			input.trimText:focus {outline:0;}
+		</style>
+		
+		<!-- MOBILE CSS -->
+		<style type="text/css"></style>
+	</head>
+	
+	<!-- BEGIN MAIN BODY -->
+	<body bgolor="#ffffff">
+		<center>
+			<table cellpadding="0" width="580" cellspacing="0" border="1" bgcolor="#ffffff" class="<!-- center wrapper -->" style="margin-top: 25px;">
+				<tr>
+					<td width="" align="center" valign="middle" bgcolor="#ffffff" class="<!-- center -->" style="">
+						<center>
+							
+							
+							
+							<!------------>
+							<!-- HEADER -->
+							<!------------>
+							<table border="0" cellpadding="0" width="580" cellspacing="0" bgcolor="#ffffff" class="<!-- center header -->" style="background-color: #ffffff;">
+								<tr>
+									<!-- Logo -->
+									<td width="580" valign="middle" align="left" bgcolor="#ffffff" class="<!-- logo -->" style="background-color: #ffffff; padding: 20px;">
+										<a href="../index.html" title="Website Tools Home">
+											<img src="../styles/img/FaegreBD-Logo.jpg" width="185" height="52" class="<!-- logo-img -->" style="" alt="Faegre Baker Daniels Logo">
+										</a>
+									</td>
+								</tr>
+							</table>
+							
+							
+							
+							<!------------->
+							<!-- POINTER -->
+							<!------------->
+							<table border="0" cellpadding="0" width="580" cellspacing="0" bgcolor="#003150" class="" style="background-color: #003150;">
+								<tr>
+									<!-- Pointer -->
+									<td width="220" valign="middle" align="center" bgcolor="#003150" class="" style="background-color: #003150;">
+										<img src="../styles/img/FaegreBD-Pointer.jpg" width="25" height="14.5" class="" style="" alt="Faegre Baker Daniels Pointer">
+									</td>
+									
+									<!-- Blank -->
+									<td width="360" valign="middle" align="right" bgcolor="#003150" class="" style=""></td>
+								</tr>
+							</table>
+							
+							
+							
+							<!-------------->
+							<!-- SUB-MENU -->
+							<!-------------->
+							<table border="0" cellpadding="0" width="580" cellspacing="0" bgcolor="#003150" class="" style="background-color: #003150;">
+								<tr>
+									<!-- Insights -->
+									<td width="580" valign="middle" align="left" bgcolor="#003150" class="" style="background-color: #003150; padding: 10px 20px 25px 35px; color: #ffffff; font-family: 'Gill Sans W01', 'Gill Sans', Arial, sans-serif; font-size: 18px; letter-spacing: 2px;"><a href="./index.html" title="Truncation Tool" style="text-decoration: none; color: #ffffff;">
+										TRUNCATION TOOL
+										</a>
+									</td>
+								</tr>
+							</table>
+							
+							
+							
+							<!------------------>
+							<!-- BODY CONTENT -->
+							<!------------------>
+							<table border="0" cellpadding="0" width="580" cellspacing="0" bgcolor="#ffffff" class="" style="background-color: #ffffff;">
+								<tr>
+									<!-- Body Content -->
+									<td width="580" valign="top" align="left" bgcolor="#ffffff" class="" style="background-color: #ffffff; padding: 30px 50px; color: #003150; font-family: 'Gill Sans W01', 'Gill Sans', Arial, sans-serif; font-size: 14px;">
+										
+										<p><strong>Text to Truncate:</strong></p>
+										
+										<textarea rows="5" id="truncate" style="width: 465px; max-width: 465px; min-width: 465px; height: 50px; min-height: 50px; padding: 5px; color: black !important;" placeholder="Enter text to truncate here..." onkeyup="getCharCount(this.value)"></textarea>
+										
+										<div id="charcount" style="width: 477px; text-align: right; margin-top: 5px;">0: Characters</div>
+							
+									</td>
+								</tr>
+							</table>
+							
+							
+							<!------------------------------------------>
+							<!-- CLICK TO READ ARTICLE BUTTON / ROW 4 -->
+							<!------------------------------------------>
+							<table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" class="" style="">
+								<tr>
+									<td align="center" width="100%" class="" style="">
+										<table border="0" cellpadding="0" cellspacing="0" width="50%" bgcolor="#ffffff" class="" style="">
+											<tr>
+												<td align="center" width="50%" class="" style="">
+													<div class="" style="margin-bottom: 40px;">
+														<input class="trimText" type="button" value="TRIM THE TEXT" onClick="truncate()" style="border:2px solid #0c314f; padding: 12.8px 28.8px; font-family: 'Gill Sans W01', 'Gill Sans', sans-serif !important; font-size: 16px; letter-spacing: 3px; cursor: pointer; background: #ffffff; transition: color .5s ease,background .5s ease,border-color .5s ease,opacity .5s ease;">
+													</div>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							
+							
+						</center>
+					</td>
+				</tr>
+			</table>
+		</center>
+	</body>
+<script type="text/javascript">
+	function getCharCount(str) {
+		var lng = str.length;
+		document.getElementById("charcount").innerHTML = lng + ': Characters';
+	}
+
+	function truncate() {
+			var length = 100;  // set to the number of characters you want to keep
+			
+			var text = document.getElementById("truncate").value;
+
+			var trimmedText = text.substring(0, Math.min(length,text.length));
+			
+			document.getElementById("truncate").value = trimmedText;
+
+			var characters = document.getElementById("truncate").value.length;
+			document.getElementById("charcount").innerHTML = characters + ': Characters';
+			
+		}
+</script>
+
+</html>

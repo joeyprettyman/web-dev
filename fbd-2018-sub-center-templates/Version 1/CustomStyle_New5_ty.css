@@ -1,0 +1,724 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*Reset CSS*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*Desktop Padding*/
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.PRD0.PRD0 {
+	padding-right: 0;
+}
+.PLD0.PLD0 {
+	padding-left: 0px;
+}
+/*Desktop Font size*/
+
+.FSD14 {
+	font-size: 14px !important;
+}
+.FSD16 {
+	font-size: 16px !important;
+}
+.FSD36 {
+	font-size: 1.25rem !important;
+}
+/*Common Destop CSS*/
+.wrap {
+	width: 1009px;
+	margin: 0 auto;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.clear {
+	clear: both;
+}
+.header:after, .save-form:after, .savepref:after, .interest:after,.selectall:after,.interestleft:after,interestright:after,.cls:after{
+	clear: both;
+	content: " ";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+p{
+	font-size: 1.0rem;
+	color: #575757;
+	font-family: Cardo,Times,serif;
+	vertical-align: middle;
+	display: block;
+	line-height: 1.5rem;
+	*display:block;
+}
+.full {
+	width: 100%;
+}
+.TopBar,.FooterBar {
+	background: #ffffff;
+	height: 30px;
+}
+.FooterBar{
+	height:0px;
+}
+.header {
+	padding: 40px 19px 20px 20px;
+	*float:left;
+}
+.epcout {
+	background: #0a2f51;
+	margin-top: 25px;
+}
+.epc {
+	font-size: 1.5rem;
+	color: #ffffff;
+	letter-spacing: .25em;
+	font-family: Gill Sans W01,Gill Sans,sans-serif;
+	height: 65px;
+	vertical-align: middle;
+	display: table-cell;
+	padding-left: 25px;
+	*padding-top:8px;
+	*display:block;
+	*height: 27px;
+}
+
+.epcout:after {
+	position: absolute;
+    width: 0;
+    height: 0;
+    content: "";
+    z-index: 2;
+    border-left: 1em solid transparent;
+    border-right: 1em solid transparent;
+	border-top: 1em solid #003150;
+	margin-left: 125px;
+	font-size: 12px;
+}
+
+.discription {
+	background: #FFFFFF;
+	border-left: 1px solid #003150;
+	border-right: 1px solid #003150;
+}
+.disc {
+	font-size: 1.0rem;
+	color: #575757;
+	font-family: Cardo,Times,serif;
+	vertical-align: middle;
+	display: block;
+	padding: 55px 155px 25px 155px;
+	text-align: center;
+	line-height: 1.5rem;
+	*display:block;
+}
+.disc-ty{
+	color: #003150;
+	font-size: 1.25rem;
+	font-family: Gill Sans W01,Gill Sans,sans-serif;
+	letter-spacing: .20em;
+	padding: 55px 155px 25px 155px;
+	text-align: center;
+	line-height: 1.5rem;
+}
+.inner-main {
+	width: 970px;
+}
+.outer-form {
+	background: #ffffff;
+	padding: 10px 0 30px 0;
+	border-left: 1px solid #003150;
+	border-right: 1px solid #003150;
+	border-bottom: 1px solid #003150;
+}
+.ci {
+	font-size: 1.20rem;
+	color: #575757;
+	font-family: Gill Sans W01,Gill Sans,sans-serif;
+	vertical-align: middle;
+	display: block;
+	text-align: center;
+	line-height: 1.5rem;
+	*display:block;
+	padding-top: 35px;
+	padding-bottom: 5px;
+}
+.ci-ty{
+	padding-left:0px;
+}
+.save-form {
+	width: 680px;
+	margin: 0 auto;
+}
+.save-form ul li label {
+	font-size: 16px;
+	font-family: Gill Sans W01,Gill Sans,sans-serif;
+}
+.save-form ul li input {
+	margin-top: 8px;
+	margin-bottom: 20px;
+	width: 311px;
+	height: 35px;
+	border: 1px solid #cfcfcf;
+	font-size: 1.125rem;
+	padding-left: 15px;
+	font-family: Cardo,Times,serif;
+	color: #666666;
+	line-height: 2em;
+}
+.ie8 .save-form ul li input,.ie7 .save-form ul li input{
+	padding-top:7px;
+	height:26px;
+}
+.save-form ul li {
+	padding-right: 18px;
+	float: left;
+	width:329px;
+}
+.italic {
+	font-style: italic;
+}
+.normal {
+	font-weight: normal;
+}
+.savebtn {
+	background: #ffffff;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 2px solid #003150;
+	font-weight: 400;
+	text-align: center;
+	max-width: calc(100vw - 64px);
+	color: #003150;
+	padding: .8em 1.8em;
+	font-size: 16px;
+	line-height: 1.4;
+	user-select: none;
+	letter-spacing: 4px;
+	-webkit-transition: background-color 0.25s ease, color 0.25s ease;
+	-ms-transition: background-color 0.25s ease, color 0.25s ease;
+	-o-transition: background-color 0.25s ease, color 0.25s ease;
+	-moz-transition: background-color 0.25s ease, color 0.25s ease;
+	transition: background-color 0.25s ease, color 0.25s ease;
+	margin-bottom: 40px;
+	white-space: initial;
+}
+
+.savebtn:hover {
+	background-color: #003150;
+	color: #ffffff;
+	-webkit-transition: background-color 0.5s ease, color 0.5s ease;
+	-ms-transition: background-color 0.5s ease, color 0.5s ease;
+	-o-transition: background-color 0.5s ease, color 0.5s ease;
+	-moz-transition: background-color 0.5s ease, color 0.5s ease;
+	transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.mrgtp-ft{
+	margin-top:55px;
+}
+
+.interests {
+	width: 850px;
+	margin: 0 auto;
+	padding: 75px 0px 40px;
+}
+
+.footer{
+	background:#ffffff;
+	padding:0px 75px 15px 65px;
+}
+.footer p{
+	color: #666666;
+	line-height:15px;
+	font-size:12px;
+	font-family: Arial, sans-serif;
+	padding-bottom:18px;
+}
+.footer p a{
+	text-decoration:underline;
+	color:#003150;
+}
+.colorblc{
+	color:#000000;
+	font-family: Arial, sans-serif;
+}
+.inthrd{
+	background:#003150;
+	padding:8px;
+	color:#ffffff;
+	font-size:14px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.yourint{
+	background:#efefef;
+	padding:11px;
+}
+.yourint input[type="checkbox"]{
+	float:left;
+	margin-top:2px;
+	margin-right:6px;
+}
+.ie8 .yourint input[type="checkbox"],.ie9 .yourint input[type="checkbox"]{
+	float:left;
+	margin-top:-2px;
+}
+.ie8 .yourint,.ie9 .yourint{
+	padding-top:14px;
+	padding-bottom:7px;
+}
+.ie9 .yourint{
+		padding-bottom:14px;
+}
+.selectall{
+	*float:left;
+}
+.selectall label{
+	padding-right:10px;
+}
+.selectall input[type="checkbox"]{
+	float:left;
+	margin-top:0px;
+	margin-right:6px;
+}
+.ie8 .selectall input[type="checkbox"],.ie9 .selectall input[type="checkbox"]{
+	margin-top:-2px;
+}
+.interest-inner{
+	width:402px;
+	margin-right:46px;
+}
+.yourint label{
+	font-size:14px;
+	color:#000000;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	*margin-top:6px !important;
+	*float:left;
+}
+.yourint li{
+	margin-bottom:10px;
+}
+.yourint li:last-child{
+	margin-bottom:0px !important;
+}
+.mr0{
+	margin-right:0px;
+}
+.mb0{
+	margin-bottom:0px;
+}
+input[type="checkbox"]{
+	margin:0px;
+}
+.lpint{
+	padding-bottom:27px;
+}
+.ie8 .lpint,.ie7 .lpint{
+	padding-bottom:35px;
+}
+.ie9 .lpint{
+	padding-bottom:38px;
+}
+.unsubscribe{
+	margin-top:28px;
+	border-bottom:2px solid #06344e;
+	border-top:2px solid #06344e;
+	padding-bottom:20px;
+	*float:left;
+	*width: 100%;
+}
+.ie7 .unsubscribe input[type="checkbox"],.ie8 .unsubscribe input[type="checkbox"],.ie9 .unsubscribe input[type="checkbox"]{
+	margin-top:-3px;
+}
+.ufa-text{
+	font-size:18px;
+	color:#06344e;
+	font-family: Arial, sans-serif;
+	font-weight:bold;
+	padding:18px 0;
+}
+.inner-usub label{
+	font-size:14px;
+	color:#000000;
+	padding-left:8px;
+	line-height:16px;
+	font-family: Arial, sans-serif;
+}
+.inner-usub input[type="checkbox"]{
+	margin-top:1px;
+}
+.inner-usub{
+	padding-left:8px;
+}
+input[type="submit"]{
+	cursor:pointer;
+}
+.error-msg{
+	color:#7b080b;
+	font-size:14px;
+	font-weight:bold;
+	font-family: Arial, sans-serif;
+	border:1px solid #7b080b;
+	padding:10px;
+	margin-bottom:22px;
+	line-height:18px;
+}
+.error{
+	border:1px solid #7b080b !important;
+	color:#7b080b !important;
+	font-size:14px;
+	font-weight:bold;
+	font-family: Arial, sans-serif;
+}
+.pdd-ty{
+	padding-top: 35px;
+}
+.co-website{
+	margin-top:50px;
+	margin-bottom:35px;
+}
+.ft-mrg{
+margin-top:30px;
+}
+/*Media Query*/
+
+@media screen and (max-width: 767px) {
+/*Do not show in mobiles*/
+.hidden-mobile {
+	display: none !important;
+}
+/*Shows in mobiles*/
+.show {
+	display: block !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	overflow: visible !important;
+	width: auto !important;
+	max-height: inherit !important;
+}
+/*Table,Td resize*/
+.resize-mobile {
+	width: 100% !important;
+	height: auto;
+	margin: 0 auto;
+}
+/*Mobile Padding*/
+.PT0 {
+	padding-top: 0 !important;
+}
+.PL0 {
+	padding-left: 0 !important;
+}
+.PB0 {
+	padding-bottom: 0px !important;
+}
+.PR0 {
+	padding-right: 0px !important;
+}
+.PL2 {
+	padding-left: 2px !important;
+}
+.PB2 {
+	padding-bottom: 2px !important;
+}
+.PT2 {
+	padding-top: 2px !important;
+}
+.PR2 {
+	padding-right: 2px !important;
+}
+.PL5 {
+	padding-left: 5px !important;
+}
+.PB5 {
+	padding-bottom: 5px !important;
+}
+.PT5 {
+	padding-top: 5px !important;
+}
+.PR5 {
+	padding-right: 5px !important;
+}
+.PL10 {
+	padding-left: 30px !important;
+}
+.PLR12 {
+	padding-left: 12px !important;
+	padding-right: 12px !important;
+}
+.PB10 {
+	padding-bottom: 10px !important;
+}
+.PT10 {
+	padding-top: 10px !important;
+}
+.PR10 {
+	padding-right: 30px !important;
+}
+.PL12 {
+	padding-left: 12px !important;
+}
+.PR12 {
+	padding-right: 12px !important;
+}
+.PL15 {
+	padding-left: 15px !important;
+}
+.PB15 {
+	padding-bottom: 15px !important;
+}
+.PB20 {
+	padding-bottom: 20px !important;
+}
+.PT15 {
+	padding-top: 15px !important;
+}
+.PR15 {
+	padding-right: 15px !important;
+}
+.PL20 {
+	padding-left: 20px !important;
+}
+.PB15 {
+	padding-bottom: 15px !important;
+}
+.PT20 {
+	padding-top: 35px !important;
+}
+.PR20 {
+	padding-right: 20px !important;
+}
+/*Mobile Fonts*/
+.FS12 {
+	font-size: 12px !important;
+}
+.FS11 {
+	font-size: 11px !important;
+}
+.FS10 {
+	font-size: 10px !important;
+}
+.FS9 {
+	font-size: 9px !important;
+}
+.FS8 {
+	font-size: 8px !important;
+}
+.FS14 {
+	font-size: 14px !important;
+}
+.FS16 {
+	font-size: 16px !important;
+}
+.FS20 {
+	font-size: 20px !important;
+}
+/*Common Mobile CSS*/
+.resize-img {
+	width: 100% !important;
+	height: inherit !important;
+}
+.align-center {
+	text-align: center !important;
+}
+.wrap {
+	width: 100% !important;
+	height: auto !important;
+}
+.logo1 {
+	width: 140px !important;
+	height: auto !important
+}
+.logo2 {
+	width: 106px !important;
+	height: auto !important;
+}
+.right {
+	float: right !important;
+}
+.inner-main {
+	width: 100% !important;
+}
+.epc {
+	padding-left: 20px !important;
+	height: 40px !important;
+	font-size: 1.25rem !important;
+}
+
+.epcout:after {
+	margin-top: 10px !important;
+	margin-left: 10px !important;
+	left: 95px;
+	right: 0;
+}
+
+.save-form {
+	width: 98.5% !important;
+	margin: inherit !important
+}
+.save-form ul li input {
+	width: 96% !important;
+	padding-left:13px;
+}
+.save-form ul li {
+	padding-right: 0px !important;
+	float: none !important;
+}
+.savebtn {
+	margin-top: 5px !important;
+}
+.interests {
+	width: 100% !important;
+	margin: 0 auto;
+	padding: 25px 0px;
+}
+.clearmob {
+	float: left !important;
+	clear:both;
+}
+.footer p{
+	padding-bottom:22px;
+}
+.interest-inner{
+	width:100% !important;
+	margin-right:46px;
+}
+.yourint {
+	padding-left:15px !important;
+}
+.inner-usub label{
+	width:90%;
+}
+.mrgtp-ft{
+	margin-top:50px !important;
+}
+.save-form ul li {
+	width:100% !important;
+}
+.disc-ty{
+	text-align:center !important;
+	padding-left:10px !important;
+	padding-right:10px !important;
+}
+.co-website{
+	margin-bottom:0px;
+	margin-top:20px;
+}
+}
+@media screen and (min-width:375px) and (max-width: 480px) {
+.save-form ul li input {
+	width: 97% !important;
+}
+}
+@media screen and (min-width:450px) and (max-width: 480px) {
+.save-form ul li input {
+	width: 97.5% !important;
+}
+}
+
+@media screen and (max-width: 369px) {
+	.epcout:after {
+	left: calc(44%);
+	right: auto;
+	}
+	
+	.d1 {
+		position: absolute !important;
+		left: calc(30%) !important;
+		right: auto !important;
+		margin-top: 0px !important;
+	}
+	
+	.header {
+		padding: 40px 19px 60px 20px !important;
+	}
+}
+@media screen and (min-width:768px) and (max-width: 1024px) {
+.wrap {
+	width: 100% !important;
+	height:auto !important;
+}
+.hidden-mobile{
+	display:none !important;
+}
+.inner-main {
+    width: 100% !important;
+}
+.save-form {
+	width: 80%;
+	margin: 0 auto;
+}
+.save-form ul li input {
+	width: 95%;
+}
+.save-form ul li {
+	width:48%;
+}
+.interests {
+	width: 90%;
+	margin: 0 auto;
+}
+.interest-inner{
+	width:48%;
+	margin-right:4%;
+}
+.mr0 {
+    margin-right: 0 !important;
+}
+.d1{
+	width:25% !important;
+}
+.d2{
+	width:60% !important;
+	display: block !important;
+}
+.d3{
+	width:15% !important;
+	float:right !important;
+}
+.dotted{
+	width:100%;
+	height:auto;
+}
+.logo1 {
+	width: 85% !important;
+	height: auto !important
+}
+.logo2 {
+	width: 100% !important;
+	height: auto !important;
+}
+}

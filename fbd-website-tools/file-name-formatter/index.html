@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- RENDER IN EDGE / CHROME ENGINE -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<!-- USE UTF-8 FOR ENCODING -->
+		<meta charset="utf-8">
+		
+		<!-- PAGE TITLE -->
+		<!-- <title>Faegre Baker Daniels | Insight</title> -->
+		<title>File Name Formatter</title>
+		
+		<!-- EMAIL FAVICONS -->
+		<link rel="shortcut icon" href="../styles/img/favicon.ico" type="image/x-icon" />
+		<link rel="favicon" href="../styles/img/favicon.ico" type="image/x-icon" />
+		
+		<!-- FONT AWESOME -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<!-- EMBEDDED CSS -->
+		<link rel="stylesheet" href="../styles/styles.css" >
+		
+		<!-- CUSTOM CSS -->
+		<style type="text/css">
+			#copybutton {
+				transition: background .5s ease,border-color .5s ease;
+			}
+		
+			#copyButton:hover {
+				background-color: #ffffff;
+				color: #e0e0e0;
+			}
+			
+			.trimText {
+				background-color: #ffffff !important;
+				border-color: #d3d3d3 !important;
+				color: #d3d3d3 !important;
+				transition: background .5s ease,border-color .5s ease;
+			}
+			
+			.trimText2 {
+				background-color: #003150 !important;
+				border-color: #003150 !important;
+				color: #ffffff !important;
+				transition: background .5s ease,border-color .5s ease;
+			}
+			
+			input.trimText2:hover {
+				background-color: #ffffff !important;
+				border-color: #003150 !important;
+				color: #003150 !important;
+				transition: background .5s ease,border-color .5s ease;
+			}
+			
+			input.trimText:focus {outline:0;}
+			
+			#recommended_format a {
+				text-decoration: none;
+				position: relative;
+			}
+			
+			a:after {
+				content: '';
+
+				width: 100%;
+				position: absolute;
+				left: 0;
+				bottom: -2px;
+
+				border-width: 0 0 1px;
+				border-style: solid;
+			}
+			
+			#bounceArrow {
+				animation: bounceArrow 1s infinite;
+				opacity: 0;
+				transition: opacity .5s ease;
+			}
+			
+			#arrow {
+				animation: bounceArrow 1s infinite;
+			}
+			
+			@keyframes bounceArrow {
+				0%   {right: -8px;}
+				25%  {right: -12px;}
+				50%  {right: -8px;}
+				75%  {right: -12px;}
+				100% {right: -8px;}
+			}
+		</style>
+<script type="text/javascript">
+
+	function updateButton() {
+		var element = document.getElementById("copyButton");
+		element.classList.toggle("trimText2");
+		document.getElementById("copyButton").disabled = false;
+	}
+	
+//======================================================================
+// [FUNCTION] - PROCESS FILE
+//======================================================================
+	function processFile() {
+		
+		
+		var element = document.getElementById("copyButton");
+		element.classList.remove("trimText2");
+		document.getElementById("copyButton").disabled = true;
+		document.getElementById('copyButton').style.borderColor = "#d3d3d3";
+		document.getElementById('copyButton').style.color = "#d3d3d3";
+
+		//-----------------------------------------------------
+		// [Function] - writeToConsole
+		//-----------------------------------------------------
+		
+			/****************************************
+			 * Write to Console
+			 ****************************************
+			 * To start, let's establish a helpful
+			 * function. Write to console will
+			 * log information in the console as
+			 * the processFile function runs.
+			 * so, you will be able to refer to
+			 * the data being output for quality
+			 * checks along the way.
+			 ****************************************/
+			var iterationNumber = 0;
+			
+			function writeToConsole(consoleText, consoleData) {
+				iterationNumber = iterationNumber + 1;
+				
+				// Define the css styling.
+				var cssDefault1 = "margin-left: 25px;";
+				var cssDefault2 = "margin-left: 0px;";
+				
+				var cssProcess = "font-style: italic; font-weight: bold;";
+				var cssTitle = "background: #222222; color: #ffffff; padding: 5px 0px 5px 10px; font-weight: bold; margin-left: 25px;";
+				var cssData = "background: #222222; color: #4de033; padding: 5px 10px 5px 5px; font-style: italic; margin-bottom: 10px;";
+				
+				// Log the information in the console.
+				console.log('Step ' + iterationNumber + '.\n%c[Running %c"' + consoleText + '"%c...]', cssDefault1, cssProcess, cssDefault2);
+				console.log('%cOUTPUT: %c' + consoleData, cssTitle, cssData);
+			}
+
+
+
+		//-----------------------------------------------------
+		// Gather File Information
+		//-----------------------------------------------------
+		
+			/****************************************
+			 * Step 1 | Get Full File Path
+			 ****************************************
+			 * To start, let's go ahead and
+			 * grab the full file path for
+			 * the file selected by the user.
+			 *
+			 * Input: <User Selects File> - C:\path1\path2\T.h.i.s-is----a testing file's(1) v1.7 _FaegreBD - Copy.txt
+			 * Output: C:\path1\path2\T.h.i.s-is----a testing file's(1) v1.7 _FaegreBD - Copy.txt
+			 ****************************************/
+			// Get the name of the file via the upload form.
+			var file = document.getElementById('uploadedFile').value;
+			
+			// Output information to console.
+			writeToConsole("Full File Path", file);
+		
+		
+		
+		//-----------------------------------------------------
+		// Process File Information
+		//-----------------------------------------------------
+		
+			/****************************************
+			 * Step 2 | Get Full File Name
+			 ****************************************
+			 * This method works by first
+			 * splitting the uploaded file
+			 * into directories, based off
+			 * of the file's /file/path/.
+			 * Then, it returns the data in the
+			 * last /path/ of the input file
+			 * in order to create the variable.
+			 *
+			 * Input: C:\path1\path2\T.h.i.s-is----a testing file's(1) v1.7 _FaegreBD - Copy.txt
+			 * Output: T.h.i.s-is----a testing file's(1) v1.7 _FaegreBD - Copy.txt
+			 ****************************************/
+			// Split the file to get only the file name.
+			var fullFileName = file.split(/(\\|\/)/g).pop();
+			
+			// Output information to console.
+			writeToConsole("Full File Name", fullFileName);
+			
+			
+			/****************************************
+			 * Step 3 | Get File Name
+			 ****************************************
+			 * This method works by first
+			 * splitting the uploaded file
+			 * into 2 parts. The separation
+			 * occurs at the period [.] that
+			 * separates a file name by it's
+			 * file extension.
+			 *
+			 * Example: T.h.i.s-is----a testing file's(1) v1.7 _FaegreBD - Copy.txt
+			 * Output: T.h.i.s-is----a testing file's(1) v1.7 _FaegreBD - Copy
+			 ****************************************/
+			// Split the file by name and extension to get the file name.
+			var periodCount = fullFileName.split(".").length - 1;
+			var fileName = fullFileName.split(".", periodCount);
+			var fileName = fileName.toString();
+			var fileName = fileName.replace(/,/g, ".");
+			
+			// Output information to console.
+			writeToConsole("File Name", fileName);
+			
+			
+			/****************************************
+			 * Step 4 | Get File Extension
+			 ****************************************
+			 * This method works by first
+			 * splitting the uploaded file
+			 * into 2 parts. The separation
+			 * occurs at the period [.] that
+			 * separates a file name by it's
+			 * file extension.
+			 *
+			 * Example: T.h.i.s-is----a testing file's(1) v1.7 _FaegreBD - Copy.txt
+			 * Output: .txt
+			 ****************************************/
+			// Split the file by name and extension to get the extension type.
+			var fileExt = "." + fullFileName.split(".").pop();
+			
+			// Output information to console.
+			writeToConsole("File Extension", fileExt);
+			
+			
+			/****************************************
+			 * Step 5 | IN "File Name" REMOVE * [ - Copy]
+			 ****************************************
+			 * This method works by looking for every
+			 * instance of a [-Copy] and removes it.
+			 *
+			 * Example: T-h-i-s-is-a-testing-files-1-v1-7-Copy
+			 * Output: T-h-i-s-is-a-testing-files-1-v1-7
+			 ****************************************/
+			// Remove [-Copy] from the file name.
+			var fileName = fileName.replace(/- copy/ig, "");
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" REMOVE * [- Copy]', fileName);
+			
+			
+			/****************************************
+			 * Step 7 | IN "File Name" REMOVE * [_FaegreBD]
+			 ****************************************
+			 * This method works by looking for every
+			 * instance of [_FaegreBD] and removes it.
+			 *
+			 * Example: T.h.i.s-is----a testing. file's(1) v1.7 _FaegreBD - Copy
+			 * Output: T.h.i.s-is----a testing. file's(1) v1.7  - Copy
+			 ****************************************/
+			// Remove [_FaegreBD].
+			var fileName = fileName.replace(/_FaegreBD/ig, "");
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" REMOVE * [_FaegreBD]', fileName);
+			
+			
+			/****************************************
+			 * Step 6 | IN "File Name" REPLACE * [__] WITH []
+			 ****************************************
+			 * This method works by looking for every
+			 * instance of an underscore [_] and checks
+			 * the entity after to see if it is an
+			 * underscore. If, in fact, it is an
+			 * underscore, this method will remove
+			 * that underscore and perform the check
+			 * all over again, until there are no
+			 * underscores sitting side-by-side.
+			 *
+			 * Example: XXXX
+			 * Output: XXXXX
+			 ****************************************/
+			// In the file name, replace any instances of a space, underscore, then space [ _ ]
+			var underscoreCount = fileName.split("_").length;
+			var fileName = fileName.split("_", underscoreCount);
+			var fileName = fileName.toString();
+			var fileName = fileName.replace(/,/g, "");
+			
+			// For each dash, check for double dashes.
+			var undcount;
+			for ( undcount = 0; count < underscoreCount; undcount++ ) {
+				var fileName = fileName.replace(/__/g, "");
+			}
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" REPLACE * [__] WITH []', fileName);
+			
+			
+			/****************************************
+			 * Step 8 | IN "File Name" REPLACE * [.] WITH [-]
+			 ****************************************
+			 * This method works by replacing
+			 * all instances of a period [.] from
+			 * within the file name with dashes[-].
+			 *
+			 * Example: T.h.i.s-is----a testing. file's(1) v1.7  - Copy
+			 * Output: T-h-i-s-is----a testing- file's(1) v1-7  - Copy
+			 ****************************************/
+			// In the file name, replace all periods with dashes.
+			var fileName = fileName.replace(/\./g, "-");
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" REPLACE * [.] WITH [-]', fileName);
+			
+			
+			/****************************************
+			 * Step 9 | IN "File Name" REPLACE * [ ] WITH [-]
+			 ****************************************
+			 * This method works by replacing
+			 * all instances of a space [ ] from
+			 * within the file name with dashes[-].
+			 *
+			 * Example: T-h-i-s-is----a testing- file's(1) v1-7  - Copy
+			 * Output: T-h-i-s-is----a-testing--file's(1)-v1-7----Copy
+			 ****************************************/
+			// In the file name, replace all spaces with dashes.
+			var fileName = fileName.replace(/ /g, "-");
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" REPLACE * [ ] WITH [-]', fileName);
+			
+			
+			/****************************************
+			 * Step 10 | IN "File Name" REPLACE * [( or )] WITH [-]
+			 ****************************************
+			 * This method works by looking for every
+			 * instance of a parenthesis [( or )] and
+			 * removes it.
+			 *
+			 * Example: T-h-i-s-is----a-testing--file's(1)-v1-7----Copy
+			 * Output: T-h-i-s-is----a-testing--file's-1--v1-7----Copy
+			 ****************************************/
+			// Replace parenthesis [( or )] with dashes [-]
+			var fileName = fileName.replace(/[()]/g, "-");
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" REPLACE * [( or )] WITH [-]', fileName);
+			
+			
+			/****************************************
+			 * Step 11 | IN "File Name" REMOVE * [" or \']
+			 ****************************************
+			 * This method works by looking for every
+			 * instance of a quote ["] or
+			 * an apostrophe ['], and removes them.
+			 *
+			 * Example: T-h-i-s-is----a-testing--file's-1--v1-7----Copy
+			 * Output: T-h-i-s-is----a-testing--files-1--v1-7----Copy
+			 ****************************************/
+			// Replace quotes ["] or apostrophes ['] with dashes [-]
+			var fileName = fileName.replace(/["']/g, "");
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" REMOVE * [" or \']', fileName);
+			
+			
+			/****************************************
+			 * Step 12 | IN "File Name" REPLACE * [--] WITH [-]
+			 ****************************************
+			 * This method works by looking for every
+			 * instance of a dash [-] and checks the
+			 * entity after to see if it is a dash.
+			 * If, in fact, it is a dash, this method
+			 * will remove that dash and perform the
+			 * check all over again, until there are
+			 * no dashes sitting side-by-side.
+			 *
+			 * Example: T-h-i-s-is----a-testing--files-1--v1-7----Copy
+			 * Output: T-h-i-s-is-a-testing-files-1-v1-7-Copy
+			 ****************************************/
+			// In the file name, replace any instances of a space, dash, then space [ - ]
+			var dashCount = fileName.split("-").length;
+			var fileName = fileName.split("-", dashCount);
+			var fileName = fileName.toString();
+			var fileName = fileName.replace(/,/g, "-");
+			
+			// For each dash, check for double dashes.
+			var count;
+			for ( count = 0; count < dashCount; count++ ) {
+				var fileName = fileName.replace(/--/g, "-");
+			}
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" REPLACE * [--] WITH [-]', fileName);
+
+
+			/****************************************
+			 * Step 13 | Get Full File Name
+			 ****************************************
+			 * This method works by first
+			 * splitting the uploaded file
+			 * into directories, based off
+			 * of the file's /file/path/.
+			 * Then, it returns the data in the
+			 * last /path/ of the input file
+			 * in order to create the variable.
+			 *
+			 * Input: C:\path1\path2\T.h.i.s-is----a testing file's(1) v1.7 _FaegreBD - Copy.txt
+			 * Output: T.h.i.s-is----a testing file's(1) v1.7 _FaegreBD - Copy.txt
+			 ****************************************/
+			// Split the file to get only the file name.
+			var fileLength = fileName.length;
+			var dashFinder = fileName.slice(fileLength - 1);
+			
+			if( dashFinder == "-" ) {
+				var fileName = fileName.slice(0, fileLength - 1);
+			}
+			
+			// Output information to console.
+			writeToConsole("Full File Name", fileName);
+			
+			
+			/****************************************
+			 * Step 14 | IN "File Name" APPEND [_FaegreBD]
+			 ****************************************
+			 * This method works by appending
+			 * [_FaegreBD] to the end of the file name.
+			 *
+			 * Example: T-h-i-s-is-a-testing-files-1-v1-7
+			 * Output: T-h-i-s-is-a-testing-files-1-v1-7_FaegreBD
+			 ****************************************/
+			// Append [_FaegreBD] to the file name.
+			var fileName = fileName.replace(/faegrebd/ig, "FaegreBD");
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" APPEND [FaegreBD]', fileName);
+			
+			
+			/****************************************
+			 * Step 14 | IN "File Name" APPEND [_FaegreBD]
+			 ****************************************
+			 * This method works by appending
+			 * [_FaegreBD] to the end of the file name.
+			 *
+			 * Example: T-h-i-s-is-a-testing-files-1-v1-7
+			 * Output: T-h-i-s-is-a-testing-files-1-v1-7_FaegreBD
+			 ****************************************/
+			// Append [_FaegreBD] to the file name.
+			var fileName = fileName + "_FaegreBD";
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" APPEND [_FaegreBD]', fileName);
+			
+			
+			/****************************************
+			 * Step 15 | IN "File Name" REPLACE * [-] WITH [ ]
+			 ****************************************
+			 * This method works by appending
+			 * [_FaegreBD] to the end of the file name.
+			 *
+			 * Example: T-h-i-s-is-a-testing-files-1-v1-7_FaegreBD
+			 * Output: T h i s is a testing files 1 v1 7_FaegreBD
+			 ****************************************/
+			// Replace all dashes [-] with spaces [ ]
+			var fileName = fileName.replace(/-/g, " ");
+			
+			// Output information to console.
+			writeToConsole('IN "File Name" REPLACE * [-] WITH [ ]', fileName);
+			
+			
+			
+			/****************************************
+			 * Step 16 | Combine Formatted File Name & Extension
+			 ****************************************
+			 * This method works by combining the
+			 * formatted file name and extension
+			 * together from the user selected file.
+			 *
+			 * Example: T h i s is a testing files 1 v1 7_FaegreBD
+			 * Output: T h i s is a testing files 1 v1 7_FaegreBD.txt
+			 ****************************************/
+			// Combine the formatted file name and extension.
+			var fileName = fileName + fileExt;
+			
+			// Output information to console.
+			writeToConsole('Combine Formatted File Name & Extension', fileName);
+
+			///////////////////////////////////////
+			document.getElementById('filebox').style.display = "none";
+			document.getElementById('copyarea').value = fileName;
+			document.getElementById("copyarea").disabled = false;
+			document.getElementById('clicktocopy').style.display = "inline";
+			document.getElementById('copyarea').style.display = "inline-block";
+			document.getElementById('clicktocopy').style.color = "black";
+			document.getElementById('copyarea').style.color = "black";
+			document.getElementById('copyarea').style.background = "#f2f2f2";
+			document.getElementById('copyarea').style.borderColor = "#cccccc";
+			document.getElementById('copyarea').style.marginBottom = "53px";
+			document.getElementById('bounceArrow').style.opacity = "1.0";
+			
+			
+			// document.getElementById("buttonBox").innerHTML = "<div class=''> <input class='trimText' type='submit' value='FORMAT FILE NAME' id='copyButton' onClick='processFile()' style='border:2px solid #d3d3d3; padding: 12.8px 28.8px; font-family: 'Gill Sans W01', 'Gill Sans', sans-serif !important; font-size: 16px; letter-spacing: 3px; cursor: pointer; background: #ffffff; transition: color .5s ease,background .5s ease,border-color .5s ease,opacity .5s ease; margin-bottom: 50px; color: #d3d3d3;' disabled> </div>";
+			
+			// document.getElementById("copyButton").disabled = true;
+			// document.getElementById('copyButton').style.borderColor = "#e0e0e0";
+			// document.getElementById('copyButton').style.color = "#f7f7f7";
+			
+	}
+
+	function copyToClp(){
+		document.getElementById("copyButton").disabled = true;
+		
+		var alligator = document.execCommand('copy');
+		document.getElementById('status').innerHTML = "Copied!";
+	}
+</script>
+	</head>
+	
+	<!-- BEGIN MAIN BODY -->
+	<body bgolor="#ffffff">
+		<center>
+			<table id="bodyTable" cellpadding="0" width="580" cellspacing="0" border="1" bgcolor="#ffffff" class="<!-- center wrapper -->" style="margin-top: 25px;">
+				<tr>
+					<td width="" align="center" valign="middle" bgcolor="#ffffff" class="<!-- center -->" style="">
+						<center>
+							
+							
+							
+							<!------------>
+							<!-- HEADER -->
+							<!------------>
+							<table border="0" cellpadding="0" width="580" cellspacing="0" bgcolor="#ffffff" class="<!-- center header -->" style="background-color: #ffffff;">
+								<tr>
+									<!-- Logo -->
+									<td width="580" valign="middle" align="left" bgcolor="#ffffff" class="<!-- logo -->" style="background-color: #ffffff; padding: 20px;">
+										<a href="../index.html" title="Website Tools Home">
+											<img src="../styles/img/FaegreBD-Logo.jpg" width="185" height="52" class="<!-- logo-img -->" style="" alt="Faegre Baker Daniels Logo">
+										</a>
+									</td>
+								</tr>
+							</table>
+							
+							
+							
+							<!------------->
+							<!-- POINTER -->
+							<!------------->
+							<table border="0" cellpadding="0" width="580" cellspacing="0" bgcolor="#003150" class="" style="background-color: #003150;">
+								<tr>
+									<!-- Pointer -->
+									<td width="220" valign="middle" align="center" bgcolor="#003150" class="" style="background-color: #003150;">
+										<img src="../styles/img/FaegreBD-Pointer.jpg" width="25" height="14.5" class="" style="" alt="Faegre Baker Daniels Pointer">
+									</td>
+									
+									<!-- Blank -->
+									<td width="360" valign="middle" align="right" bgcolor="#003150" class="" style=""></td>
+								</tr>
+							</table>
+							
+							
+							
+							<!-------------->
+							<!-- SUB-MENU -->
+							<!-------------->
+							<table border="0" cellpadding="0" width="580" cellspacing="0" bgcolor="#003150" class="" style="background-color: #003150;">
+								<tr>
+									<!-- Insights -->
+									<td width="580" valign="middle" align="left" bgcolor="#003150" class="" id="datTitle" style="background-color: #003150; padding: 10px 20px 25px 35px; color: #ffffff; font-family: 'Gill Sans W01', 'Gill Sans', Arial, sans-serif; font-size: 18px; letter-spacing: 2px;"><a href="./index.html" title="File Name Formatter" style="text-decoration: none; color: #ffffff;">
+										FILE NAME FORMATTER
+										</a>
+									</td>
+								</tr>
+							</table>
+							
+							
+							
+							<!------------------>
+							<!-- BODY CONTENT -->
+							<!------------------>
+							<table border="0" id="filebox" cellpadding="0" width="580" cellspacing="0" bgcolor="#ffffff" class="" style="background-color: #ffffff;">
+								<tr>
+									<!-- Body Content -->
+									<td width="580" valign="top" align="left" bgcolor="#ffffff" class="" style="background-color: #ffffff; padding: 30px 50px 10px 50px; color: #003150; font-family: 'Gill Sans W01', 'Gill Sans', Arial, sans-serif; font-size: 14px;">
+										
+										<p><strong>File to Format:</strong></p>
+										<input type="file" id="uploadedFile" style="width: 450px; max-width: 450px; background: #f2f2f2; padding: 10px; color: black !important; border: 1px solid #cccccc;" onchange="updateButton()"></input>
+									</td>
+								</tr>
+							</table>
+							
+							<!------------------>
+							<!-- BODY CONTENT -->
+							<!------------------>
+							<table border="0" cellpadding="0" width="580" cellspacing="0" bgcolor="#ffffff" class="" style="background-color: #ffffff;">
+								<tr>
+									<!-- Body Content -->
+									<td width="580" valign="top" align="left" bgcolor="#ffffff" class="" style="background-color: #ffffff; padding: 30px 50px 10px 50px; color: #003150; font-family: 'Gill Sans W01', 'Gill Sans', Arial, sans-serif; font-size: 14px; position: relative;">
+										
+										<p><strong id="clicktocopy" style="color: #e0e0e0; display: none;">Click Below to Copy:</strong> <span id="status" style="font-style: italic; color: #75b264;"></span></p>
+										<input id="copyarea" onclick="copyToClp()" onfocus="this.select();" style="width: 450px; max-width: 450px; background: #f7f7f7; padding: 13.5px 10px; border: 1px solid #e0e0e0; margin-bottom: 50px; color: #e0e0e0; display: none;" value="Disabled"></input>
+										<span id="bounceArrow" style="color: #75b264; transition: opacity .5s ease; position: relative;"><span id="arrow" style="font-size: 50px; vertical-align: middle !important; position: absolute; top: -24px; right: -10px;">&larr; <span style="position: absolute; vertical-align: middle !important; font-size: 16px; top: 18px; right: -85px; background: #75b264; color: #ffffff; padding: 5px 10px;">Click Here</span></span>
+									</td>
+								</tr>
+							</table>
+							
+							
+							<!------------------------------------------>
+							<!-- CLICK TO READ ARTICLE BUTTON / ROW 4 -->
+							<!------------------------------------------>
+							<table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff" class="" style="">
+								<tr>
+									<td align="center" width="580" class="" style="">
+										<table border="0" cellpadding="0" cellspacing="0" width="50%" bgcolor="#ffffff" class="" style="">
+											<tr>
+												<td align="center" width="50%" class="" id="buttonBox" style="">
+													<div class="">
+														<input type="submit" value="FORMAT FILE NAME" id="copyButton" name="copyButton" onClick="processFile()" style="border:2px solid #d3d3d3; padding: 12.8px 28.8px; font-family: 'Gill Sans W01', 'Gill Sans', sans-serif !important; font-size: 16px; letter-spacing: 3px; cursor: pointer; background: #ffffff; transition: color .5s ease,background .5s ease,border-color .5s ease,opacity .5s ease; margin-bottom: 50px; color: #d3d3d3;" disabled>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</center>
+					</td>
+				</tr>
+			</table>
+		</center>
+	</body>
+</body>
+</html>

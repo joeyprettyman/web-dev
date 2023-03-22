@@ -1,0 +1,118 @@
+/******************************************
+* BEAD SWAYS
+******************************************/
+
+/* Beads Left 1 */
+	@-webkit-keyframes beads-left-1 {
+		0%{ -ms-transform: rotate( 10deg ); -webkit-transform: rotate( 10deg ); transform: rotate( 10deg ); }
+		50%{ -ms-transform: rotate( 8deg ); -webkit-transform: rotate( 8deg ); transform: rotate( 8deg ); }
+		100%{ -ms-transform: rotate( 10deg ); -webkit-transform: rotate( 10deg ); transform: rotate( 10deg ); }
+	}
+
+	@keyframes beads-left-1 {
+		0%{ -ms-transform: rotate( 10deg ); -webkit-transform: rotate( 10deg ); transform: rotate( 10deg ); }
+		50%{ -ms-transform: rotate( 8deg ); -webkit-transform: rotate( 8deg ); transform: rotate( 8deg ); }
+		100%{ -ms-transform: rotate( 10deg ); -webkit-transform: rotate( 10deg ); transform: rotate( 10deg ); }
+	}
+	
+	
+/* Beads Left 2 */
+	@-webkit-keyframes beads-left-2 {
+		0%{ -ms-transform: rotate( 10deg ); -webkit-transform: rotate( 10deg ); transform: rotate( 10deg ); }
+		50%{ -ms-transform: rotate( 6deg ); -webkit-transform: rotate( 6deg ); transform: rotate( 6deg ); }
+		100%{ -ms-transform: rotate( 10deg ); -webkit-transform: rotate( 10deg ); transform: rotate( 10deg ); }
+	}
+	
+	@keyframes beads-left-2 {
+		0%{ -ms-transform: rotate( 10deg ); -webkit-transform: rotate( 10deg ); transform: rotate( 10deg ); }
+		50%{ -ms-transform: rotate( 6deg ); -webkit-transform: rotate( 6deg ); transform: rotate( 6deg ); }
+		100%{ -ms-transform: rotate( 10deg ); -webkit-transform: rotate( 10deg ); transform: rotate( 10deg ); }
+	}
+	
+	
+/* Beads Left 3 */
+	@-webkit-keyframes beads-left-3 {
+		0%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+		50%{ -ms-transform: rotate( -8deg ); -webkit-transform: rotate( -8deg ); transform: rotate( -8deg ); }
+		100%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+	}
+	
+	@keyframes beads-left-3 {
+		0%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+		50%{ -ms-transform: rotate( -8deg ); -webkit-transform: rotate( -8deg ); transform: rotate( -8deg ); }
+		100%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+	}
+	
+	
+/* Beads Left 4 */	
+	@-webkit-keyframes beads-left-4 {
+		0%{ -ms-transform: rotate( 5deg ); -webkit-transform: rotate( 5deg ); transform: rotate( 5deg ); }
+		50%{ -ms-transform: rotate( 8deg ); -webkit-transform: rotate( 8deg ); transform: rotate( 8deg ); }
+		100%{ -ms-transform: rotate( 5deg ); -webkit-transform: rotate( 5deg ); transform: rotate( 5deg ); }
+	}
+	
+	@keyframes beads-left-4 {
+		0%{ -ms-transform: rotate( 5deg ); -webkit-transform: rotate( 5deg ); transform: rotate( 5deg ); }
+		50%{ -ms-transform: rotate( 8deg ); -webkit-transform: rotate( 8deg ); transform: rotate( 8deg ); }
+		100%{ -ms-transform: rotate( 5deg ); -webkit-transform: rotate( 5deg ); transform: rotate( 5deg ); }
+	}
+	
+	
+/* Beads Right 1 */
+	@-webkit-keyframes beads-right-1 {
+		0%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+		50%{ -ms-transform: rotate( -5deg ); -webkit-transform: rotate( -5deg ); transform: rotate( -5deg ); }
+		100%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+	}
+	
+	@keyframes beads-right-1 {
+		0%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+		50%{ -ms-transform: rotate( -5deg ); -webkit-transform: rotate( -5deg ); transform: rotate( -5deg ); }
+		100%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+	}
+	
+	
+/* Beads Right 2 */
+	@-webkit-keyframes beads-right-2{
+		0%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+		50%{ -ms-transform: rotate( -5deg ); -webkit-transform: rotate( -5deg ); transform: rotate( -5deg ); }
+		100%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+	}
+	
+	@keyframes beads-right-2{
+		0%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+		50%{ -ms-transform: rotate( -5deg ); -webkit-transform: rotate( -5deg ); transform: rotate( -5deg ); }
+		100%{ -ms-transform: rotate( -10deg ); -webkit-transform: rotate( -10deg ); transform: rotate( -10deg ); }
+	}
+	
+/* Beads Right 3 */
+	@-webkit-keyframes beads-right-3{
+		0%{ -ms-transform: rotateX( 25deg ) rotateY( 5deg ); -webkit-transform: rotateX( 25deg ) rotateY( 5deg ); transform: rotateX( 25deg ) rotateY( 5deg ); }
+		50%{ -ms-transform: rotateX( -25deg ) rotateY( -5deg ); -webkit-transform: rotateX( -25deg ) rotateY( -5deg ); transform: rotateX( -25deg ) rotateY( -5deg ); }
+		100%{ -ms-transform: rotateX( 25deg ) rotateY( 5deg ); -webkit-transform: rotateX( 25deg ) rotateY( 5deg ); transform: rotateX( 25deg ) rotateY( 5deg ); }
+	}
+	
+	@keyframes beads-right-3{
+		0%{ -ms-transform: rotateX( 25deg ) rotateY( 5deg ); -webkit-transform: rotateX( 25deg ) rotateY( 5deg ); transform: rotateX( 25deg ) rotateY( 5deg ); }
+		50%{ -ms-transform: rotateX( -25deg ) rotateY( -5deg ); -webkit-transform: rotateX( -25deg ) rotateY( -5deg ); transform: rotateX( -25deg ) rotateY( -5deg ); }
+		100%{ -ms-transform: rotateX( 25deg ) rotateY( 5deg ); -webkit-transform: rotateX( 25deg ) rotateY( 5deg ); transform: rotateX( 25deg ) rotateY( 5deg ); }
+	}
+	
+	
+/* Ornament Rotation */
+	@-webkit-keyframes ornament {
+		0%{ -ms-transform: rotateY( 0deg ); -webkit-transform: rotateY( 0deg ); transform: rotateY( 0deg ); }
+		100%{ -ms-transform: rotateY( 360deg ); -webkit-transform: rotateY( 360deg ); transform: rotateY( 360deg ); }
+	}
+
+	@keyframes ornament {
+		0%{ -ms-transform: rotateY( 0deg ); -webkit-transform: rotateY( 0deg ); transform: rotateY( 0deg ); }
+		100%{ -ms-transform: rotateY( 360deg ); -webkit-transform: rotateY( 360deg ); transform: rotateY( 360deg ); }
+	}
+	
+/* Swing */ 
+@keyframes swingSlide {
+    0% { transform: rotate(3deg); }
+    100% { transform: rotate(-3deg); }
+}
+	

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<head>
+	<!-- PAGE TITLE -------------------->
+	<title>Happy Lunar New Year from FaegreBD</title>
+	
+	<!-- SITE FAVICON ------------------>
+	<link rel="shortcut icon" href="http://www.faegrebd.com/favicon.ico" type="image/icon" />
+	<link rel="favicon" href="http://www.faegrebd.com/favicon.ico" type="image/icon" />
+
+	<!-- SITE VIEWPORT ----------------->
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	
+	<!-- META TAGS --------------------->
+	<meta charset="UTF-8">
+	<meta name="description" content="Faegre Baker Daniels">
+	<meta name="keywords" content="Wishing you a Happy and Prosperous Lunar New Year! From your friends at Faegre Baker Daniels.">
+	
+	<!-- SITE STYLES ------------------->
+	<link type="text/css" rel="stylesheet" media="all" href="./styles/css-reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="./styles/img-blur-fix.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="./styles/stylesheet.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="./styles/custom-animations.css" />
+	
+	<!-- ADDITIONAL CSS -->
+	<link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
+	
+	<!-- SITE SCRIPTS ------------------>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+	<script src="./lib/rotating-ornament.js"></script>
+	
+	<!-- SITE FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet">
+	
+	<!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="./styles/ie-only.css" />
+	<![endif]-->	
+</head>
+
+<body style="overflow: hidden" onload="whichImage()" onresize="swapper()">
+	
+	<!-------------------->
+	<!-- SNOWING EFFECT -->
+	<!-------------------->
+		<!-- Canvas Element -->
+		<canvas id="canvas"></canvas>
+	
+	<!-------------------------->
+	<!-- SWAYING BEADS EFFECT -->
+	<!-------------------------->
+		<!-- Left Beads -->
+		<img class="beads beads-left-1" src="./imgs/beads-left-1.png">
+		<img class="beads beads-left-2" src="./imgs/beads-left-2.png">
+		<img class="beads beads-left-3" src="./imgs/beads-left-3.png">
+		<img class="beads beads-left-4" src="./imgs/beads-left-4.png">
+		
+		<!-- Right Beads -->
+		<img class="beads beads-right-1" src="./imgs/beads-right-1.png">
+		<img class="beads beads-right-2" src="./imgs/beads-right-2.png">
+		<img class="beads beads-right-3" src="./imgs/beads-right-3.png">
+	
+	<!--------------->
+	<!-- ORNAMENTS -->
+	<!--------------->
+		<!-- Outer Left Ornament -->
+		<img class="static-beads beads-outer-left" src="./imgs/static-beads.png">
+		<img class="ornament ornament-outer-left" src="./imgs/Ornament_Left.png">
+
+		<!-- Inner Left Ornament -->
+		<img class="static-beads beads-inner-left" src="./imgs/static-beads.png">
+		<img class="ornament ornament-inner-left" src="./imgs/Ornament_2ndToLeft2.png">
+
+		<!-- Inner Right Ornament -->
+		<img class="static-beads beads-inner-right" src="./imgs/static-beads.png">
+		<img class="ornament ornament-inner-right" src="./imgs/Ornament_CircleRight.png">
+		
+		<!-- Outer Right Ornament -->
+		<img class="static-beads beads-outer-right" src="./imgs/static-beads.png">
+		<img class="ornament ornament-outer-right" src="./imgs/Ornament_FirecrackersRight.png">
+		
+	<!---------------------------------->
+	<!-- FAEGRE BAKER DANIELS MESSAGE -->
+	<!---------------------------------->
+	
+		<!-- Container -->
+		<div class="page-container">
+			
+			<!-- Wishing you a... -->
+			<div class="greeting-text fadeIn animated">Wishing You a...</div>
+			
+			<!-- Piggy Graphic -->
+			<img class="twenty-nineteen" src="./imgs/winking-pig.png" id="piggyPic">
+			
+			<!-- Happy and Prosperous Lunar New Year -->
+			<div class="greeting-text fadeIn animated">
+				Happy and<br>
+				Prosperous Lunar<br>
+				New Year
+			</div>
+			
+			<!-- 恭贺新年，吉祥如意！ -->
+			<div class="chinese-text fadeIn animated">
+				恭贺新年，吉祥如意！
+			</div>
+			
+			<!-- ... -->
+			<div class="greeting-text fadeIn animated">
+				...
+			</div>
+			
+			<!-- FROM YOUR FRIENDS AT -->
+			<div class="greeting-text fadeIn animated">FROM YOUR FRIENDS AT</div>		
+
+			<!-- Faegre Baker Daniels Logo -->
+			<img class="faegre-baker-daniels-logo" src="./imgs/fbd_logo.png">
+			
+			<!-- 斐格毕迪律师事务所. -->
+			<div class="chinese-text fadeIn animated">
+				斐格毕迪律师事务所.
+			</div>
+
+		</div>
+		
+
+		
+	<!-- Created by Joey Prettyman | 2019 -->
+	<script src="./lib/custom.js"></script>
+	
+	
+    <!-- GA -->
+    <div id="ctl00_gaScript" style="display: none !important;>
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-26463569-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>	
+    </div><!-- end ga -->
+
+</body>
+</html>

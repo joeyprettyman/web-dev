@@ -1,0 +1,5 @@
+Author: Otis "Joey" Prettyman
+
+Date: September 21, 2018
+
+Description: This project was done in an attempt to "quick fix" some general problems Faegre Baker Daniels had when transitioning over to the new CMS platform Sitecore. The coding is not pretty, but it works. It could certainly be revamped revision-by-revision if time permits.

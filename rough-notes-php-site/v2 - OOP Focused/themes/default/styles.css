@@ -1,0 +1,109 @@
+/************************************/
+/* CUSTOM FONTS */
+/************************************/
+@font-face {
+    font-family: JetBrains;
+    src: url( './fonts/JetBrainsMono-Regular.ttf' );
+  }
+
+
+
+/************************************/
+/* GLOBAL */
+/************************************/
+html {
+    height: 100%;
+    background: 100%;
+}
+
+body {
+    background: #1e55a5;
+    font-size: 12px;
+    font-family: 'JetBrains', 'Arial', sans-serif;
+}
+
+body {
+    background: url( './imgs/wallpaper-cover.png' );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+}
+
+/* For COVER wallpapers.
+body {
+    background: url( './imgs/wallpaper-cover.png' );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+*/
+
+/* For PATTERN wallpapers.
+body {
+    background: #1e55a5;
+    background: url( './imgs/wallpaper-pattern.png' );
+}
+*/
+
+
+
+/************************************/
+/* CLASSES */
+/************************************/
+
+.wrapper {
+    display: block;
+    background: blue;
+}
+
+/* POSITIONING CLASSES */
+
+/* Box positioning left. */
+.left {
+    width: 80%;
+    background: pink;
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+/* Box positioning center. */
+.center {
+    width: 80%;
+    background: red;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Box positioning right. */
+.right {
+    width: 80%;
+    background: magenta;
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+
+
+/* Text positioning left. */
+.text-left {
+    text-align: left;
+}
+
+/* Text positioning center. */
+.text-center {
+    text-align: center;
+}
+
+/* Text positioning right. */
+.text-right {
+    text-align: right;
+}
+
+
+
+/* FRAMEWORK DISPLAY CLASSES */
+header {
+    background: green;
+    height: 75px;
+}

@@ -1,0 +1,706 @@
+
+<!DOCTYPE html>
+	<head>
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		
+		<style>
+		/* http://meyerweb.com/eric/tools/css/reset/ 
+		   v2.0 | 20110126
+		   License: none (public domain)
+		*/
+
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed, 
+		figure, figcaption, footer, header, hgroup, 
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure, 
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		html, body
+		{
+			height: 100%;
+			width: 100%;
+			min-height: 100%;
+			min-width: 100%;
+			font-family: calibri, lucida grande;
+		}
+
+		/** Seasonal Background Images ******************************************/
+
+		body
+		{
+			background: #831900;
+			pading: 0px;
+			margin: 0px;
+		}
+		
+		img{
+						-webkit-transition: all 500ms ease 150ms;
+				-moz-transition: all 500ms ease 150ms;
+				-o-transition: all 500ms ease 150ms;
+				transition: all 500ms ease 150ms;
+		}
+		
+		video#bgvid { 
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			min-width: calc(100%);
+			min-height: calc(100%);
+			width: auto;
+			height: auto;
+			z-index: -2;
+			-ms-transform: translateX(-50%) translateY(-50%);
+			-moz-transform: translateX(-50%) translateY(-50%);
+			-webkit-transform: translateX(-50%) translateY(-50%);
+			transform: translateX(-50%) translateY(-50%);
+			background-size: cover; 
+			background: url("./files/background.jpg") no-repeat;
+		}
+		
+		.video_container
+		{
+			opacity: 0.0;
+			-ms-transform: translateX(-50%) translateY(-50%);
+			-moz-transform: translateX(-50%) translateY(-50%);
+			-webkit-transform: translateX(-50%) translateY(-50%);
+			transform: translateX(-50%) translateY(-50%);
+			-webkit-background-size: cover; /* For WebKit*/
+			-moz-background-size: cover;    /* Mozilla*/
+			-o-background-size: cover;      /* Opera*/
+			background-size: cover;         /* Generic*/
+			background: url("./files/background1.jpg") no-repeat;
+			min-height: calc(100%);
+			min-width: calc(100%);
+			height: auto;
+			width: auto;
+			top: 50%;
+			left: 50%;
+			position: fixed;
+		}
+		
+		.logo_container
+		{
+			width: 100%;
+			-webkit-transition: all 500ms ease 150ms;
+			-moz-transition: all 500ms ease 150ms;
+			-o-transition: all 500ms ease 150ms;
+			transition: all 500ms ease 150ms;
+			position: absolute;
+			left: 0;
+			top: calc(8%);
+			opacity: 0.0;
+		}
+
+		.year_container
+		{
+			width: 100%;
+			-webkit-transition: all 500ms ease 150ms;
+			-moz-transition: all 500ms ease 150ms;
+			-o-transition: all 500ms ease 150ms;
+			transition: all 500ms ease 150ms;
+			position: absolute;
+			left: 0;
+			top: calc(25%);
+			opacity: 0.0;
+		}
+		
+		.greeting_container
+		{
+			color: white;
+			font-size: 50px;
+			font-weight: bold;
+			letter-spacing: 5px;
+			font-family: Calibri, Lucida Grande;
+			width: 100%;
+			-webkit-transition: all 500ms ease 150ms;
+			-moz-transition: all 500ms ease 150ms;
+			-o-transition: all 500ms ease 150ms;
+			transition: all 500ms ease 150ms;
+			position: absolute;
+			left: 0;
+			top: calc(80%);
+			opacity: 0.0;
+		}		
+		
+		#confetti{
+			height: 100%;
+			left: 0px;
+			position: fixed;
+			top: 0px;
+			width: 100%;
+			z-index: 1;
+			opacity: 0.0;
+		}
+		
+		@media ( max-width: 1366px) and ( max-height: 768px )
+		{
+				.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(28%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 700px;
+					height: 300px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+		}
+
+		@media ( max-width: 725px) and ( max-height: 1024px )
+		{
+			.year_container
+			{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(30%);
+					width: 100%;
+			}
+			
+				.year_container img
+				{
+					max-width: 500px; !important;
+					max-height: 250px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+		}
+		
+		@media ( max-width: 1920px) and ( max-height: 800px )
+		{
+				.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(30%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 700px;
+					height: 300px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+		}			
+		
+		@media ( max-height: 650px )
+		{
+				.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(31%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 500px;
+					height: 250px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+		}
+		
+		@media ( max-height: 550px )
+		{
+				.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(38%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 350px;
+					height: 175px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+				
+				.greeting_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					color: white;
+					font-size: 40px;
+					font-weight: bold;
+					letter-spacing: 5px;
+					font-family: Calibri, Lucida Grande;
+					width: 100%;
+					left: 0;
+					top: calc(80%);
+				}
+		}	
+		
+		@media ( max-width: 1000px )
+		{
+			.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(35%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 700px;
+					height: 300px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+		}
+		
+		@media ( max-width: 1000px ) and ( max-height: 825px )
+		{
+			.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(30%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 700px;
+					height: 300px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+		}
+		
+		@media ( max-width: 1000px ) and ( max-height: 675px )
+		{
+			.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(32%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 500px;
+					height: 225px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+				
+				.greeting_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					color: white;
+					font-size: 40px;
+					font-weight: bold;
+					letter-spacing: 5px;
+					font-family: Calibri, Lucida Grande;
+					width: 100%;
+					left: 0;
+					top: calc(80%);
+				}
+		}
+		
+		@media ( max-width: 775px ) and ( max-height: 800px )
+		{
+			.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(38%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 500px;
+					height: 225px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+		}
+		
+		@media ( max-width: 1000px ) and ( max-height: 400px )
+		{
+			.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(33%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 300px;
+					height: 155px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+			.logo_container
+			{
+				width: 100%;
+				position: absolute;
+				-webkit-transition: all 500ms ease 150ms;
+				-moz-transition: all 500ms ease 150ms;
+				-o-transition: all 500ms ease 150ms;
+				transition: all 500ms ease 150ms;
+				position: absolute;
+				left: 0;
+				top: calc(8%);
+			}
+			
+			.logo_container img
+			{
+				width: 250px;
+				height: 75px;
+			}
+			
+				.greeting_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					color: white;
+					font-size: 30px;
+					font-weight: bold;
+					letter-spacing: 5px;
+					font-family: Calibri, Lucida Grande;
+					width: 100%;
+					left: 0;
+					top: calc(80%);
+				}
+		}
+		
+		@media ( max-width: 525px ) and ( max-height: 1024px )
+		{
+			.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(38%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 300px;
+					height: 155px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+		}
+		
+		
+		@media ( max-width: 775px ) and ( max-height: 600px )
+		{
+			.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(38%);
+				}
+		
+				.year_container img
+				{
+					width: 300px;
+					height: 155px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+				
+			.logo_container
+			{
+				width: 100%;
+				position: absolute;
+				-webkit-transition: all 500ms ease 150ms;
+				-moz-transition: all 500ms ease 150ms;
+				-o-transition: all 500ms ease 150ms;
+				transition: all 500ms ease 150ms;
+				position: absolute;
+				left: 0;
+				top: calc(8%);
+			}
+			
+			.logo_container img
+			{
+				width: 250px;
+				height: 75px;
+			}
+			
+				.greeting_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					color: white;
+					font-size: 30px;
+					font-weight: bold;
+					letter-spacing: 5px;
+					font-family: Calibri, Lucida Grande;
+					width: 100%;
+					left: 0;
+					top: calc(80%);
+				}
+		}
+		
+		@media ( max-width: 550px ) and ( max-height: 520px )
+		{
+			.logo_container
+			{
+				width: 100%;
+				position: absolute;
+				-webkit-transition: all 500ms ease 150ms;
+				-moz-transition: all 500ms ease 150ms;
+				-o-transition: all 500ms ease 150ms;
+				transition: all 500ms ease 150ms;
+				position: absolute;
+				left: 0;
+				top: calc(8%);
+			}
+			
+			.logo_container img
+			{
+				width: 250px;
+				height: 75px;
+			}
+		
+			.year_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					left: 0;
+					top: calc(38%);
+					width: 100%;
+				}
+		
+				.year_container img
+				{
+					width: 300px;
+					height: 150px;
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+				}
+				
+				.greeting_container
+				{
+					-webkit-transition: all 500ms ease 150ms;
+					-moz-transition: all 500ms ease 150ms;
+					-o-transition: all 500ms ease 150ms;
+					transition: all 500ms ease 150ms;
+					color: white;
+					font-size: 30px;
+					font-weight: bold;
+					letter-spacing: 5px;
+					font-family: Calibri, Lucida Grande;
+					width: 100%;
+					left: 0;
+					top: calc(80%);
+				}
+		}
+		
+		</style>
+		<script type="text/javascript">
+			/* BODY
+			 * When page is loaded...
+			 * Wait 12 seconds to begin 3 second separate fade in.
+			 * Wait 14.5 seconds to begin 0.5 second parralax showing.
+			 */
+			$( "body" ).ready(function() {
+				$( ".video_container" ).fadeTo( 2500 , 1.0, function() {
+				});
+			
+				$( ".logo_container" ).fadeTo( 2000 , 1.0, function() {
+				});
+				
+				$( ".year_container" ).fadeTo( 6000 , 1.0, function() {
+				});
+				
+				$( ".greeting_container" ).fadeTo( 4000 , 1.0, function() {
+				});
+			
+				$( "#confetti" ).fadeTo( 8000 , 1.0, function() {
+				});
+			});
+		</script>
+	</head>
+	
+	<body>
+	
+	
+	<!------------------------------------------------------------------------------>
+		<div class="video_container">
+			<video autoplay loop poster="./files/background.jpg" id="bgvid">
+				<source src="./files/bg_vid.webm" type="video/webm">
+			</video>
+		</div>
+	<!------------------------------------------------------------------------------>
+		<div class="logo_container">
+			<center>
+				<a href="http://www.faegrebd.com/">
+					<img src="./files/FBD.png" width="350px" height="100px">
+				</a>
+			</center>
+		</div>
+	<!------------------------------------------------------------------------------>
+		<div class="year_container">
+			<center>
+				<img src="./files/2016.png" width="950px" height="450px">
+			</center>
+		</div>
+	<!------------------------------------------------------------------------------>	
+		<div class="greeting_container">
+			<center>
+				HAPPY CHINESE NEW YEAR!<br>
+				&#20892;&#21382;&#26032;&#24180;&#24555;&#20048;
+			</center>
+		</div>
+	<!------------------------------------------------------------------------------>
+		<div id="confetti"></div>
+	<!------------------------------------------------------------------------------>
+
+		<script type="text/javascript">
+			if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i))) {
+			$('#bgvid').remove()
+			
+			}
+		</script>	
+	
+<script src="./files/confetti.js"></script>
+
+<!-- GA --> 
+	<div id="ctl00_gaScript"> 
+	<script type="text/javascript"> 
+	var _gaq = _gaq || []; 
+	_gaq.push(['_setAccount', 'UA-26463569-1']); 
+	_gaq.push(['_trackPageview']); 
+	(function() { 
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); 
+	})(); 
+	</script> 
+	</div>
+<!-- end ga -->
+
+	</body>
+</html>

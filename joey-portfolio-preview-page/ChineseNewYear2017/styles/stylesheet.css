@@ -1,0 +1,926 @@
+/******************************************
+* BODY STYLING
+******************************************/
+html {
+	margin: 0px;
+	overflow-x: hidden;
+}
+
+/* applies to GIF and PNG images; avoids blurry edges */
+img[src$=".gif"], img[src$=".png"] {
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+	-ms-interpolation-mode: bicubic;
+}
+
+body {
+	font-family: Arial;
+	font-size: 12px;
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	background-color: #b71f25; /* Medium Red */
+	background: radial-gradient( #ec1c24, #6f0e10 ); /* Light Red, Dark Red */
+	background: -webkit-radial-gradient( #ec1c24, #6f0e10 ); /* Light Red, Dark Red */
+	background: -moz-radial-gradient( #ec1c24, #6f0e10 ); /* Light Red, Dark Red */
+	background: -o-radial-gradient( #ec1c24, #6f0e10 ); /* Light Red, Dark Red */
+}
+
+.center {
+	text-align: center;
+}
+
+.frame {
+	background: url( '../imgs/bg_tile-compressor.png' );
+	color: white;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	border-collapse: collapse;
+}
+
+
+
+/******************************************
+* FRAME CORNERS
+******************************************/
+#top-left,
+#top-right,
+#bottom-left,
+#bottom-right {
+	height: 57px;
+	width: 57px;
+	min-width: 57px;
+	min-height: 57px;
+	background: url( '../imgs/roost_corner_59x59-compressor.png' );
+}
+
+#top-right {
+	transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
+
+#bottom-left {
+	transform: scaleY(-1);
+	-webkit-transform: scaleY(-1);
+	-moz-transform: scaleY(-1);
+	-o-transform: scaleY(-1);
+	filter: FlipV;
+	-ms-filter: "FlipV";
+}
+
+#bottom-right {
+	transform: scaleY(-1) scaleX(-1);
+	-webkit-transform: scaleY(-1) scaleX(-1);
+	-moz-transform: scaleY(-1) scaleX(-1);
+	-o-transform: scaleY(-1) scaleX(-1);
+	filter: FlipV FlipH;
+	-ms-filter: "FlipV" "FlipH";
+}
+
+
+/******************************************
+* FRAME BARS
+******************************************/
+#middle-left,
+#middle-right {
+	background: url( '../imgs/side_bars-compressor.png' );
+	width: 19px;
+	background-repeat: repeat-y;	
+}
+
+#top-middle,
+#bottom-middle {
+	background: url( '../imgs/middle_bars-compressor.png' );
+	height: 18px;
+	background-repeat: repeat-x;	
+}
+
+#bottom-middle {
+	background-position: center bottom;
+}
+
+#middle-right {
+	background-position: center left;
+	transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
+
+#middle-middle {
+	position: relative;
+	height: 100%;
+}
+
+
+/******************************************
+* 2017 YEAR TEXT
+******************************************/
+#tassle-top{
+	position: absolute;
+	top: -75px;
+	left: -40px;
+	height: 130px;
+	width: 100%;
+	background: url( '../imgs/roost_tassle_top-compressor.png' );
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#tassle-bottom{
+	position: absolute;
+	top: 290px;
+	left: -40px;
+	height: 130px;
+	width: 100%;
+	background: url( '../imgs/roost_tassle_bottom-compressor.png' );
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#two {
+	position: absolute;
+	top: 42.5px;
+	left: -230px;
+	margin: 0 auto;
+	height: 239px;
+	width: 100%;
+	background: url( '../imgs/roost_2-compressor.png' );
+	background-repeat: no-repeat;
+	background-position: center center;	
+}
+
+#oneSeven {
+	position: absolute;
+	top: 42.5px;
+	left: 215px;
+	margin: 0 auto;
+	height: 239px;
+	width: 100%;
+	background: url( '../imgs/roost_17-compressor.png' );
+	background-repeat: no-repeat;
+	background-position: center center;	
+}
+
+#fbd-logo {
+	position: relative;
+	top: 40px;
+	left: -230px;
+	margin: 0 auto;
+	height: 59px;
+	width: 208px;
+	background: url( '../imgs/roost_logo_faegrebd-compressor.png' );
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#message-1 {
+	position: relative;
+	top: -22.5px;
+	left: 210px;
+	font-size: 20px;
+	text-align: left;
+	display: inline-block;
+}
+
+#message-2 {
+	position: relative;
+	top: 20px;
+	margin: 0 auto;
+	font-size: 20px;
+	text-align: center;
+	display: block;
+}
+
+.lanterns {
+	width: 75%;
+	background: #801013;
+	margin: 0 auto;
+	position: relative;
+}
+
+#lanterns-1 {
+	position: absolute;
+	left: 5%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns1.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+
+	/* Animation */
+	-webkit-animation: ornament 11s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 11s linear forwards infinite;
+}
+
+#lanterns-2 {
+	position: absolute;
+	top: 0px;
+	left: 10%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns2.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 9s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 9s linear forwards infinite;
+}
+
+#lanterns-3 {
+	position: absolute;
+	top: 0px;
+	left: 15%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns3.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 12s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 12s linear forwards infinite;
+}
+
+#lanterns-4 {
+	position: absolute;
+	top: 0px;
+	left: 20%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns4.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 9s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 9s linear forwards infinite;
+}
+
+#lanterns-5 {
+	position: absolute;
+	top: 0px;
+	left: 25%;
+	height: 250px;
+	width: 45px;
+	background: url( '../imgs/Lanterns5.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 10s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 10s linear forwards infinite;
+}
+
+#lanterns-6 {
+	position: absolute;
+	left: 30%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns1.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+	/* Animation */
+	-webkit-animation: ornament 14s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 14s linear forwards infinite;
+}
+
+#lanterns-7 {
+	position: absolute;
+	top: 0px;
+	left: 35%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns2.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 15s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 15s linear forwards infinite;
+}
+
+#lanterns-8 {
+	position: absolute;
+	top: 0px;
+	left: 40%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns3.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 9s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 9s linear forwards infinite;
+}
+
+#lanterns-9 {
+	position: absolute;
+	top: 0px;
+	left: 45%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns4.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 10s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 10s linear forwards infinite;
+}
+
+#lanterns-10 {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	height: 250px;
+	width: 45px;
+	background: url( '../imgs/Lanterns5.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 13s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 13s linear forwards infinite;
+}
+
+#lanterns-11 {
+	position: absolute;
+	top: 0px;
+	left: 55%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns4.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 8s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 8s linear forwards infinite;
+}
+
+#lanterns-12 {
+	position: absolute;
+	top: 0px;
+	left: 60%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns3.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 15s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 15s linear forwards infinite;
+}
+
+#lanterns-13 {
+	position: absolute;
+	top: 0px;
+	left: 65%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns2.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 11s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 11s linear forwards infinite;
+}
+
+#lanterns-14 {
+	position: absolute;
+	left: 70%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns1.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+	/* Animation */
+	-webkit-animation: ornament 8s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 8s linear forwards infinite;
+}
+
+#lanterns-15 {
+	position: absolute;
+	top: 0px;
+	left: 75%;
+	height: 250px;
+	width: 45px;
+	background: url( '../imgs/Lanterns5.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 12s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 12s linear forwards infinite;
+}
+
+#lanterns-16 {
+	position: absolute;
+	top: 0px;
+	left: 80%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns4.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 10s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 10s linear forwards infinite;
+}
+
+#lanterns-17 {
+	position: absolute;
+	top: 0px;
+	left: 85%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns3.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 13s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 13s linear forwards infinite;
+}
+
+#lanterns-18 {
+	position: absolute;
+	top: 0px;
+	left: 90%;
+	height: 195px;
+	width: 45px;
+	background: url( '../imgs/Lanterns2.png' );
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	
+	/* Animation */
+	-webkit-animation: ornament 15s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 15s linear forwards infinite;
+}
+
+/******************************************
+* ROTATING COIN
+******************************************/
+#coin {
+	position: relative;
+	top: 25px;
+	left: -40px;
+	height: 273px;
+	width: 100%;
+	background: url( '../imgs/roost_coin_flat-compressor.png' );
+	background-repeat: no-repeat;
+	background-position: center center;
+	
+	/* Transform Origin */
+	-ms-transform-origin: 50% 50%; /* IE 9 */
+	-webkit-transform-origin: 50% 50%; /* Chrome, Safari, Opera */
+	transform-origin: 50% 50%;
+	
+	/* Animation */
+	-webkit-animation: ornament 10s linear forwards infinite; /* Safari 4.0 - 8.0 */
+	animation: ornament 10s linear forwards infinite;
+	z-index: 1000 !important;
+}
+
+
+/* Coin Rotation Animation */
+@-webkit-keyframes ornament {
+	0%{ -ms-transform: rotateY( 0deg ); -webkit-transform: rotateY( 0deg ); transform: rotateY( 0deg ); }
+	100%{ -ms-transform: rotateY( 360deg ); -webkit-transform: rotateY( 360deg ); transform: rotateY( 360deg ); }
+}
+
+@keyframes ornament {
+	0%{ -ms-transform: rotateY( 0deg ); -webkit-transform: rotateY( 0deg ); transform: rotateY( 0deg ); }
+	100%{ -ms-transform: rotateY( 360deg ); -webkit-transform: rotateY( 360deg ); transform: rotateY( 360deg ); }
+}
+
+
+
+@media only screen and (max-width: 1150px) {
+	#tassle-top {
+		top: -55px;
+		height: 75px;
+		background-size: 40px 50px;
+	}
+	
+	#coin {
+		height: 200px;
+		background-size: 200px;
+		top: 9px;
+	}
+	
+	#two {
+		top: 20px;
+		left: -183px;
+		height: 180px;
+		background-size: 168px 180px;
+	}
+	
+	#oneSeven {
+		height: 180px;
+		background-size: 200px 180px;
+		left: 149px;
+		top: 20px;
+	}
+	
+	#tassle-bottom {
+		top: 210px;
+		height: 75px;
+		background-size: 40px 75px;
+	}
+	
+	#fbd-logo {
+		height: 45px;
+		background-size: 170px 45px;
+		left: -183px;
+		top: 20px;
+	}
+	
+	#message-1 {
+		font-size: 16px;
+		left: 150px;
+	}
+	
+
+	#lanterns-2,
+	#lanterns-4,
+	#lanterns-6,
+	#lanterns-8,
+	#lanterns-10,
+	#lanterns-11,
+	#lanterns-12,
+	#lanterns-14,
+	#lanterns-16,
+	#lanterns-18
+	{
+		display: none;
+	}
+	
+	#lanterns-1 {
+		left: 11.5%;
+	}
+	#lanterns-3 {
+		left: 21.5%;
+	}
+	#lanterns-5 {
+		left: 31.5%;
+	}
+	#lanterns-7 {
+		left: 41.5%;
+	}
+	#lanterns-9 {
+		left: 51.5%;
+	}
+	#lanterns-13 {
+		left: 61.5%;
+	}
+	#lanterns-15 {
+		left: 71.5%;
+	}
+	#lanterns-17 {
+		left: 81.5%;
+	}
+}
+
+
+@media only screen and (max-width: 900px) {
+	#tassle-top {
+		top: -41px;
+		height: 45px;
+		background-size: 35px 45px;
+		left: -20px;
+	}
+	
+	#coin {
+		height: 150px;
+		background-size: 150px;
+		top: 4px;
+		left: -20px;
+	}
+	
+	#two {
+		top: 10px;
+		left: -128px;
+		height: 140px;
+		background-size: 130px 140px;
+	}
+	
+	#oneSeven {
+		height: 140px;
+		background-size: 140px 140px;
+		left: 97px;
+		top: 10px;
+		left: 117px;
+	}
+	
+	#tassle-bottom {
+		top: 155px;
+		height: 53px;
+		background-size: 30px 53px;
+		left: -20px;
+	}
+	
+	#fbd-logo {
+		height: 45px;
+		background-size: 130px 34px;
+		left: -126px;
+		top: 12px;
+	}
+	
+	#message-1 {
+		font-size: 12px;
+		left: 110px;
+		top: -30px;
+	}
+	
+	#message-2 {
+		font-size: 16px;
+		top: 10px;
+	}
+}
+
+
+@media only screen and (max-width: 800px) {
+	.frame {
+		height: 650px;
+	}
+	
+	#coin {
+		display: block;
+		top: -86px;
+	}
+	
+	#two {
+		display: block;
+	}
+	
+	#oneSeven {
+		display: block;
+	}
+	
+	#tassle-bottom {
+		display: block;
+		top: 155px;
+	}
+	
+	#fbd-logo {
+		display: block;
+		top: 230px;
+		left: 0px;
+		height: 53px;
+		background-size: 200px 53px;
+	}
+	
+	#message-1 {
+		display: block;
+		left: 0px;
+		text-align: center;
+		top: -55px;
+		font-size: 18px;
+	}
+	
+	#message-2 {
+		display: block;
+		top: -25px;
+		width: 300px;
+		text-align: center;
+		font-size: 18px;
+	}
+	
+	#lanterns-3,
+	#lanterns-7,
+	#lanterns-15 {
+		display: none;
+	}
+	
+	#lanterns-1 {
+		left: 10%;
+	}
+	#lanterns-5 {
+		left: 30%;
+	}
+	#lanterns-9 {
+		left: 48%;
+	}
+	#lanterns-13 {
+		left: 65%;
+	}
+	#lanterns-17 {
+		left: 80%;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	.frame {
+		height: 525px;
+	}
+	
+	#tassle-top {
+		background-size: 25px 30px;
+		top: -51px;
+	}
+	
+	#coin {
+		background-size: 100px;
+		top: -75px;
+	}
+	
+	#two {
+		background-size: 100px 100px;
+		left: -95px;
+		top: -32px;
+	}
+	
+	#oneSeven {
+		background-size: 110px;
+		left: 79px;
+		top: -32px;
+	}
+	
+	#tassle-bottom {
+		top: 88px;
+	}
+	
+	#fbd-logo {
+		display: block;
+		top: 170px;
+		left: 0px;
+		height: 53px;
+		background-size: 200px 53px;
+	}
+	
+	#message-1 {
+		display: block;
+		left: 0px;
+		text-align: center;
+		top: -70px;
+		font-size: 16px;
+	}
+	
+	#message-2 {
+		display: block;
+		top: -45px;
+		width: 300px;
+		text-align: center;
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 585px) {
+	.frame {
+		height: 475px;
+	}
+	
+	#tassle-top {
+		background-size: 25px 30px;
+		top: -51px;
+		left: -15px;
+	}
+	
+	#coin {
+		background-size: 75px;
+		top: -71px;
+		left: -15px;
+	}
+	
+	#two {
+		background-size: 70px 73px;
+		left: -71px;
+		top: -45px;
+	}
+	
+	#oneSeven {
+		background-size: 79px;
+		left: 58px;
+		top: -45px;
+	}
+	
+	#tassle-bottom {
+		top: 58px;
+		background-size: 20px 43px;
+		left: -15px;
+	}
+	
+	#fbd-logo {
+		display: block;
+		top: 135px;
+		left: 0px;
+		height: 53px;
+		background-size: 180px 49px;
+	}
+	
+	#message-1 {
+		display: block;
+		text-align: center;
+		top: -90px;
+		font-size: 14px;
+		width: 250px;
+		margin: 0 auto !important;
+	}
+	
+	#message-2 {
+		display: block;
+		top: -70px;
+		width: 250px;
+		text-align: center;
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 410px) {
+	.frame {
+		height: 475px;
+	}
+	
+	#tassle-top {
+		display: none;
+	}
+	
+	#coin {
+		background-size: 75px;
+		top: -35px;
+		left: -15px;
+	}
+	
+	#two {
+		background-size: 70px 73px;
+		left: -71px;
+		top: -18px;
+	}
+	
+	#oneSeven {
+		background-size: 79px;
+		left: 58px;
+		top: -18px;
+	}
+	
+	#tassle-bottom {
+		display: none;
+	}
+	
+	#fbd-logo {
+		display: block;
+		top: 135px;
+		left: 0px;
+		height: 53px;
+		background-size: 180px 49px;
+	}
+	
+	#message-1 {
+		display: block;
+		text-align: center;
+		top: -90px;
+		font-size: 14px;
+		width: 195px;
+		margin: 0 auto !important;
+	}
+	
+	#message-2 {
+		display: block;
+		top: -70px;
+		width: 195px;
+		text-align: center;
+		font-size: 14px;
+	}
+}
+
+
+
+
+

@@ -1,0 +1,830 @@
+<!-- Old EDINDEX -->
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+
+
+  <TITLE>PFM Editorial Index</TITLE>
+<script type="text/javascript" src="flipmenu.js"></script> 
+<style type="text/css">
+<!--
+#navcontainer ul { list-style-type: none; }
+-->
+</style>
+
+<style>
+<!--
+a {text-decoration: none; }
+-->
+</style> 
+
+<style>
+<!--
+li.nobullet {
+list-style: none;
+}
+
+li.bullet {
+list-style: bullet;
+}
+-->
+</style>
+
+<style type="text/css">
+#divFoldCont	{position:absolute; left:10px; top:545px; width:300px; visibility:hidden;}
+.clFold			{position:absolute; width:200px;}
+.clFoldSub		{position:absolute; left:20px; width:200px; visibility:hidden;}
+.clFoldSub2		{position:absolute; left:5px; width:230px; visibility:hidden;}
+.clFoldLinks	{font-family:Arial, Helvetica, Sans Serif; font-size:12px; font-weight:bold; text-decoration:none; color:maroon;}
+.clSubLinks		{font-family:Arial, Helvetica, Sans Serif; font-size:12px; text-decoration:none; color:black;}
+.clSubLinks2	{font-family:Arial, Helvetica, Sans Serif; font-size:12px; text-decoration:none; color:black;} 
+</style>
+
+
+<script language="JavaScript" type="text/javascript">
+/**********************************************************************************   
+FoldoutMenu2 
+*********************************************************************************/
+function lib_bwcheck(){ //Browsercheck (needed)
+	this.ver=navigator.appVersion
+	this.agent=navigator.userAgent
+	this.dom=document.getElementById?1:0
+	this.opera5=(navigator.userAgent.indexOf("Opera")>-1 && document.getElementById)?1:0
+	this.ie5=(this.ver.indexOf("MSIE 5")>-1 && this.dom && !this.opera5)?1:0; 
+	this.ie6=(this.ver.indexOf("MSIE 6")>-1 && this.dom && !this.opera5)?1:0;
+	this.ie4=(document.all && !this.dom && !this.opera5)?1:0;
+	this.ie=this.ie4||this.ie5||this.ie6
+	this.mac=this.agent.indexOf("Mac")>-1
+	this.ns6=(this.dom && parseInt(this.ver) >= 5) ?1:0; 
+	this.ns4=(document.layers && !this.dom)?1:0;
+	this.bw=(this.ie6 || this.ie5 || this.ie4 || this.ns4 || this.ns6 || this.opera5)
+	return this
+}
+var bw=lib_bwcheck()
+
+
+if(document.layers){ //NS4 resize fix...
+	scrX= innerWidth; scrY= innerHeight;
+	onresize= function(){if(scrX!= innerWidth || scrY!= innerHeight){history.go(0)} }
+}
+
+if(navigator.userAgent.indexOf('Opera')>-1 && document.getElementById){ //Opera 5 resize fix.
+	scrX= innerWidth; scrY= innerHeight;
+	document.onmousemove= function(){
+		if(scrX<innerWidth-10 || scrY<innerHeight-10 || scrX>innerWidth+10 || scrY>innerHeight+10){
+			scrX = innerWidth;
+			scrY = innerHeight;
+			foldInit();
+		}
+	};
+}
+/************************************************************************************
+This is the new foldoutmenu, with more levels!
+This is in some ways a rather advanced menu so please read every
+note in this script and in the comments in the page to understand how
+it works.
+
+NOTE: if you change the position of divFoldCont from absolute to relative, 
+you can put the menu in a table. HOWEVER it will no longer work in netscape 4.
+If you wish to support netscape 4, you have to use absolute positioning.
+************************************************************************************/
+
+//Do you want images (if not set to 0 and remove the images from the body)?
+foldImg=0
+
+//Here are the images for the top links.
+foldinImg=new Image(); foldinImg.src="foldoutmenu2_arrow.gif"		//The image for the closed state.
+foldoutImg=new Image(); foldoutImg.src="foldoutmenu2_arrow_open.gif"	//The image for the open state.
+//Here are the images for the sub links.
+foldsubinImg=new Image(); foldsubinImg.src="foldoutmenu2_arrow.gif"		//The image for the "in" state.
+foldsuboutImg=new Image(); foldsuboutImg.src="foldoutmenu2_arrow_open.gif"	//The image for the "out" state.
+//If you change the images above please remember to change the images in the actual page as well.
+
+mainmenus=27 //How many main menus do you have?
+
+//How many submenus do you have beneath each main level.
+submenus=new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1) 
+//In this example I have 3 submenus in the first top menu,
+//3, in the second, 2 submenus in the third top menu and 3 in the forth.
+//It's really important that these numbers are correct.
+
+pxbetweenmain = 10 //How much space should there be between the main menus
+pxbetweensub = 5 //How much space should there be between the sub menus
+
+mainstayfolded = true //Should the main menus stay folded?
+substayfolded = false  //Should the sub menus stay folded?  Play with these 2 variables.
+
+
+/************************************************************************************
+Making cross-browser objects
+************************************************************************************/
+function makeMenu(obj,nest){
+	nest=(!nest) ? "":'document.'+nest+'.';
+   	this.css= bw.dom? document.getElementById(obj).style:bw.ie4?document.all[obj].style:bw.ns4?eval(nest+"document.layers." +obj):0;
+	this.elm= bw.dom?document.getElementById(obj):bw.ie4?document.all[obj]:bw.ns4?eval(nest+'document.'+obj):0;
+	this.ref= bw.dom || bw.ie4? document:bw.ns4?eval(nest+"document.layers." +obj+".document"):0;
+	this.x= bw.ns4?this.css.left:bw.opera5?this.css.pixelLeft:this.elm.offsetLeft;
+	this.y= bw.ns4?this.css.top:bw.opera5?this.css.pixelTop:this.elm.offsetTop;
+	this.height= bw.ns4?this.ref.height:bw.opera5?this.css.pixelHeight:this.elm.offsetHeight;
+	this.hideIt= b_hideIt;
+	this.showIt= b_showIt;
+	this.moveIt= b_moveIt;
+	this.status= 0;
+	return this;
+}
+
+// A unit of measure that will be added when setting the position of a layer.
+var px = bw.ns4||window.opera?"":"px";
+
+function b_showIt(){this.css.visibility="visible"; this.status=1}
+function b_hideIt(){this.css.visibility="hidden"; this.status=0}
+function b_moveIt(x,y){this.x=x; this.y=y; /*this.css.left=this.x+px;*/ this.css.top=this.y+px;}
+/************************************************************************************
+Initiating the page and making the menu
+************************************************************************************/
+function foldInit(){
+	//Fixing the browsercheck for opera... this can be removed if the browsercheck has been updated!!
+	bw.opera5 = (navigator.userAgent.indexOf("Opera")>-1 && document.getElementById)?true:false
+	if (bw.opera5) bw.ns6 = 0
+	
+	//Creating the foldoutmenu
+	oFold = new Array();
+	y = 0;
+	for (var i=0; i<mainmenus; i++){
+		oFold[i] = new makeMenu('divFold'+i,'divFoldCont');
+		oFold[i].moveIt(0,y);
+		oFold[i].size = oFold[i].height;
+		y += oFold[i].height+pxbetweenmain;
+		if (bw.ns4) oFold[i].css.clip.bottom = 500;
+		oFold[i].sub = new Array();
+		oFold[i].subs = top_subs;
+		suby = oFold[i].height+pxbetweensub;
+		for (var j=0; j<submenus[i]; j++){
+			oFold[i].sub[j] = new makeMenu('divFoldSub'+i+'_'+j,'divFoldCont.document.divFold'+i);
+			oFold[i].sub[j].sub = new makeMenu('divFoldSub'+i+'_'+j+'_0','divFoldCont.document.divFold'+i+'.document.divFoldSub'+i+'_'+j);
+			oFold[i].sub[j].hideIt();
+			oFold[i].sub[j].sub.hideIt();
+			oFold[i].sub[j].moveIt(10,suby);
+			suby += oFold[i].sub[j].height+pxbetweensub;
+		}
+	}
+  	oFoldCont = new makeMenu('divFoldCont');
+	if (bw.ns4) oFoldCont.css.clip.bottom = 800;
+  	oFoldCont.showIt(); //Showing the menu when the menu have been "created"
+}
+/************************************************************************************
+Object function to the top of the menus.
+************************************************************************************/
+function top_subs(show, num){
+	for (var j=0; j<this.sub.length; j++){
+		if (show){
+			this.sub[j].showIt()
+			if (foldImg) this.ref["imgFold"+num].src = foldoutImg.src
+			if (substayfolded){if(this.sub[j].sub.status) this.sub[j].sub.showIt()
+			}else{
+				if (foldImg) this.sub[j].ref["imgFold"+num+"Sub"+j].src = foldsubinImg.src
+				this.sub[j].sub.hideIt()
+			}
+		}else{
+			this.sub[j].hideIt()
+			if (foldImg) this.ref["imgFold"+num].src = foldinImg.src
+			if (!substayfolded) this.sub[j].sub.hideIt()
+			else if (substayfolded) this.sub[j].sub.css.visibility="hidden"
+		}
+	}
+}
+/************************************************************************************
+Checking height of the menus, and moves them to the correct position.
+************************************************************************************/
+function checkheight(org){
+	if(mainstayfolded) istart=org; else istart=0
+	for(i=istart;i<oFold.length;i++){
+		oFold[i].size=oFold[i].height
+		for(j=0;j<oFold[i].sub.length;j++){
+			oFold[i].sub[j].size=oFold[i].sub[j].height+pxbetweensub
+			if(oFold[i].sub[j].status){
+				oFold[i].size+=oFold[i].sub[j].size
+				if(oFold[i].sub[j].sub.status){
+					oFold[i].size+=oFold[i].sub[j].sub.height+pxbetweensub
+					oFold[i].sub[j].size+=oFold[i].sub[j].sub.height+pxbetweensub
+				}
+			}
+			if(j!=0) oFold[i].sub[j].moveIt(10,oFold[i].sub[j-1].y+oFold[i].sub[j-1].size)
+		}
+		if(i!=0) oFold[i].moveIt(0,oFold[i-1].y+oFold[i-1].size+pxbetweenmain)
+	}
+}
+/************************************************************************************
+Fold in and out the submenus.
+************************************************************************************/
+function subfoldmenu(main,sub){
+	if (!substayfolded){
+		for (var i=0; i<oFold[main].sub.length; i++){
+			if (i!=sub){
+				oFold[main].sub[i].sub.hideIt();
+				if (foldImg) oFold[main].sub[i].ref["imgFold"+main+"Sub"+i].src = foldsubinImg.src
+			}
+		}
+	}
+	if (!oFold[main].sub[sub].sub.status){
+		oFold[main].sub[sub].sub.showIt()
+		if(foldImg) oFold[main].sub[sub].ref["imgFold"+main+"Sub"+sub].src = foldsuboutImg.src
+	}
+	else{
+		oFold[main].sub[sub].sub.hideIt()
+		if(foldImg) oFold[main].sub[sub].ref["imgFold"+main+"Sub"+sub].src = foldsubinImg.src
+	}
+	checkheight(main)
+}
+/************************************************************************************
+Fold in and out the mainmenus
+************************************************************************************/
+function foldmenu(num){
+	if (!mainstayfolded){
+		for(var i=0; i<oFold.length; i++){
+			if(i!=num) oFold[i].subs(0,i)
+		}
+	}
+	if (!oFold[num].sub[0].status) oFold[num].subs(1,num)
+	else oFold[num].subs(0,num)
+	checkheight(num)
+}
+//Initiating the menus onload, if the browser is ok.
+if(bw.bw) onload = foldInit;
+</script>
+
+
+<style 
+type="text/css"> 
+<!-- 
+a:link { color: #000000; }
+a:visited { color: #0000FF; }
+a:hover { color: #FF6347; }
+a:active { color: #A9A9A9; }
+A:link {text-decoration:none} 
+A:visited {text-decoration:none} 
+--> 
+</style>
+</head>
+
+<body>
+
+<font FACE="Arial" SIZE="1">
+<a href="..\..\copyright.htm" target="right">Copyright</a></font>
+<p>
+
+<font face="Arial, Helvetica, Sans Serif" size="3" color="#000000"><b>
+Editor's Letters</B></FONT>
+
+</P>
+
+
+<div id="navcontainer">
+
+<li class="NoBullet"><font face="Arial, Helvetica, Sans Serif" size="2" color="#800000"><b>2022</b></font>
+	<ul>
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<li><a href="EL0122.htm" target="right"><b>January </b> - NFIP Standard Policy Coverage Analysis</a></li>
+
+</li></ul></div>
+</font>
+
+<!-- Menu container -->
+<div id="divFoldCont">
+
+<!-- Top -->
+	<div id="divFold0" class="clFold"><a href="#" onclick="foldmenu(0); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2021</font></a><br>
+		<div id="divFoldSub0_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<li><a href="EL0121.htm" target="right"><b>January </b> - ISO Dwelling Policy Program</a></li>
+<li><a href="EL0221.htm" target="right"><b>February </b> - AAIS Drone Coverage Form Analysis</a></li>
+<li><a href="EL0321.htm" target="right"><b>March </b> - ISO Personal Inland Marine Program</a></li>
+<li><a href="EL0421.htm" target="right"><b>April </b> - ISO Non-Filed Inland Marine Coverage Forms Overview</a></li>
+<li><a href="EL0521.htm" target="right"><b>May </b> - Overview of the AAIS Homeowners Program</a></li>
+<li><a href="EL0621.htm" target="right"><b>June </b> - BP 0100–Businessowners Standard Policy Analysis </a></li>
+<li><a href="EL0721.htm" target="right"><b>July </b> - Terrorism and Insurance</a></li>
+<li><a href="EL0821.htm" target="right"><b>August </b> - ISO Inland Marine Coinsurance Provisions</a></li>
+<li><a href="EL0921.htm" target="right"><b>September </b> - ISO '18 Ed. Personal Auto Policy Analysis</a></li>
+<li><a href="EL1021.htm" target="right"><b>October </b> - MPL 01-MSO Common Provisions Form Analysis</a></li>
+<li><a href="EL1121.htm" target="right"><b>November </b> - ISO Personal Motorcycle Policy Coverage Analysis </a></li>
+<li><a href="EL1221.htm" target="right"><b>December </b> - •AAIS Commercial Liability Coverage Form Eligibility</a></li>
+<div id="divFoldSub0_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+
+<!-- Top -->
+	<div id="divFold1" class="clFold"><a href="#" onclick="foldmenu(0); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2020</font></a><br>
+		<div id="divFoldSub0_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<li><a href="el0120.htm" target="right"><b>January </b> - Ocean Marine and ISO Watercraft Policy Program Updates</a></li>
+<li><a href="el0220.htm" target="right"><b>February </b> - ISO Market Segments, Surety Bonds, and Financial Bonds Updates</a></li>
+<li><a href="el0320.htm" target="right"><b>March </b> - Guaranty/Media/Communications/Trustees And Fiduciaries/Insurance Agents And Brokers/Directors And Officers/ Accountants Professional/Lawyers' Professional/ and Real Estate Agents And Brokers Professional Program Updates</a></li>
+<li><a href="el0420.htm" target="right"><b>April </b> - Personal Lines - Insurance Services Office (ISO) Farm / Ranch Update</a></li>
+<li><a href="el0520.htm" target="right"><b>May </b> - Weather Insurance/Architects and Engineers/Misc Personal Lines/AAIS Personal Inland Marine Program Updates</a></li>
+<li><a href="el0620.htm" target="right"><b>June </b> - ISO Equipment Breakdown and Individual Pharmacists Professional Liability</a></li>
+<li><a href="el0720.htm" target="right"><b>July </b> - AAIS Contractors Special Policy/ISO Homeowners Program/Auto FR and UM/UIM Requirement Updates</a></li>
+<li><a href="el0820.htm" target="right"><b>August </b> - ISO Management Protection Policy Updates</a></li>
+<li><a href="el0920.htm" target="right"><b>September </b> - Wedding/Camp/Aviation and Title Insurance Program Updates</a></li>
+<li><a href="el1020.htm" target="right"><b>October </b> - AAIS Commercial Umbrella Liability Updates and AAIS Farm Updates</a></li>
+<li><a href="el1120.htm" target="right"><b>November </b> - Special Personal Auto Policy, AAIS Personal Umbrella Liability and ISO Mobilehome Insurance Program Updates</a></li>
+<li><a href="el1220.htm" target="right"><b>December </b> - AAIS Commercial Umbrella Liability Updates and AAIS Farm Updates</a></li>
+<div id="divFoldSub0_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+<!-- Top -->
+	<div id="divFold2" class="clFold"><a href="#" onclick="foldmenu(1); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2019</font></a><br>
+		<div id="divFoldSub1_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<li><a href="el0119.htm" target="right"><b>January </b> - NFIP, ISO Private Flood/International Insurance/Funeral Directors Insurance Program Updates</a></li>
+<li><a href="el0219.htm" target="right"><b>February </b> - Agricultural COP and MSO Automobile Updates</a></li>
+<li><a href="el0319.htm" target="right"><b>March </b> - Alternative Risk Transfer and Beauticians And Barbers Professional Liability Program Updates</a></li>
+<li><a href="el0419.htm" target="right"><b>April </b> - AAIS Agricultural GL, ISO Umbrella, Commercial General Liability Updates</a></li>
+<li><a href="el0519.htm" target="right"><b>May </b> - Insurance Letters/Electronic Data Liability/Snowmobile Coverage/AAIS Mobile-Homeowners Program Updates</a></li>
+<li><a href="el0619.htm" target="right"><b>June </b> - Commercial Property, Time Element, Condominium, Standard Property, Builders Risk, Legal Liability, Tobacco Sales Warehouse, and Mortgageholders E&O Updates</a></li>
+<li><a href="el0719.htm" target="right"><b>July </b> - Commercial Crime Insurance/Definitions and Interpretations/Law Enforcement Liability/ISO Personal Umbrella Program Updates</a></li>
+<li><a href="el0819.htm" target="right"><b>August </b> - Commercial Output Program (COP), Employment Practices Liability Insurance (EPLI) and MSO Business Owners Policy (BOP) Updates</a></li>
+<li><a href="el0919.htm" target="right"><b>September </b> - ISO Businessowners and Financial Institution Bonds Program Updates</a></li>
+<li><a href="el1019.htm" target="right"><b>October </b> - Business Auto and Garagekeepers Updates</a></li>
+<li><a href="el1119.htm" target="right"><b>November </b> - Owners And Contractors Protective//Railroad Protective /UST/Takaful/Safety And Environmental/Historical Section Program Updates</a></li>
+<li><a href="el1219.htm" target="right"><b>December </b> - ISO Capital Assets Program, ISO Agricultural Capital Assets Program Updates</a></li>
+<div id="divFoldSub1_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+<!-- Top -->
+	<div id="divFold3" class="clFold"><a href="#" onclick="foldmenu(2); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2018</font></a><br>
+		<div id="divFoldSub2_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<li><a href="el0118.htm" target="right"><b>January </b> - ISO Dwelling Program Update</a></li>
+<li><a href="el0218.htm" target="right"><b>February </b> - AAIS Inland Marine Update</a></li>
+<li><a href="el0318.htm" target="right"><b>March </b> - Takaful and ISO Personal Inland Marine Program Updates</a></li>
+<li><a href="el0418.htm" target="right"><b>April </b> - ISO Inland Marine Updates</a></li>
+<li><a href="el0518.htm" target="right"><b>May </b> - AAIS Homeowner Program Updates</a></li>
+<li><a href="el0618.htm" target="right"><b>June </b> - AAIS Businessowners Policy Updates</a></li>
+<li><a href="el0718.htm" target="right"><b>July </b> - ISO Products/Completed Operations Liability/Educators Legal Liability/Land Surveyors Professional Liability/AAIS Boatowner Program/Terrorism Updates</a></li>
+<li><a href="el0818.htm" target="right"><b>August </b> - AAIS & ISO Filed Inland Marine and Cyber Liability Updates</a></li>
+<li><a href="el0918.htm" target="right"><b>September </b> - ISO Personal Auto Program Update</a></li>
+<li><a href="el1018.htm" target="right"><b>October </b> - MSO Homeowners Update</a></li>
+<li><a href="el1118.htm" target="right"><b>November </b> - Health Care Providers Professional Liability and ISO Motorcycle Program Updates</a></li>
+<li><a href="el1218.htm" target="right"><b>December </b> - AAIS Cannabis Businessowners and AAIS Commercial Liability Coverage</a></li>
+<div id="divFoldSub2_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+<!-- Top -->
+	<div id="divFold4" class="clFold"><a href="#" onclick="foldmenu(3); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2017</font></a><br>
+		<div id="divFoldSub3_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<li><a href="el0117.htm" target="right"><b>January </b> - Ocean Marine Insurance/ Watercraft/Historical Section Updates</a></li>
+<li><a href="el0217.htm" target="right"><b>February </b> - ISO Market Segments, Surety Bonds</a></li>
+<li><a href="el0317.htm" target="right"><b>March </b> - Specialty Professional Liability Updates</a></li>
+<li><a href="el0417.htm" target="right"><b>April </b> - ISO Farm Program Updates</a></li>
+<li><a href="el0517.htm" target="right"><b>May </b> - Weather/Architects Professional/Personal Misc. and AAIS Personal Articles Coverage Updates</a></li>
+<li><a href="el0617.htm" target="right"><b>June </b> - ISO Equipment Breakdown and Individual Pharmacists Professional Liability Updates</a></li>
+<li><a href="el0717.htm" target="right"><b>July </b> - AAIS Contractors Special Policy and ISO Homeowners Program Updates</a></li>
+<li><a href="el0817.htm" target="right"><b>August </b> - ISO Management Protection Policy & ISO Terrorism Forms</a></li>
+<li><a href="el0917.htm" target="right"><b>September </b> - Wedding/Camp/Aviation and Title Insurance Program Updates</a></li>
+<li><a href="el1017.htm" target="right"><b>October </b> - AAIS Commercial Umbrella Liability Coverage and  AAIS Farmowners Program</a></li>
+<li><a href="el1117.htm" target="right"><b>November </b> - Special Personal Auto Policy, AAIS Personal Umbrella Liability  and ISO Mobilehome Insurance Program Updates</a></li>
+<li><a href="el1217.htm" target="right"><b>December </b> - Workers Compensation Program Update</a></li>
+<div id="divFoldSub3_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+
+<!-- Top -->
+	<div id="divFold5" class="clFold"><a href="#" onclick="foldmenu(4); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2016</font></a><br>
+		<div id="divFoldSub4_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<li><a href="el0116.htm" target="right"><b>January </b> - Alternative Risk Transfer and Beauticians and Barbers Professional Liability Insurance Program Updates</a></li>
+<li><a href="el0216.htm" target="right"><b>February </b> - AAIS Agricultural Output and MSO Businessowners Insurance Program Updates</a></li>
+<li><a href="el0316.htm" target="right"><b>March </b> - AAIS Mobile-Homeowners, Snowmobile, Electronic Data Liability and Insurance Letters Program Updates</a></li>
+<li><a href="el0416.htm" target="right"><b>April </b> - AAIS Agricultural General Liability Coverage, ISO Commercial General Liability Coverage, ISO Commercial Liability Umbrella Program Updates</a></li>
+<li><a href="el0516.htm" target="right"><b>May </b> - ISO Personal Umbrellas, Definitions and Interpretations, Law Enforcement Liability Program Updates</a></li>
+<li><a href="el0616.htm" target="right"><b>June </b> - Commercial Property, Time Element, Condominium,  Standard Property, Builders Risk, Legal Liability, Tobacco Sales Warehouse, and Mortgageholders E&O Updates</a></li>
+<li><a href="el0716.htm" target="right"><b>July </b> - ISO Crime and ISO Personal Automobile Program Updates</a></li>
+<li><a href="el0816.htm" target="right"><b>August </b> - Commercial Output Program and Employment-Related Practices Liability Coverage Form Analysis</a></li>
+<li><a href="el0916.htm" target="right"><b>September </b> -  ISO Businessowners and Financial Institution Bonds Program Updates</a></li>
+<li><a href="el1016.htm" target="right"><b>October </b> - Business Auto, Auto Dealer, and Motor Carrier Program Updates </a></li>
+<li><a href="el1116.htm" target="right"><b>November </b> - Insurance Services Office (ISO) Classifying Risk, Owners And Contractors Protective Liability, Railroad Protective Liability, Underground Storage Tank Policy, Liquor Liability Updates And Safety And Environmental Consultants Liability Coverage Updates  </a></li>
+<li><a href="el1216.htm" target="right"><b>December </b> - Jewelers Block Policy, Furriers Block Policy, Furriers Customers Custody Policy, Other Non-Filed Inland Marine, ISO Capital Assets Program, and ISO Agricultural Capital Assets </a></li>
+<div id="divFoldSub4_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+
+<!-- Top -->
+	<div id="divFold6" class="clFold"><a href="#" onclick="foldmenu(5); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2015</font></a><br>
+		<div id="divFoldSub5_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<li><a href="el0115.htm" target="right"><b>January </b> - Dwelling Fire Program Updates</a></li>
+<li><a href="el0215.htm" target="right"><b>February </b> - AAIS Non-Filed Inland Marine Coverage Forms and Floaters Updates</a></li>
+<li><a href="el0315.htm" target="right"><b>March </b> - Personal Inland Marine/Takaful Insurance/Historical Section Updates</a></li>
+<li><a href="el0415.htm" target="right"><b>April </b> - ISO Non-filed Inland Marine Coverage Forms Updates</a></li>
+<li><a href="el0515.htm" target="right"><b>May </b> - AAIS Homeowner Program Updates</a></li>
+<li><a href="el0615.htm" target="right"><b>June </b> - AAIS Businessowners Policies Updates</a></li>
+<li><a href="el0715.htm" target="right"><b>July </b> - ISO Products/Completed Operations Liability/Educators Legal Liability/Land Surveyors Professional Liability/AAIS Boatowner Program/Terrorism Updates</a></li>
+<li><a href="el0815.htm" target="right"><b>August </b> - Insurance Services Office (ISO) and American Association of Insurance Services (AAIS) Filed Inland Marine Coverage Forms Updates</a></li>
+<li><a href="el0915.htm" target="right"><b>September </b> - Health Care Providers Professional Liability Insurance and ISO Personal Motorcycle Policy Program Updates</a></li>
+<li><a href="el1015.htm" target="right"><b>October </b> - MSO Homeowners Program Updates</a></li>
+<li><a href="el1115.htm" target="right"><b>November </b> - International Insurance, Funeral Directors and NFIP Program Updates</a></li>
+<li><a href="el1215.htm" target="right"><b>December </b> - AAIS Commercial Liability Coverage Form Program Updates</a></li>
+<div id="divFoldSub5_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+
+
+<!-- Top -->
+	<div id="divFold7" class="clFold"><a href="#" onclick="foldmenu(6); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2014</font></a><br>
+		<div id="divFoldSub6_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<li><a href="el0114.htm" target="right"><b>January </b> - ISO Personal Umbrella and Ocean Marine Program Updates</a></li>
+<li><a href="el0214.htm" target="right"><b>February </b> - Contract Surety Bonds, Non-Contract Surety Bonds, and ISO Commercial Crime Coverages</a></li>
+<li><a href="el0314.htm" target="right"><b>March </b> - Guaranty Fund/Personal IM/Historical Section Updates</a></li>
+<li><a href="el0414.htm" target="right"><b>April </b> - ISO Management Protection Program Updates</a></li>
+<li><a href="el0514.htm" target="right"><b>May </b> - ISO Farm Program and Miscellaneous Personal Lines Updates</a></li>
+<li><a href="el0614.htm" target="right"><b>June </b> - ISO Equipment Breakdown Protection Coverage Form and Pharmacists Professional Liability Insurance Updates</a></li>
+<li><a href="el0714.htm" target="right"><b>July </b> - ISO Homeowners Program Updates</a></li>
+<li><a href="el0814.htm" target="right"><b>August </b> - AAIS Contractors Special Policy and the ISO Insurance Agents and Brokers Professional Liability Insurance Updates</a></li>
+<li><a href="el0914.htm" target="right"><b>September </b> - Wedding, Camp, Aviation and Title Insurance Program Updates</a></li>
+<li><a href="el1014.htm" target="right"><b>October </b> - AAIS Commercial Umbrella/Excess Liability Coverage and the AAIS Farmowners Program Insurance Updates</a></li>
+<li><a href="el1114.htm" target="right"><b>November </b> - ISO Special Personal Auto/AAIS Personal Umbrella/ISO Mobilehome Program Updates</a></li>
+<li><a href="el1214.htm" target="right"><b>December </b> - National Council on Compensation Insurance (NCCI) Workers Compensation and Employers Liability Insurance Policy Updates</a></li>
+<div id="divFoldSub6_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+
+
+<!-- Top -->
+	<div id="divFold8" class="clFold"><a href="#" onclick="foldmenu(7); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2013</font></a><br>
+		<div id="divFoldSub7_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<li><a href="el0113.htm" target="right"><b>January</b> - Commercial Liability Updates</a></li>
+<li><a href="el0213.htm" target="right"><b>February</b> - AAIS Commercial Liability, Alternative Risk Transfer and Beauticians and Barbers Professional Liability Program Updates</a></li>
+<li><a href="el0313.htm" target="right"><b>March</b> - AAIS Mobile-Homeowners Program, Snowmobile Program and Electronic Data Liability Program Updates</a></li>
+<li><a href="el0413.htm" target="right"><b>April</b> - ISO Commercial General Liability and Commercial Liability Umbrella Updates</a></li>
+<li><a href="el0513.htm" target="right"><b>May</b> - Law Enforcement Liability, Business Letters and Definitions and Interpretations Updates</a></li>
+<li><a href="el0613.htm" target="right"><b>June</b> - ISO Commercial Property Program, ISO Time Element Coverages, and Other ISO Commercial Property Coverages Updates</a></li>
+<li><a href="el0713.htm" target="right"><b>July</b> - AAIS Commercial Output Program, ISO Employment Related Practices Program and ISO Personal Automobile Program Updates</a></li>
+<li><a href="el0813.htm" target="right"><b>August</b> - Insurance Services Office (ISO) Businessowners Program and Financial Institutions Bonds Updates</a></li>
+<li><a href="el0913.htm" target="right"><b>September</b> - ISO Commercial Automobile Program Updates</a></li>
+<li><a href="el1013.htm" target="right"><b>October</b> - ISO Classifying Risk, Owners and Contractors Protective Liability, Railroad Protective Liability, Underground Storage Tank Policy, and Liquor Liability Updates and Safety and Environmental Consultants Liability Coverage Updates</a></li>
+<li><a href="el1113.htm" target="right"><b>November</b> - ISO Market Segments/Media-Communications Liability/Professional Liability and Watercraft Program Updates</a></li>
+<li><a href="el1213.htm" target="right"><b>December</b> - Insurance Services Office (ISO) Capital Assets and Agricultural Capital Assets Coverage Forms and Non-filed Inland Marine Updates</a></li>
+<div id="divFoldSub7_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+
+<!-- Top -->
+	<div id="divFold9" class="clFold"><a href="#" onclick="foldmenu(8); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2012</font></a><br>
+		<div id="divFoldSub8_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<a href="el0112.htm" target="right"><b>January</b> - Mobilehomeowners Coverage Updates</a><br>
+<a href="el0212.htm" target="right"><b>February</b> - ISO Commercial Property Program Updates</a><br>
+<a href="el0312.htm" target="right"><b>March</b> - ISO Personal Inland Marine Program Updates</a><br>
+<a href="el0412.htm" target="right"><b>April</b> - ISO Non-Filed Commercial Inland Marine Coverage Forms Updates</a><br>
+<a href="el0512.htm" target="right"><b>May </b> - AAIS Homeowners Program and ISO Physicians, Surgeons and Dentists Professional Liability Forms Updates</a><br>
+<a href="el0612.htm" target="right"><b>June</b> - ISO Time Element, Condominium, and Non-Filed Commercial Inland Marine Coverage Forms Updates</a><br>
+<a href="el0712.htm" target="right"><b>July</b> - Products/Completed Operations Liability, Educators' Legal Liability, Land Surveyors Professional, AAIS Homeowners and AAIS Boatowners Program Updates</a><br>
+<a href="el0812.htm" target="right"><b>August</b> - ISO Standard Property Policy, Builders Risk, Legal Liability, Tobacco Sales Warehouses, and Mortgageholders Errors and Omissions Coverage Forms Updates</a><br>
+<a href="el0912.htm" target="right"><b>September</b> - ISO Crime and Dwelling Property Program Updates</a><br>
+<a href="el1012.htm" target="right"><b>October</b> AAIS Filed Inland Marine Coverage Forms and the AAIS Businessowners Policy Updates</a><br>
+<a href="el1112.htm" target="right"><b>November</b> - Terrorism, Funeral Directors and NFIP Program Updates </a><br>
+<a href="el1212.htm" target="right"><b>December</b> - ISO Filed Inland Marine Coverage Forms Updates </a><br>
+<div id="divFoldSub8_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+
+<!-- Top -->
+	<div id="divFold10" class="clFold"><a href="#" onclick="foldmenu(9); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2011</font></a><br>
+		<div id="divFoldSub9_0" class="clFoldSub">
+<font face="Arial, Helvetica, Sans Serif" size="2" color="#000000">
+<a href="el0111.htm" target="right"><b>January</b> - ISO Capital Assets Coverage Form (Output Policy) And The ISO Agricultural Capital Assets(Output Policy) Updates</a><br>
+<a href="el0211.htm" target="right"><b>February</b> - ISO Personal Umbrella and Guaranty Funds Updates</a><br>
+<a href="el0311.htm" target="right"><b>March</b> - AAIS Businessowners Policy And The ISO Commercial Liability Umbrella Coverage Form Updates</a><br>
+<a href="el0411.htm" target="right"><b>April</b> - AAIS Agribusiness Program, Miscellaneous Personal, AAIS Personal Inland Marine and ISO Farm Updates</a><br>
+<a href="el0511.htm" target="right"><b>May</b> - ISO Commercial General Liability Coverage Forms And Management Protection Policy Updates</a><br>
+<a href="el0611.htm" target="right"><b>June</b> - ISO Homeowners Program, Title Insurance and Camp Insurance Updates</a><br>
+<a href="el0711.htm" target="right"><b>July</b> - AAIS Non-Filed Inland Marine Coverage Forms And State Insurance Commissioners Updates</a><br>
+<a href="el0811.htm" target="right"><b>August</b> - Aviation Program Update</a><br>
+<a href="el0911.htm" target="right"><b>September</b> - Equipment Breakdown, ISO Special Personal Auto and AAIS Personal Umbrella Program Updates</a><br>
+<a href="el1011.htm" target="right"><b>October</b> - AAIS Contractors Special Policy, Commercial Umbrella, and Excess Umbrella Liability Coverage Forms Updates</a><br>
+<a href="el1111.htm" target="right"><b>November</b> - American Association of Insurance Services (AAIS) Farmowners Program Updates</a><br>
+<a href="el1211.htm" target="right"><b>December</b> - Contract and Non-Contract Surety Bonds and the Workers Compensation And Employers Liability Insurance Policy Updates</a><br>
+<div id="divFoldSub9_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+<!-- Top -->
+	<div id="divFold11" class="clFold"><a href="#" onclick="foldmenu(10); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2010</font></a><br>
+		<div id="divFoldSub10_0" class="clFoldSub">
+<a href="el0110.htm" target="right"><b>January</b> - ISO Business Auto Physical Damage, Garage, Truckers, And Motor Carrier Coverage Forms Updates</a><br>
+<a href="el0210.htm" target="right"><b>February</b> - AAIS Commercial General Liability, A.R.T. and Beauticians and Barbers Professional Liability Forms Updates</a><br>
+<a href="el0310.htm" target="right"><b>March</b> - AAIS Non-Filed Inland Marine Coverage Forms Updates And Jewelers Block, Furriers Block and Furriers Customers Custody Policies</a><br>
+<a href="el0410.htm" target="right"><b>April </b> - ISO Market Segments Update</a><br>
+<a href="el0510.htm" target="right"><b>May </b> - New Law Enforcement Liability Section, Mortgageholders Errors And Omissions, And Ocean Marine Updates</a><br>
+<a href="el0610.htm" target="right"><b>June </b> - Business Letters, Definitions and Interpretations, Snowmobile and ISO Watercraft Program Updates</a><br>
+<a href="el0710.htm" target="right"><b>July</b> - Business Auto, Business Auto Physical Damage, Garage, and Motor Carrier Coverage Forms Updates</a><br>
+<a href="el0810.htm" target="right"><b>August</b> - COP, Employment-Related Practices Liability, and Personal Automobile Program Updates</a><br>
+<a href="el0910.htm" target="right"><b>September</b> - ISO Businessowners Program and Financial Institution Bonds Updates</a><br>
+<a href="el1010.htm" target="right"><b>October</b> - ISO Homeowners Program and Environmental Safety Consultants Updates</a><br>
+<a href="el1110.htm" target="right"><b>November  </b> - Classifying Risk and the ISO Owners And Contactors Protective Liability, Railroad Protective Liability and Liquor Liability Coverage Forms, and the Underground Storage Tank Policy Updates</a><br>
+<a href="el1210.htm" target="right"><b>December</b> - Miscellaneous Professional Liability Updates</a><br>
+<div id="divFoldSub10_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+<!-- Top -->
+	<div id="divFold12" class="clFold"><a href="#" onclick="foldmenu(11); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2009</font></a><br>
+		<div id="divFoldSub11_0" class="clFoldSub">
+<a href="el1209.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> - Home-Based Business And National Flood Program Updates</a><br>
+<a href="el1109.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  ISO Capital Assets Program And ISO Non-Controlled Inland Marine Updates And Introduction Of The Workers Compensation Archive</a><br>
+<a href="el1009.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  AAIS Agricultural General Liability, Terrorism Forms and ISO Dwelling Property Updates</a><br>
+<a href="el0909.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -  ISO Controlled Inland Marine, AAIS Filed Inland Marine, And Workers Compensation Updates</a><br>
+<a href="el0809.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  Crime Insurance and AAIS Boatowner Program Updates</a><br>
+<a href="el0709.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  ISO Products/Completed Operations Liability Insurance And Business Auto Coverage Forms Updates</a><br>
+<a href="el0609.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  AAIS Homeowners, Educators' Legal Liability and Land Surveyors Professional Liability Insurance Updates</a><br>
+<a href="el0509.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  ISO Agricultural Capital Assets (Output Policy) Program and Professional Liability Insurance Updates</a><br>
+<a href="el0409.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  Standard Property, Builders Risk, Legal Liability, Tobacco Sales Warehouse and Personal Inland Marine Coverage Forms Updates</a><br>
+<a href="el0309.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  ISO Businessowners Program (BOP) and the ISO Non-Controlled Inland Marine Coverage Forms Updates</a><br>
+<a href="el0209.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  Time Element and Condominium Coverage Forms Updates</a><br>
+<a href="el0109.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  AAIS Commercial Umbrella Liability Program</a><br>
+<div id="divFoldSub11_0_0" class="clFoldSub2"></div>		
+		</div></div>
+
+
+
+
+<!-- Top -->
+	<div id="divFold13" class="clFold"><a href="#" onclick="foldmenu(12); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2008</font></a><br>
+		<div id="divFoldSub12_0" class="clFoldSub">
+<a href="el1208.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -  ISO Commercial Property Program Updates </a><br>
+<a href="el1108.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  Wedding, AAIS Farmowners and Mobile/Manufactured Home Updates</a><br>
+<a href="el1008.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  AAIS Artisans Program and Contract and Non-Contract Surety Bonds Updates</a><br>
+<a href="el0908.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -  AAIS Non-Filed Inland Marine Coverage Forms Updates</a><br>
+<a href="el0808.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  Aviation, Employment Related Practices and AAIS Personal Umbrella Updates</a><br>
+<a href="el0708.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  Title Insurance and Special Personal Auto Policy Updates</a><br>
+<a href="el0608.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  ISO Equipment Breakdown Protection Coverage Form Update and Introduction of the ISO Management Protection Policy</a><br>
+<a href="el0508.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  ISO Farm Update</a><br>
+<a href="el0408.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  AAIS Businessowners Policy (BOP) and the ISO Commercial Liability Umbrella (CLU) Coverage Form Updates</a><br>
+<a href="el0308.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  AAIS Personal Inland Marine and Misc. Personal Inland Marine Forms Updates</a><br>
+<a href="el0208.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  AAIS Agricultural Output Program and the ISO Commercial General Liability Coverage Forms Updates</a><br>
+<a href="el0108.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  Personal Umbrella and Guaranty Updates</a><br>
+<div id="divFoldSub12_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold14" class="clFold"><a href="#" onclick="foldmenu(13); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2007</font></a><br>
+		<div id="divFoldSub13_0" class="clFoldSub">
+<a href="el1207.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -  Miscellaneous Professional Liability Coverages Updates</a><br>
+<a href="el1107.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  Miscellaneous ISO Liability Coverages and Classifying Risk Updates</a><br>
+<a href="el1007.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  ISO Misc. HO/ART/Sales/Interpretations Letters Updates</a><br>
+<a href="el0907.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -  Insurance Services Office's (ISO) Personal Auto Policy (PAP)</a><br>
+<a href="el0807.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  AAIS Commercial Output Program (COP) and Financial Institutions Updates</a><br>
+<a href="el0707.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  AAIS Homeowners Program (Part One) and Commercial Auto Updates</a><br>
+<a href="el0607.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  ISO Noncontrolled Inland Marine Coverage Forms And Commercial Crime Insurance Updates</a><br>
+<a href="el0507.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  Commercial Condo, Ocean Marine and Market Segments Updates</a><br>
+<a href="el0407.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  Personal Recreation and Misc. Commercial Coverage Updates</a><br>
+<a href="el0307.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  ISO Time Element and Builders Risk Coverage Updates</a><br>
+<a href="el0207.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  Commercial General Liability Updates</a><br>
+<a href="el0107.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  Commercial Auto Updates</a><br>
+<div id="divFoldSub13_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold15" class="clFold"><a href="#" onclick="foldmenu(14); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2006</font></a><br>
+		<div id="divFoldSub14_0" class="clFoldSub">
+<a href="el1206.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -  Commercial Property Program and the Capital Assets Policy (CAP) Program Updates</a><br>
+<a href="el1106.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  Flood Update</a><br>
+<a href="el1006.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  Commercial Crime Coverages and Policies Updates</a><br>
+<a href="el0906.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -  Workers Compensation and Employers Liability Insurance Updates</a><br>
+<a href="el0806.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  Dwelling Fire Program and Terrorism Updates</a><br>
+<a href="el0706.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  ART/Risk Management and ERPL Updates</a><br>
+<a href="el0606.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  AAIS and ISO Controlled Inland Marine Updates</a><br>
+<a href="el0506.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  Commercial Auto and HO Updates</a><br>
+<a href="el0406.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  Misc. Prof. Liability and Equipment Breakdown Protection Coverage Updates</a><br>
+<a href="el0306.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  Insurance Services Office (ISO) Businessowners Program (BOP) Updates</a><br>
+<a href="el0206.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  Land Surveyors Professional Liability and Personal Inland Marine Updates</a><br>
+<a href="el0106.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  Crime Coverage</a><br>
+<div id="divFoldSub14_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold16" class="clFold"><a href="#" onclick="foldmenu(15); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2005</font></a><br>
+		<div id="divFoldSub15_0" class="clFoldSub">
+<a href="el1205.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -  Aviation and Miscellaneous Personal Lines Updates</a><br>
+<a href="el1105.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  AAIS and ISO Farm and Ranch Insurance Programs Updates</a><br>
+<a href="el1005.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  Bonds and Mobilehome Updates</a><br>
+<a href="el0905.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -  AAIS Artisans Program</a><br>
+<a href="el0805.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  Market Segments</a><br>
+<a href="el0705.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  ISO Commercial Automobile Update</a><br>
+<a href="el0605.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  ISO Commercial Liability Umbrella Update</a><br>
+<a href="el0505.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  AAIS Inland Marine Forms Updates</a><br>
+<a href="el0405.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  Railroad Protective and Liquor Liability Updates</a><br>
+<a href="el0305.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  Commercial General Liability Update</a><br>
+<a href="el0205.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  AAIS BOP Update</a><br>
+<a href="el0105.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  Personal Umbrella Update</a><br>
+<div id="divFoldSub15_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold17" class="clFold"><a href="#" onclick="foldmenu(16); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2004</font></a><br>
+		<div id="divFoldSub16_0" class="clFoldSub">
+<a href="el1204.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -  Personal Automobile Update</a><br>
+<a href="el1104.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  Homeowners Update</a><br>
+<a href="el1004.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  Bonds Update</a><br>
+<a href="el0904.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -  Commercial Output Policy Update</a><br>
+<a href="el0804.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  Professional Liability Updates Pt. 2</a><br>
+<a href="el0704.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  Professional Liability Updates Pt. 1</a><br>
+<a href="el0604.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  Crime Coverage Updates</a><br>
+<a href="el0504.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  Commercial Property Pt. 2 and UST Updates</a><br>
+<a href="el0404.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  Commercial Property Pt. 1 and Misc. Updates</a><br>
+<a href="el0304.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  Commercial Umbrella Updates</a><br>
+<a href="el0204.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  Ocean Marine Program and Miscellaneous Updates</a><br>
+<a href="el0104.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  Dwelling Program and Miscellaneous Updates</a><br>
+<div id="divFoldSub16_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold18" class="clFold"><a href="#" onclick="foldmenu(17); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2003</font></a><br>
+		<div id="divFoldSub17_0" class="clFoldSub">
+<a href="el1203.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -  Workers Compensation Program Updates</a><br>
+<a href="el1103.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  Inland Marine Program Updates</a><br>
+<a href="el1003.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  Flood and Commercial Auto Program Updates</a><br>
+<a href="el0903.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -  Farm Program Updates</a><br>
+<a href="el0803.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  Capital Assets Program Updates</a><br>
+<a href="el0703.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  Business Auto Updates</a><br>
+<a href="el0603.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  Time Element Coverage Updates</a><br>
+<a href="el0503.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  Specialty Insurance Updates</a><br>
+<a href="el0403.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  Commercial Auto Updates</a><br>
+<a href="el0303.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  Personal Auto Updates</a><br>
+<a href="el0203.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  Boiler and Machinery (Equipment Breakdown Protection) Updates</a><br>
+<a href="el0103.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  Personal Inland Marine and HO Updates</a><br>
+<div id="divFoldSub17_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold19" class="clFold"><a href="#" onclick="foldmenu(18); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2002</font></a><br>
+		<div id="divFoldSub18_0" class="clFoldSub">
+<a href="el1202.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -  Commercial Property and BOP Updates</a><br>
+<a href="el1102.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  Crime Program Update</a><br>
+<a href="el1002.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  Businessowners Policy Update</a><br>
+<a href="el0902.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -  Businessowners Policy Update</a><br>
+<a href="el0802.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  Commercial Auto and Educators Legal Liabilty Insurance Updates</a><br>
+<a href="el0702.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  Specialty Insurance Updates</a><br>
+<a href="el0602.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  Personal Inland Marine Updates</a><br>
+<a href="el0502.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  Commercial Liability Umbrella Updates</a><br>
+<a href="el0402.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  Commercial General Liability Updates</a><br>
+<a href="el0302.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  Personal Inland Marine Updates</a><br>
+<a href="el0202.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  Commercial Property Updates-Part 2</a><br>
+<a href="el0102.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  Commercial Property Updates-Part 1</a><br>
+<div id="divFoldSub18_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold20" class="clFold"><a href="#" onclick="foldmenu(19); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2001</font></a><br>
+		<div id="divFoldSub19_0" class="clFoldSub">
+<a href="el1201.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -  Miscellaneous Updates</a><br>
+<a href="el1101.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  Miscellaneous Updates</a><br>
+<a href="el1001.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  Liquor Liability</a><br>
+<a href="el0901.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -  Specialty Updates</a><br>
+<a href="el0801.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  Miscellaneous Updates</a><br>
+<a href="el0701.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  In-Home Business and HO Updates</a><br>
+<a href="el0601.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  Personal Lines Updates</a><br>
+<a href="el0501.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  Personal Inland Marine and Homeowner Updates</a><br>
+<a href="el0401.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  Railroad Protective Liability Updates</a><br> 
+<a href="el0301.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  Additional ISO HO 2000 Homeowners Program and AAIS Farm Umbrella</a><br> 
+<a href="el0201.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  Owners and Contractor's Protective Liability</a><br>
+<a href="el0101.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  ISO Garage Updates</a><br> 
+<div id="divFoldSub19_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold21" class="clFold"><a href="#" onclick="foldmenu(20); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>2000</font></a><br>
+		<div id="divFoldSub20_0" class="clFoldSub">
+<a href="el1200.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -  ISO HO 2000 Program</a><br> 
+<a href="el1100.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  Business Auto and Garage Auto Updates</a><br> 
+<a href="el1000.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  ISO Personal Auto Updates</a><br> 
+<a href="el0900.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -  AAIS BOP</a><br> 
+<a href="el0800.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  Commercial Auto</a><br> 
+<a href="el0700.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  Commercial Crime 2000 Program</a><br> 
+<a href="el0600.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  Commercial Output Policy (COP)</a><br> 
+<a href="el0500.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  Federal Flood Coverages</a><br> 
+<a href="el0400.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  ISO CGL Changes</a><br>
+<a href="el0300.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  ISO CGL Changes</a><br>
+<a href="el0200.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  2000 Editor's Letters on new Market Segments Program from ISO</a><br>
+<a href="el0100.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  new glossaries</a><br>
+<div id="divFoldSub20_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold22" class="clFold"><a href="#" onclick="foldmenu(21); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>1999</font></a><br>
+		<div id="divFoldSub21_0" class="clFoldSub">
+<a href="el1299.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -   AAIS Homeowners</a><br>
+<a href="el1199.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -   Revised AAIS COP Program-Part 1</a><br>
+<a href="el1099.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -   AAIS BOP Program-Part 1</a><br>
+<a href="el0999.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -   1998 Commercial Auto Revisions-Part 1</a><br>
+<a href="el0899.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -   More CGL and both AAIS and ISO Homeowners</a><br>
+<a href="el0799.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -   AAIS Broad Form Homeowner Policy</a><br>
+<a href="el0699.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -   1998 Multistate Commercial General Liability Revisions-Part 2 and additional Personal Lines Updates</a><br>
+<a href="el0599.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -   1998 Multistate Commercial General Liability Revisions-Part 1</a><br>
+<a href="el0499.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -   Personal Lines Insurance Updates plus More Quiz/Test Answers</a><br>
+<a href="el0399.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -   Additional Quiz/Test Answers</a><br>
+<a href="el0299.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -   Personal Umbrella Liability Insurance</a><br>
+<a href="el0199.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -   Aviation, Professional Liability, and Errors and Omissions Insurance</a><br>
+<div id="divFoldSub21_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold23" class="clFold"><a href="#" onclick="foldmenu(22); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>1998</font></a><br>
+		<div id="divFoldSub22_0" class="clFoldSub">
+<a href="el1298.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -   Farm Insurance Part 1</a><br>
+<a href="el1198.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -   Tax Deduction For Uninsured Property Losses plus Test and Quiz Answers Part 2</a><br>
+<a href="el1098.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -   Dwelling Program Part 3 and Aircraft Insurance</a><br>
+<a href="el0998.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -   Test and Quiz Answers</a><br>
+<a href="el0898.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -   Continuing to Enhance our Personal Lines Sections</a><br>
+<a href="el0798.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -   Dwelling Program - Part 2</a><br>
+<a href="el0698.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -   Dwelling Program - Part 1</a><br>
+<a href="el0598.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -   Employment-Related Practices Liability--Part 2</a><br>
+<a href="el0498.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -   Employment-Related Practices Liability--Part 1</a><br>
+<a href="el0398.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  Business Auto Policy 1997 Updates--Part 4</a><br>
+<a href="el0298.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -   Business Auto Policy 1997 Updates--Part 3</a><br>
+<a href="el0198.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -   Business Auto Policy 1997 Updates--Part 2</a><br>
+<div id="divFoldSub22_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold24" class="clFold"><a href="#" onclick="foldmenu(23); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>1997</font></a><br>
+		<div id="divFoldSub23_0" class="clFoldSub">
+<a href="el1297.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -   Business Auto Policy 1997 Updates--Part 1</a><br>
+<a href="el1197.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -   Personal Auto Policy--Part 2 and Workers Compensation-Part 3</a><br>
+<a href="el1097.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -   Workers Compensation--Part 2 and revised Sales Letters </a><br>
+<a href="el0997.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -   Miscellaneous Updates and Additions</a><br>
+<a href="el0897.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -  Personal Auto Policy</a><br>
+<a href="el0797.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -   Workers Compensation Insurance Policy and the Druggist/Pharmacists Professional Liability Coverage</a><br>
+<a href="el0697.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -   ISO 1997 BOP Updates--Part 2 </a><br>
+<a href="el0597.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -   ISO 1997 BOP Updates--Part 1 </a><br>
+<a href="el0497.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -  Commercial General Liability Updates </a><br>
+<a href="el0397.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -  Standard Property Policy </a><br>
+<a href="el0297.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -  Other Commercial Property Coverage Forms</a><br>
+<a href="el0197.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -  Miscellaneous Updates, Changes, and Additions</a><br>
+<div id="divFoldSub23_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold25" class="clFold"><a href="#" onclick="foldmenu(24); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>1996</font></a><br>
+		<div id="divFoldSub24_0" class="clFoldSub">
+<a href="el1296.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -   Condominium Coverage Forms</a><br>
+<a href="el1196.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -   Builders Risk Coverage</a><br>
+<a href="el1096.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -   Homeowner Policy Updates--Part 3</a><br>
+<a href="el0996.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -   Commercial General Liability Coverage Forms </a><br>
+<a href="el0896.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -   Homeowner Policy Updates--Part 2</a><br>
+<a href="el0796.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -   Homeowner Policy Updates--Part 1</a><br>
+<a href="el0696.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  Time Element--Part 2</a><br>
+<a href="el0596.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -  Time Element--Part 1 </a><br>
+<a href="el0496.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>April</b> -   Commercial Property--Part 2 </a><br>
+<a href="el0396.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>March</b> -   Commercial Property--Part 1 </a><br>
+<a href="el0296.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>February</b> -   Businessowners Policy--Part 2 </a><br>
+<a href="el0196.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>January</b> -   Businessowners Policy--Part 1 </a><br>
+<div id="divFoldSub24_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+<!-- Top -->
+	<div id="divFold26" class="clFold"><a href="#" onclick="foldmenu(25); return false" class="clFoldLinks" onfocus="if(this.blur)this.blur()"><font color=maroon>1995</font></a><br>
+		<div id="divFoldSub25_0" class="clFoldSub">
+<a href="el1295.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>December</b> -  Lawyers Professional Liability Policy, Educators Legal Liability Policy, and Media/Communications Liability Policy</a><br>
+<a href="el1195.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>November</b> -  Truckers Policy and Motor Carrier Policy </a><br>
+<a href="el1095.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>October</b> -  Underground Storage Tank Policy and Garage Policy</a><br>
+<a href="el0995.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>September</b> -   Business Auto Policy and Business Auto Physical Damage Policy </a><br>
+<a href="el0895.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>August</b> -   Accountants Professional Liability Policy</a><br>
+<a href="el0795.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>July</b> -  Owners and Contractors Protective Liability Policy and Railroad Protective Liability </a><br>
+<a href="el0695.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>June</b> -  Commercial General Liability Policy </a><br>
+<a href="el0595.htm" target="right" class="clSubLinks" onfocus="if(this.blur)this.blur()"><b>May</b> -   Commercial Output Policy </a><br>
+<div id="divFoldSub25_0_0" class="clFoldSub2"></div>		
+		</div>
+	</div>
+
+
+</BODY>
+</HTML>

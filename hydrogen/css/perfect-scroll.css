@@ -1,0 +1,37 @@
+/**
+ * ------------------------------------
+ * SCROLL BAR
+ * ------------------------------------
+ */
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+    background-image: url( "./img/background.jpg" );
+    background-position: center center;
+    background-size: cover;
+}
+
+/* Track */
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+    background: rgb( 0, 0, 0, 0.55 );
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-image: url( "./img/background.jpg" );
+    background-position: center center;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb( 255, 255, 255, 0.30 );
+}
+
+/* Handle on active */
+::-webkit-scrollbar-thumb:active {
+    background: rgb( 255, 255, 255, 0.20 );
+}

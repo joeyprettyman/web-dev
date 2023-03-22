@@ -1,0 +1,825 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if lte IE 7]> <html class="ie7"> <![endif]-->
+<!--[if IE 8]>     <html class="ie8"> <![endif]-->
+<!--[if IE 9]>     <html class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html>
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--
+%%[
+
+/* Set @Email= RequestParameter("Email") */
+Set @Email= emailaddr
+Set @jobid= jobid
+Set @listid= listid
+/* Set @jobid= RequestParameter("j") */
+
+If Empty(@Email) then
+	Set @Email= RequestParameter("Email")
+Endif
+
+
+SET @rr2 = CreateObject("RetrieveRequest")
+SetObjectProperty(@rr2,"ObjectType","Subscriber")
+AddObjectArrayItem(@rr2, "Properties", "Emailaddress")
+AddObjectArrayItem(@rr2, "Properties", "SubscriberKey")
+AddObjectArrayItem(@rr2, "Properties", "ID")
+AddObjectArrayItem(@rr2, "Properties", "Status")
+   
+/* We set the filter to retrieve only the subscriber for whom the email address and subscriber key has been provided */
+
+SET @sfp1 = CreateObject("SimpleFilterPart")
+SetObjectProperty(@sfp1,"Property","Emailaddress")
+SetObjectProperty(@sfp1,"SimpleOperator","Equals")
+AddObjectArrayItem(@sfp1,"Value",@email)
+
+SetObjectProperty(@rr2,"Filter",@sfp1)
+
+SET @atts = InvokeRetrieve(@rr2,@status)
+
+IF RowCount(@atts) > 0 THEN
+
+	 Set @SubscriberValue="True"
+	 /* We must loop over the retrieved attributes and store each needed value in a variable */
+	 SET @subAtts = Field(Row(@atts,1),"Attributes")
+	 SET @subkey = Field(Row(@atts,1),"SubscriberKey")
+	 SET @UnsubStatus = Field(Row(@atts,1),"Status")
+	  IF @UnsubStatus == "Unsubscribed" Then
+	  Set @Check_Unsub="Checked"
+	  ENDIF
+	 
+	 FOR @c = RowCount(@subAtts) DOWNTO 1 DO 
+		  SET @att = Row(@subAtts,@c)
+		  SET @att_name = Field(@att,'Name')
+		  SET @att_val = Field(@att,'Value')
+
+		  IF @att_name == "First Name" THEN
+			SET @FirstName = @att_val
+		  ELSEIF @att_name == "Last Name" THEN
+			SET @LastName = @att_val
+		  ELSEIF @att_name == "Company Name" THEN
+			SET @CompanyName = @att_val
+		  ELSEIF @att_name == "Job Title" THEN
+			SET @JobTitle = @att_val
+		  ENDIF
+			 
+		 /* We now have all the information we need to pre-populate, let's put it in the HTML below */
+	NEXT @c
+ENDIF
+
+SET @rr = CreateObject("RetrieveRequest")
+SetObjectProperty(@rr, "ObjectType", "ListSubscriber")
+AddObjectArrayItem(@rr, "Properties", "ListID")
+AddObjectArrayItem(@rr, "Properties", "SubscriberKey")
+AddObjectArrayItem(@rr, "Properties", "Status")
+	
+SET @sfp2 = CreateObject("SimpleFilterPart")
+SetObjectProperty(@sfp2,"Property","SubscriberKey")
+SetObjectProperty(@sfp2,"SimpleOperator","Equals")
+AddObjectArrayItem(@sfp2,"Value",@subkey)
+
+SetObjectProperty(@rr,"Filter",@sfp2)
+
+SET @rows1 = InvokeRetrieve(@rr, @null, null)
+
+SET @ArrayList = ""
+
+OUTPUT(CONCAT("RowCount: ",RowCount(@rows1),"<br/>"))
+
+If RowCount(@rows1)	> 0 Then
+	
+ for @i = 1 TO RowCount(@rows1) DO 
+  SET @row = Row(@rows1,@i)
+  SET @listid = Field(@row,'ListID')
+  SET @status = Field(@row,'Status')
+  Set @Arraylist=Concat(@Arraylist,@listid,"|")
+
+  IF @status == "Active" THEN
+  
+	IF @listid == "2080804" THEN
+	SET @General_Firm_Updates= "Checked"
+
+	ELSEIF @listid == "2091979" THEN
+	SET @Diversity_Inclusion= "Checked"
+
+	ELSEIF @listid == "2080806" THEN
+	SET @Events_Seminars= "Checked"
+
+	ELSEIF @listid == "2080807" THEN
+	SET @General_Litigation_Topics= "Checked"
+
+	ELSEIF @listid == "2080808" THEN
+	SET @US_Supreme_Court_Update= "Checked"
+
+	ELSEIF @listid == "2080809" THEN
+	SET @Corporate_Law_Topics= "Checked"
+
+	ELSEIF @listid == "2080810" THEN
+	SET @Investment_Management= "Checked"
+
+	ELSEIF @listid == "2080811" THEN
+	SET @Mergers_Acquisitions= "Checked"
+
+	ELSEIF @listid == "2080812" THEN
+	SET @Public_Companies= "Checked"
+
+	ELSEIF @listid == "2080813" THEN
+	SET @Construction_Law_Topics= "Checked"
+
+	ELSEIF @listid == "2080814" THEN
+	SET @Economic_Development= "Checked"
+
+	ELSEIF @listid == "2080818" THEN
+	SET @Employer_Labor_Topics= "Checked"
+
+	ELSEIF @listid == "2080819" THEN
+	SET @UK_Employment= "Checked"
+
+	ELSEIF @listid == "2080820" THEN
+	SET @Complex_Employment= "Checked"
+
+	ELSEIF @listid == "2080822" THEN
+	SET @Union_NLRB= "Checked"
+
+	ELSEIF @listid == "2080823" THEN
+	SET @Energy_Topics= "Checked"
+
+	ELSEIF @listid == "2080825" THEN
+	SET @Environmental_Topics= "Checked"
+
+	ELSEIF @listid == "2080826" THEN
+	SET @Benefits_Topics= "Checked"
+
+	ELSEIF @listid == "2080827" THEN
+	SET @Financial_Services= "Checked"
+
+	ELSEIF @listid == "2080828" THEN
+	SET @Food_Agribusiness= "Checked"
+
+	ELSEIF @listid == "2080829" THEN
+	SET @Health_Law= "Checked"
+
+	ELSEIF @listid == "2080830" THEN
+	SET @Immigration_Topics= "Checked"
+	
+	ELSEIF @listid == "2080831" THEN
+	SET @UK_Immigration= "Checked"
+	
+	ELSEIF @listid == "2080832" THEN
+	SET @Insurance_Industry= "Checked"
+
+	ELSEIF @listid == "2080833" THEN
+	SET @Intellectual_Property= "Checked"
+
+	ELSEIF @listid == "2080834" THEN
+	SET @Copyright_Advertising= "Checked"
+
+	ELSEIF @listid == "2080835" THEN
+	SET @International_Law= "Checked"
+
+	ELSEIF @listid == "2080836" THEN
+	SET @China_Law= "Checked"
+
+	ELSEIF @listid == "2080838" THEN
+	SET @Weekly_Legislative= "Checked"
+
+	ELSEIF @listid == "2080839" THEN
+	SET @Life_Sciences= "Checked"
+
+	ELSEIF @listid == "2080840" THEN
+	SET @Drug_Device= "Checked"
+
+	ELSEIF @listid == "2080841" THEN
+	SET @FDA= "Checked"
+
+	ELSEIF @listid == "2080843" THEN
+	SET @Nonprofits_Topics= "Checked"
+
+	ELSEIF @listid == "2080845" THEN
+	SET @Real_Estate= "Checked"
+
+	ELSEIF @listid == "2103917" THEN
+	SET @Real_Estate_Domain= "Checked"
+
+	ELSEIF @listid == "2103918" THEN
+	SET @Real_Estate_Litigation= "Checked"
+
+	ELSEIF @listid == "2080850" THEN
+	SET @Entertainment_Media= "Checked"
+
+	ELSEIF @listid == "2080853" THEN
+	SET @Tax_Topics= "Checked"
+
+	ELSEIF @listid == "2080855" THEN
+	SET @Property_Tax= "Checked"
+
+	ELSEIF @listid == "2080856" THEN
+	SET @Wealth_Management= "Checked"
+
+	ELSEIF @listid == "2100027" THEN
+	SET @Franchise_Distribution= "Checked"
+
+	ELSEIF @listid == "2100029" THEN
+	SET @Privacy_DataSecurity= "Checked"
+
+	ELSEIF @listid == "2103916" THEN
+	SET @White_Collar_Defense= "Checked"
+
+	ELSEIF @listid == "2123383" THEN
+	SET @Federal_Legislative_Topics = "Checked"
+
+	ELSEIF @listid == "2123384" THEN
+	SET @International_Disputes_Topics = "Checked"
+
+	ELSEIF @listid == "2132285" THEN
+	SET @Alumni_News_Events = "Checked"
+
+	ELSEIF @listid == "2132286" THEN
+	SET @Indiana_Government_Topics = "Checked"
+
+	ELSEIF @listid == "2141865" THEN
+	SET @General_Antitrust_Trade_Regulation_Topics = "Checked"
+
+   ENDIF   
+  ENDIF 
+ NEXT @i
+ENDIF
+]%%
+-->
+<!-- <link href="http://image.exct.net/lib/ff2813787d64/m/1/CustomStyle_New3.css" type="text/css" rel="stylesheet" /> -->
+<link href="http://image.exct.net/lib/ff2813787d64/m/1/CustomStyle_New5.css" type="text/css" rel="stylesheet" />
+<title>Faegre Baker Daniels</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- Add Web Fonts Functionality -->
+<script src="https://fast.fonts.net/jsapi/5829111d-7d17-4fa3-b6c2-18f6194b463d.js"></script>
+
+<script>
+    function validate() {
+        var status = true;
+        var emaialVal = $('#email').val();
+        var cofirmEmailval = $('#confirmEmail').val();
+
+        var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+
+
+        if (emaialVal == '') {
+            $('#Err').html('There was an error. You have not entered your email address.<br>');
+            $('#Err').css('display', 'block');
+            $('#email').css('border', 'solid 1px #7b080b');
+            status = false;
+        }
+        else if (!filter.test(emaialVal)) {
+            $('#Err').html('There was an error. Please enter a valid e-mail address.<br>');
+            $('#Err').css('display', 'block');
+            status = false;
+        }
+        else if (cofirmEmailval == '') {
+            $('#Err').html('There was an error. You have not entered your confirm email address.<br>');
+            $('#Err').css('display', 'block');
+            $('#confirmEmail').css('border', 'solid 1px #7b080b');
+            status = false;
+        }
+        else if (emaialVal.toUpperCase() != cofirmEmailval.toUpperCase()) {
+            $('#confirmEmail').css('border', 'solid 1px #7b080b');
+            $('#Err').html('There was an error. email address does not match.<br>');
+            $('#Err').css('display', 'block');
+            status = false;
+        }
+        else if ($('#txt_fname').val() == '') {
+            $('#txt_fname').css('border', 'solid 1px #7b080b');
+            $('#Err').html('There was an error. You have not entered your first name.<br>');
+            $('#Err').css('display', 'block');
+            status = false;
+        }
+        else if ($('#txt_lname').val() == '') {
+            $('#txt_lname').css('border', 'solid 1px #7b080b');
+            $('#Err').html('There was an error. You have not entered your last name.<br>');
+            $('#Err').css('display', 'block');
+            status = false;
+        }
+        else if ($('#txt_cname').val() == '') {
+            $('#txt_cname').css('border', 'solid 1px #7b080b');
+            $('#Err').html('There was an error. You have not entered your company name.<br>');
+            $('#Err').css('display', 'block');
+            status = false;
+        }
+        else if ($('#txt_jobtitle').val().length > 120) {
+            $('#txt_jobtitle').css('border', 'solid 1px #7b080b');
+            $('#Err').html('There was an error. The Job Title is greater than 120 characters.<br>');
+            $('#Err').css('display', 'block');
+            status = false;
+        }
+
+        gettingCheckBoxValues();
+        return status;
+    }
+
+    $(function () {
+        $('#selectallcheck').on('click', function () {
+            $('#all').find(':checkbox').prop('checked', this.checked);
+            $('#unsubscribe').prop('checked', false);
+        });
+    });
+
+    $(function () {
+        $('#unsubscribe').on('click', function () {
+            $('#all').find(':checkbox').prop('checked', false);
+            $('#selectallcheck').prop('checked', false);
+        });
+    });
+
+    $(document).ready(function () {
+        $('#all').find('input[type="checkbox"]').click(function () {
+            if ($(this).is(":checked")) {
+                $('#unsubscribe').prop('checked', false);
+            }
+        });
+
+        $('#email').bind('change', function (e) {
+            $('#confirmEmail').val('');
+        });
+    });
+	
+
+</script>
+<script type="text/javascript">
+    /* Function to retrieve checked & unchecked List ids & passing confirm page through hidden fields. */
+    function gettingCheckBoxValues() {
+
+        var checkBox = document.forms[0].elements;
+        var checkBoxvalue = "";
+        var uncheckBoxvalue = "";
+
+        for (var i = 0; checkBox.length > i; i++) {
+            if (checkBox[i].id == '0') {
+                if (checkBox[i].checked == true) {
+                    checkBoxvalue = checkBoxvalue + checkBox[i].value + '|'
+                    //alert(checkBoxvalue);
+                }
+                if (checkBox[i].checked == false) {
+                    uncheckBoxvalue = uncheckBoxvalue + checkBox[i].value + '|'
+                    //alert(uncheckBoxvalue);
+                }
+            }
+        }
+        document.getElementById('checkedvalues').value = checkBoxvalue;
+        document.getElementById('uncheckedvalues').value = uncheckBoxvalue;
+
+    }
+</script>
+</head>
+<body>
+<div class="TopBar"></div>
+<div class="wrap"> 
+  <!--Header starts-->
+  <div class="header PLR12">
+    <div class="left d1"><img style="display:block;color:#002B52; font-family:Arial, Helvetica, sans-serif; font-size:12px;" src="http://image.exct.net/lib/ff2813787d64/m/1/FBD_img_03l.jpg" width="211" height="59" border="0" alt="FAEGRE BAKER DANIELS" class="logo1" /></div>
+  </div>
+  <!--Header Ends--> 
+  
+  <!--Email P C starts-->
+  <div class="main">
+    <div class="left inner-main">
+      <div class="epcout align-center PT10 PB10"><span class="epc PL0">SUBSCRIPTION CENTER</span></div>
+      <div class="discription align-center"><span class="disc PL10 PR10">Faegre Baker Daniels is pleased to offer news and important information as it becomes available. Please fill out the form below to receive content of interest.</span></div>
+      <div class="outer-form">
+      <div class="ci PL15">CONTACT INFORMATION</div>
+      <div class="save-form">
+      <div class="PL15 PR15">
+      <div class="error-msg" id="Err" style="display:none;"></div>
+      <form  name="form" method="post" onsubmit="return validate();" action="%%=MicroSiteURL(3514046)=%%">
+        <input type="hidden" id="checkedvalues" name="checkedvalues" value=""/>
+        <input type="hidden" id="uncheckedvalues" name="uncheckedvalues" value=""/>
+        <input type="hidden" id="Arraylist" name="Arraylist" value="%%=V(@Arraylist)=%%"/>
+        <input type="hidden" id="SubscriberValue" name="SubscriberValue" value="%%=V(@SubscriberValue)=%%"/>
+        <input type="hidden" id="subkey" name="subkey" value="%%=V(@subkey)=%%"/>
+        <input type="hidden" id="prev_email" name="prev_email" value="%%=V(@Email)=%%"/>
+        <input type="hidden" id="jobid" name="jobid" value="%%=V(@jobid)=%%"/>
+        <input type="hidden" id="listid" name="listid" value="%%=V(@listid)=%%"/>
+        <ul>
+          <li style="width:">
+            <label>Email Address:</label>
+            <br />
+            <input type="text" id="email" name="Email_Address" value="%%=V(@Email)=%%" maxlength="254" />
+          </li>
+          <li class="PRD0">
+            <label>Confirm Email Address:</label>
+            <br />
+            <input type="text" id="confirmEmail" name="Confirm_Email" value="%%=V(@Email)=%%" maxlength="254" />
+          </li>
+          <li>
+            <label>First Name:</label>
+            <br />
+            <input type="text" id="txt_fname" name="First_Name" value="%%=V(@FirstName)=%%" maxlength="50" />
+          </li>
+          <li class="PRD0">
+            <label>Last Name:</label>
+            <br />
+            <input type="text" id="txt_lname" name="Last_Name" value="%%=V(@LastName)=%%" maxlength="50" />
+          </li>
+          <li>
+            <label>Company Name: </label>
+            <br />
+            <input type="text" id="txt_cname" name="Company_Name" value="%%=V(@CompanyName)=%%" maxlength="100" />
+          </li>
+          <li class="PRD0">
+            <label>Job Title: <span class="italic normal">(optional)</span></label>
+            <br />
+            <input type="text" id="txt_jobtitle" name="Job_Title"value="%%=V(@JobTitle)=%%" maxlength="120" />
+          </li>
+        </ul>
+        <div class="savepref" align="center">
+          <input type="submit" value="SAVE MY PREFERENCES"  name="Save My Preferences" class="savebtn mrgtp-ft" />
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <!-- Select Your Areas of Interest starts-->
+        <div class="interests">
+        <div class="PL15 PR15 cls">
+          <div class="selectall">
+            <div class="ci PLD0 left">SELECT YOUR AREAS OF INTEREST</div>
+            <div class="sl right clearmob">
+              <input type="checkbox" id="selectallcheck"  name="select all"/>
+              <label class="FSD14 colorblc">Select All Topics</label>
+            </div>
+          </div>
+        </div>
+        <div class="cls" >
+        <div id="all" class="cls PT20">
+          <div class="left interest-inner">
+            <div class="inthrd">Faegre Baker Daniels</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080804" id="0"  name="General Firm Updates" %%=v(@General_Firm_Updates)=%% />
+                  <label>All Firm Updates</label>
+                </li>
+                <li>
+                  <input  type="checkbox" value="2091979" id="0" name="Diversity & Inclusion Update" %%=v(@Diversity_Inclusion)=%%/>
+                  <label>Diversity & Inclusion Update</label>
+                </li>
+                <li>
+                  <input  type="checkbox" value="2080806" id="0" name="Events & Seminars" %%=v(@Events_Seminars)=%%/>
+                  <label>Events & Seminars</label>
+                </li>
+                <li>
+                  <input  type="checkbox" value="2132285" id="0" name="Alumni News & Events" %%=v(@Alumni_News_Events)=%%/>
+                  <label>Alumni News & Events</label>
+                </li>
+             </ul>
+            </div>
+            <div class="inthrd">Antitrust & Trade Regulation</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2141865" id="0" name="General Antitrust & Trade Regulation Topics"  %%=v(@General_Antitrust_Trade_Regulation_Topics)=%%  />
+                  <label>General Antitrust & Trade Regulation Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Business Litigation</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080807" id="0" name="General Litigation Topics"  %%=v(@General_Litigation_Topics)=%%  />
+                  <label>General Litigation Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080808" id="0"  name="U.S. Supreme Court Update" %%=v(@US_Supreme_Court_Update)=%%/>
+                  <label>U.S. Supreme Court Update</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Corporate Law</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080809" id="0" name="General Corporate Law Topics" %%=v(@Corporate_Law_Topics)=%% />
+                  <label>General Corporate Law Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080810" id="0" name="Investment Management" %%=v(@Investment_Management)=%% />
+                  <label>Investment Management</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080811" id="0" name="Mergers & Acquisitions" %%=v(@Mergers_Acquisitions)=%% />
+                  <label>Mergers & Acquisitions</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080812" id="0" name="Public Companies & Securities" %%=v(@Public_Companies)=%% />
+                  <label>Public Companies & Securities</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Construction Law</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080813" id="0" name="General Construction Law Topics" %%=v(@Construction_Law_Topics)=%% />
+                  <label>General Construction Law Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Economic Development</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080814" id="0" name="General Economic Development Topics" %%=v(@Economic_Development)=%% />
+                  <label>General Economic Development Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Employers/Labor</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080818" id="0" name="General Employer/Labor Topics" %%=v(@Employer_Labor_Topics)=%% />
+                  <label>General Employment/Labor Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080819" id="0" name="UK Employment Topics" %%=v(@UK_Employment)=%% />
+                  <label>UK Employment Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080820" id="0" name="Complex Employment Litigation" %%=v(@Complex_Employment)=%% />
+                  <label>Complex Employment Litigation</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080822" id="0" name="Union/NLRB Topics" %%=v(@Union_NLRB)=%% />
+                  <label>Union/NLRB Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Energy</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080823" id="0" name="General Energy Topics" %%=v(@Energy_Topics)=%% />
+                  <label>General Energy Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Environment</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080825" id="0" name="General Environmental Topics" %%=v(@Environmental_Topics)=%%/>
+                  <label>General Environmental Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">ERISA, Benefits & Executive Compensation</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080826" id="0" name="General Benefits Topics" %%=v(@Benefits_Topics)=%% />
+                  <label>General Benefits Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Financial Services</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080827" id="0" name="General Financial Services Topics" %%=v(@Financial_Services)=%% />
+                  <label>General Financial Services Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Food & Agribusiness</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080828" id="0" name="General Food & Agribusiness Topics" %%=v(@Food_Agribusiness)=%% />
+                  <label>General Food & Agribusiness Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Franchise & Distribution</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2100027" id="0" name="General Franchise & Distribution Topics" %%=v(@Franchise_Distribution)=%% />
+                  <label>General Franchise & Distribution Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Health Law</div>
+            <div class="yourint lpint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080829" id="0" name="General Health Law Topics" %%=v(@Health_Law)=%% />
+                  <label>General Health Law Topics</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="left interest-inner mr0">
+            <div class="inthrd">Immigration</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080830" id="0" name="General Immigration Topics" %%=v(@Immigration_Topics)=%% />
+                  <label>General Immigration Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080831" id="0" name="UK Immigration Topics" %%=v(@UK_Immigration)=%% />
+                  <label>UK Immigration Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Insurance Industry</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080832" id="0" name="General Insurance Industry Topics" %%=v(@Insurance_Industry)=%%/>
+                  <label>General Insurance Industry Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Intellectual Property</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080833" id="0" name="General Intellectual Property Topics" %%=v(@Intellectual_Property)=%% />
+                  <label>General Intellectual Property Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080834" id="0" name="Trademark, Copyright, Advertising and Media" %%=v(@Copyright_Advertising)=%% />
+                  <label>Trademark, Copyright, Advertising and Media</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">International Law</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080835" id="0" name="General International Law Topics" %%=v(@International_Law)=%% />
+                  <label>General International Law Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080836" id="0" name="China Law Topics" %%=v(@China_Law)=%% />
+                  <label>China Law Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2123384" id="0" name="International Disputes Topics" %%=v(@International_Disputes_Topics)=%% />
+                  <label>International Disputes Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Legislation</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080838" id="0" name="Minnesota Weekly Legislative Update" %%=v(@Weekly_Legislative)=%% />
+                  <label>Minnesota Weekly Legislative Update</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2123383" id="0" name="Federal Legislative Topics (U.S.)" %%=v(@Federal_Legislative_Topics)=%% />
+                  <label>Federal Legislative Topics (U.S.)</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2132286" id="0" name="Indiana Government Topics" %%=v(@Indiana_Government_Topics)=%% />
+                  <label>Indiana Government Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Life Sciences</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080839" id="0" name="General Life Sciences Topics" %%=v(@Life_Sciences)=%% />
+                  <label>General Life Sciences Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080840" id="0" name="Drug & Device" %%=v(@Drug_Device)=%% />
+                  <label>Drug & Device</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080841" id="0" name="FDA" %%=v(@FDA)=%% />
+                  <label>FDA</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Nonprofits</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080843" id="0" name="General Nonprofits Topics" %%=v(@Nonprofits_Topics)=%% />
+                  <label>General Nonprofits Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Privacy & Cybersecurity</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2100029" id="0" name="General Privacy & Cybersecurity Topics" %%=v(@Privacy_DataSecurity)=%% />
+                  <label>General Privacy & Cybersecurity Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Real Estate</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080845" id="0" name="General Real Estate Topics" %%=v(@Real_Estate)=%% />
+                  <label>General Real Estate Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2103917" id="0" name="Eminent Domain Topics" %%=v(@Real_Estate_Domain)=%% />
+                  <label>Eminent Domain Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2103918" id="0" name="Real Estate Litigation Topics" %%=v(@Real_Estate_Litigation)=%% />
+                  <label>Real Estate Litigation Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Sports/Entertainment/Media</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080850" id="0" name="General Sports/Entertainment/Media Topics" %%=v(@Entertainment_Media)=%% />
+                  <label>General Sports/Entertainment/Media Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Tax</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080853" id="0" name="General Tax Topics" %%=v(@Property_Tax)=%% />
+                  <label>General Tax Topics</label>
+                </li>
+                <li>
+                  <input type="checkbox" value="2080855" id="0" name="Equity Property Tax Group" %%=v(@Property_Tax)=%% />
+                  <label>Equity Property Tax Group</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">Wealth Management</div>
+            <div class="yourint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2080856" id="0" name="General Wealth Management Topics" %%=v(@Wealth_Management)=%% />
+                  <label>General Wealth Management Topics</label>
+                </li>
+              </ul>
+            </div>
+            <div class="inthrd">White Collar Defense & Investigations</div>
+            <div class="yourint lpint">
+              <ul>
+                <li>
+                  <input type="checkbox" value="2103916" id="0" name="General White Collar Defense & Investigations Topics" %%=v(@White_Collar_Defense)=%% />
+                  <label>General White Collar Defense & Investigations Topics</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--Unsubscribe from All starts-->
+        
+        <div id="unsub" class="cls left full">
+          <div class="unsubscribe cls">
+            <div class="inner-usub PL15">
+              <div class="ufa-text">Unsubscribe from All</div>
+              <div class="left full">
+                <input type="checkbox"  name="unsubscribe" id="unsubscribe" %%=V(@Check_Unsub)=%% class="left"/>
+                <label class="left">Please remove me from all email communications.</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Unsubscribe from All ends-->
+        
+        <div class="savepref cls" align="center">
+          <input type="Submit" value="SAVE MY PREFERENCES"  name="Save My Preferences"  class="savebtn mrgtp-ft" />
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Select Your Areas of Interest Ends--> 
+  
+  <!--Footer Starts-->
+  <div class="FooterBar"></div>
+  <div class="footer PL15 PR15 PB0">
+    <p>With subscription to the above topics, Faegre Baker Daniels provides various updates on relevant issues that impact these areas as well as invitations to events centered around similar topics. These communications do not constitute legal advice.</p>
+    <p>In considering prior results, please be aware that: (i) each legal matter is unique; (ii) prior results are not necessarily representative of all our matters; and (iii) you should not rely on prior results to predict future success in similar matters.</p>
+    <p>Transmission of information to us via this feature does not establish an attorney-client relationship. Do not send any information that you would have treated confidentially.</p>
+    <p>Copyright &copy; 2000<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script> Faegre Baker Daniels LLP. All Rights Reserved. <a href="http://www.faegrebd.com/disclaimers?utm_source=etsubcenter&utm_medium=etsubcenterform&utm_content=fbdprivacypg&utm_campaign=etsubcentersignup" target="_blank">View our privacy policy</a>.</p>
+  </div>
+</div>
+</div>
+<!--Email P C Ends-->
+
+</div>
+</body>
+</html>

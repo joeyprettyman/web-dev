@@ -1,0 +1,134 @@
+/* VERTICAL & HORIZONTAL GRID */
+.line {
+	background: black;
+	opacity: 0;
+	position: absolute;
+}
+
+.vertical {
+	width: 1px;
+	height: 100%;
+	max-width: 1px;
+	min-width: 1px;
+}
+
+#v1 {
+	left: calc( 25% - 1px );
+}
+
+#v2 {
+	left: calc( 50% - 1px );
+}
+
+#v3 {
+	left: calc( 75% - 1px );
+}
+
+.horizontal {
+	background: pink !important;
+	height: 1px;
+	width: 100%;
+	max-height: 1px;
+	min-height: 1px;
+}
+
+#h1 {
+	top: calc( 25% - 1px );
+}
+
+#h2 {
+	top: calc( 50% - 1px );
+}
+
+#h3 {
+	top: calc( 75% - 1px );
+}
+
+/* OUTLOOK GENERAL FIXES */
+#outlook a {
+	padding: 0;
+}
+
+.ReadMsgBody {
+	width: 100%;
+}
+
+.ExternalClass {
+	width: 100%;
+}
+
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+	line-height: 100%;
+}
+
+
+/* STANDARD RESPONSIVE EMAIL */
+body, table, td, a {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+table, td {
+	mso-table-lspace: 0pt;
+	mso-table-rspace: 0pt;
+}
+
+img {
+	-ms-interpolation-mode: bicubic;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	border: 0;
+	height: auto;
+	line-height: 100%;
+	outline: none;
+	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse !important;
+}
+
+body {
+	height: 100% !important;
+	margin: 0;
+	padding: 0;
+	width: 100% !important;
+	background-color: #ffffff;
+}
+
+/* GLOBAL CSS */
+.center {
+	margin: 0 auto;
+}
+
+.wrapper {
+	
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+/* SPECIFIC CSS */
+.header {
+	
+}
+
+/* WEB FONTS */
+/* ANIMATIONS */
+/* FIREFOX MEDIA QUERIES */
+/* WEBKIT, CHROME, and SAFARI MEDIA QUERIES */

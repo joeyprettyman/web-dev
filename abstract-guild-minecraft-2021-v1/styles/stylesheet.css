@@ -1,0 +1,410 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url( './fonts/minecraft.ttf' );
+}
+
+@font-face {
+    font-family: 'MajorMonoDisplay';
+    src: url( './fonts/MajorMonoDisplay-Regular.ttf' );
+}
+
+@font-face {
+    font-family: 'JetBrains';
+    src: url( './fonts/JetBrainsMono-Regular.ttf' );
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+body {
+	background: #000000; /* Black */
+	font-family: Arial;
+}
+
+
+.wrapper {
+	display: block;
+	position: relative;
+	left: 50%;
+	transform: translateX( -50%);
+	text-align: left;
+	max-width: 700px;
+	background: rgba( 255, 255, 255, 0.00 );
+}
+
+img#abstract-logo {
+	display: block;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	/* width: 100%; */
+	max-width: 231px;
+	width: 100%;
+	margin-top: 25px;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+img#minecraft-update-logo {
+	display: block;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 400px;
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 50px;
+	margin-bottom: 50px;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.button {
+	border: 2px solid black;
+	border-radius: 10px;
+	box-shadow: 0px 3px 0px 2px rgba( 0, 0, 0, 0.50 );
+	letter-spacing: 1px;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+table#button-bar {
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+}
+
+table#button-bar tr {
+	padding: 0px;
+	margin: 0px;
+}
+
+table#button-bar tr td {
+	margin: 0px;
+	width: 50%;
+	text-align: center;
+	padding: 0px 20px;
+}
+
+.button#download a:link,
+.button#download a:visited {
+	text-decoration: none;
+	color: blue;
+	display: block;
+	padding: 20px 0px 25px 0px;
+	color: white;
+	font-family: 'Minecraft';
+	font-size: 25px;
+	line-height: 15px;
+	text-transform: uppercase;
+	border-radius: 10px;
+	border-top: 3px solid #b66afd;
+	border-left: 3px solid #6a16b8;
+	border-right: 3px solid #6a16b8;
+	border-bottom: 3px solid #591c92;
+	text-shadow: 0px 2px 1px rgba( 0, 0, 0, 0.50 );
+}
+
+.button#download a:hover {
+	background: #982cfd;
+	font-size: 26px;
+}
+
+.button#download {
+	background: #8b12fc;
+}
+
+
+.button#install a:link,
+.button#install a:active,
+.button#install a:visited {
+	text-decoration: none;
+	color: blue;
+	display: block;
+	padding: 20px 0px 25px 0px;
+	color: white;
+	font-family: 'Minecraft';
+	font-size: 25px;
+	line-height: 15px;
+	text-transform: uppercase;
+	border-radius: 10px;
+	border-top: 3px solid #27ce40;
+	border-left: 3px solid #0c6e3d;
+	border-right: 3px solid #0c6e3d;
+	border-bottom: 3px solid #064d2a;
+	text-shadow: 0px 2px 1px rgba( 0, 0, 0, 0.50 );
+}
+
+.button#install a:hover {
+	background: #0b9850;
+	font-size: 26px;
+}
+
+.button#install {
+	background: #008943;
+}
+
+.button#download a:active,
+.button#install a:active {
+	border: 2px solid white;
+	font-size: 25px;
+}
+
+
+.quick-server-info {
+	border-radius: 5px;
+	background: #96910a;
+	width: calc( 100% - 50px );
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	border-top: 5px solid #cdc835;
+	border-left: 5px solid #736f11;
+	border-right: 5px solid #736f11;
+	border-bottom: 5px solid #4a4805;
+}
+
+.quick-server-info hr {
+	border-bottom: 5px solid #cdc835;
+	border-top: 5px solid rgba( 0, 0, 0, 0.25 );
+	border-left: 0px;
+	border-right: 0px;
+}
+
+.quick-server-info:hover {
+	background: #aaa519;
+}
+
+.quick-server-info #seed-title {
+	text-align: center;
+	font-size: 26px;
+	font-family: 'Minecraft';
+	font-weight: bold;
+	color: white;
+	text-shadow: 0px 2px 1px rgba( 0, 0, 0, 0.50 );
+	padding: 20px 0px 0px 0px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.quick-server-info #seed-number {
+	text-align: center;
+	font-size: 40px;
+	font-family: 'JetBrains';
+	font-weight: bold;
+	color: black;
+	padding: 15px 0px 35px 0px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.quick-server-info #server-address {
+	text-align: center;
+	font-size: 40px;
+	font-family: 'JetBrains';
+	font-weight: bold;
+	color: black;
+	padding: 15px 0px 35px 0px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+
+.info-box {
+	background: rgba( 255, 255, 255, 0.20 );
+	padding: 10px;
+	color: white;
+	font-size: 12px;
+	width: calc( 100% - 70px );
+	font-family: Arial;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+	margin-top: 30px;
+	border-top: 5px solid #747474;
+	border-left: 5px solid #3d3d3d;
+	border-right: 5px solid #3d3d3d;
+	border-bottom: 5px solid #202020;
+}
+
+.info-box#rules {
+	background: #930a0a;
+	border-radius: 5px;
+	border-top: 5px solid #d82c71;
+	border-left: 5px solid #681010;
+	border-right: 5px solid #681010;
+	border-bottom: 5px solid #490606;
+}
+
+.info-box#rules:hover {
+	background: #9f1313;
+}
+
+
+.info-box h1 {
+	font-size: 36px;
+	font-family: 'Minecraft';
+	letter-spacing: 1px;
+	margin-top: 0px;
+	padding: 0px 10px;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+			text-align: center;
+}
+
+.info-box ul {
+	padding: 0px;
+	margin: 10px;
+	background: white;
+	border: 1px solid rgba( 0, 0, 0, 0.75 );
+	list-style: none;
+	border-radius: 5px;
+}
+
+.info-box ul li::before {
+  content: "☑";
+  border-radius: 1ch;
+  padding-inline: 1ch;
+  margin-inline-end: 1ch;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  vertical-align: middle;
+  margin-right: 0px;
+  color: #616161;
+}
+
+.info-box ul li i {
+	color: black;
+	text-decoration: underline;
+}
+
+
+.info-box ul li img {
+	width: 100%;
+}
+
+.info-box ul li#calendar::before {
+  content: "📅";
+  color: rgba( 0, 0, 0, 0.60 );
+}
+
+.info-box ul li#pst::before,
+.info-box ul li#mst::before,
+.info-box ul li#cst::before,
+.info-box ul li#est::before {
+  content: "🕒";
+  color: rgba( 0, 0, 0, 0.60 );
+}
+
+.info-box ul li#pst {
+	background: #d9ffd9;
+}
+
+.info-box ul li#mst {
+	background: #d9ffff;
+}
+
+.info-box ul li#cst {
+	background: #e5e8ff;
+}
+
+.info-box ul li#est {
+	background: #ffe5f4;
+}
+
+.info-box ul li {
+	padding: 0px;
+	margin: 0px;
+	color: #616161;
+	font-family:'JetBrains';
+	border-bottom: 1px solid rgba( 0, 0, 0, 0.50 );
+	padding: 10px;
+	vertical-align: middle;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.info-box ul li:hover {
+	background: #f3f3f3;
+}
+
+li#spacer::before {
+	content: "";
+}
+
+tip {
+	padding: 5px;
+	font-size: 12px;
+	vertical-align: middle;
+	font-style: italic;
+}
+
+
+@media only screen and (max-width: 700px) {
+	table#button-bar tr td {
+		display: block;
+		margin-bottom: 30px;
+		padding: 0px;
+		width: calc( 100% - 40px );
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.quick-server-info {
+		margin-top: 10px;
+		width: calc( 100% - 50px );
+	}
+	
+	.quick-server-info #seed-number {
+		font-size: 30px;
+	}
+	
+	.quick-server-info #server-address {
+		font-size: 30px;
+	}
+	
+	.info-box ul li::before {
+		font-size: 20px;
+	}
+	
+	.info-box ul li {
+		font-size: 16px;
+		padding: 15px 10px;
+	}
+}
+
+
+@media only screen and (max-width: 475px) {
+	.quick-server-info #seed-number {
+		font-size: 20px;
+	}
+	
+	.quick-server-info #server-address {
+		font-size: 20px;
+	}
+}

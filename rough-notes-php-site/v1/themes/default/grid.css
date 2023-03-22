@@ -1,0 +1,490 @@
+/***************************************************/
+/* LATTITUDE / LONGITUDE
+/***************************************************/
+    b {
+        font-weight: bold;
+    }
+
+    u {
+        text-decoration: underline;
+    }
+
+    i {
+        font-style: italic;
+    }
+
+    debug {
+        background: #53ce40;
+        content: "Hello, it's me.";
+        position: absolute;
+        display: block;
+        color: white;
+        z-index: 100;
+        cursor: pointer;
+        top: 0px;
+        left: 5px;
+        width: 65px;
+        padding: 2px 15px;
+        text-align: center;
+        vertical-align: middle;
+        box-shadow: 0px 0px 1px 1px rgba( 0, 0, 0, 0.50 );
+        border: 1px solid black;
+        text-shadow: 1px 1px 1px rgba( 0, 0, 0, 1.00 );
+        font-size: 11px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+         -khtml-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+    }
+
+    horizontals {
+        background: #53ce40;
+        content: "Hello, it's me.";
+        position: absolute;
+        display: block;
+        color: white;
+        z-index: 100;
+        cursor: pointer;
+        top: 0px;
+        left: 115px;
+        width: 100px;
+        padding: 2px 15px;
+        text-align: center;
+        vertical-align: middle;
+        box-shadow: 0px 0px 1px 1px rgba( 0, 0, 0, 0.50 );
+        border: 1px solid black;
+        text-shadow: 1px 1px 1px rgba( 0, 0, 0, 1.00 );
+        font-size: 11px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+         -khtml-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+    }
+
+    verticals {
+        background: #53ce40;
+        content: "Hello, it's me.";
+        position: absolute;
+        display: block;
+        color: white;
+        z-index: 100;
+        cursor: pointer;
+        top: 0px;
+        left: 260px;
+        width: 75px;
+        padding: 2px 15px;
+        text-align: center;
+        vertical-align: middle;
+        box-shadow: 0px 0px 1px 1px rgba( 0, 0, 0, 0.50 );
+        border: 1px solid black;
+        text-shadow: 1px 1px 1px rgba( 0, 0, 0, 1.00 );
+        font-size: 11px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+         -khtml-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+    }
+
+    lattitude {
+        position: absolute;
+        background: cyan;
+        top: 50%;
+        min-height: 3px;
+        min-width: 100%;
+        z-index: 100;
+    }
+
+    lattitude:hover {
+        cursor: pointer;
+        height: 3px;
+        background: #9afefe;
+        box-shadow: 0px 0px 5px 3px rgba( 154, 254, 254, 0.95 );
+    }
+
+    lattitude:hover::before {
+        content: "LATTITUDE ";
+        color: black;
+        font-size: 16px;
+        font-family: Arial;
+        vertical-align: middle;
+        position: absolute;
+        margin-top: -25px;
+        margin-left: 5px;
+        height: 5px;
+        font-weight: bold;
+        color: black;
+    }
+
+    longitude {
+        position: absolute;
+        background: cyan;
+        top: 0;
+        right: 49.85%;
+        min-height: 100%;
+        min-width: 3px;
+        z-index: 100;
+    }
+
+    longitude:hover {
+        cursor: pointer;
+        width: 3px;
+        background: #9afefe;
+        box-shadow: 2px 0px 5px 3px rgba( 154, 254, 254, 0.95 );
+    }
+
+    longitude:hover::before {
+        content: "LONGITUDE ";
+        color: black;
+        font-size: 16px;
+        font-family: Arial;
+        vertical-align: middle;
+        position: absolute;
+        margin-top: 10px;
+        margin-left: 25px;
+        font-weight: bold;
+        color: black;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        right: -25px;
+    }
+
+/***************************************************/
+/* HORIZONTAL - MAIN
+/***************************************************/
+    horizontal-line-1 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.25 );
+        top: 10%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-line-2 {
+        position: absolute;
+        background: black;
+        top: 20%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-line-3 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.25 );
+        top: 30%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-line-4 {
+        position: absolute;
+        background: black;
+        top: 40%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-line-5 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.25 );
+        top: 50%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-line-6 {
+        position: absolute;
+        background: black;
+        top: 60%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-line-7 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.25 );
+        top: 70%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-line-8 {
+        position: absolute;
+        background: black;
+        top: 80%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-line-9 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.25 );
+        top: 90%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+/***************************************************/
+/* HORIZONTAL - SUB
+/***************************************************/
+    horizontal-sub-1 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 5%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-sub-2 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 15%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-sub-3 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 25%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-sub-4 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 35%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-sub-5 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 45%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-sub-6 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 55%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-sub-7 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 65%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-sub-8 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 75%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-sub-9 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 85%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+    horizontal-sub-10 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 95%;
+        min-height: 1px;
+        min-width: 100%;
+    }
+
+/***************************************************/
+/* VERTICAL - MAIN
+/***************************************************/
+    vertical-line-1 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.25 );
+        top: 0;
+        left: 10%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-line-2 {
+        position: absolute;
+        background: black;
+        top: 0;
+        left: 20%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-line-3 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.25 );
+        top: 0;
+        left: 30%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-line-4 {
+        position: absolute;
+        background: black;
+        top: 0;
+        left: 40%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-line-5 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.25 );
+        top: 0;
+        left: 50%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-line-6 {
+        position: absolute;
+        background: black;
+        top: 0;
+        left: 60%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-line-7 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.25 );
+        top: 0;
+        left: 70%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-line-8 {
+        position: absolute;
+        background: black;
+        top: 0;
+        left: 80%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-line-9 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.25 );
+        top: 0;
+        left: 90%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+/***************************************************/
+/* VERTICAL - SUB
+/***************************************************/
+    vertical-sub-1 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 0;
+        left: 5%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-sub-2 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 0;
+        left: 15%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-sub-3 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 0;
+        left: 25%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-sub-4 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 0;
+        left: 35%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-sub-5 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 0;
+        left: 45%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-sub-6 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 0;
+        left: 55%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-sub-7 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 0;
+        left: 65%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-sub-8 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 0;
+        left: 75%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-sub-9 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 0;
+        left: 85%;
+        min-height: 100%;
+        min-width: 1px;
+    }
+
+    vertical-sub-10 {
+        position: absolute;
+        background: rgba( 0, 0, 0, 0.10 );
+        top: 0;
+        left: 95%;
+        min-height: 100%;
+        min-width: 1px;
+    }

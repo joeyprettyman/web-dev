@@ -1,0 +1,402 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+
+/***************************************************/
+/* BODY STYLES
+/***************************************************/
+@font-face {
+    font-family: 'Trooper Roman';
+    src: url( './fonts/TrooperRoman.ttf' );
+}
+
+@font-face {
+    font-family: 'Zilla Slab';
+    src: url( './fonts/ZillaSlab-Regular.ttf' );
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    color: black;
+    background: #edf0f5; /* Eggshell White */
+    animation: fadeIn 0.15s;
+    -webkit-animation: fadeIn 0.15s;
+    -moz-animation: fadeIn 0.15s;
+    -o-animation: fadeIn 0.15s;
+    -ms-animation: fadeIn 0.15s;
+    height: 100%;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/***************************************************/
+/* LOGIN STYLES
+/***************************************************/
+
+.page-wrapper {
+    background: rgb(144,0,40);
+    background: linear-gradient(180deg, rgba(144,0,40,1) 0%, rgba(187,0,105,1) 100%);
+    height: 100%;
+    position: relative;
+    z-index: 500;
+    overflow: hidden;
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}
+
+.header {
+    right: 0;
+    left: calc( 200px + 220px );
+    background: white;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 550;
+    height: 61px;
+    width: calc( 100% - 280px );
+    border-bottom: 1px solid #d5d8dc;
+    padding: 10px;
+}
+
+#search {
+    background: #f4e5e9;
+    color: white;
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+}
+
+#search-icon {
+    color: red;
+}
+
+#title {
+    width: 25%;
+    border: 1px solid rgba( 0, 0, 0, 0.25 );
+    height: 100%;
+    border-radius: 5px;
+}
+
+#username {
+    width: 25%;
+    border: 1px solid rgba( 0, 0, 0, 0.25 );
+    height: 100%;
+    border-radius: 5px;
+}
+
+.left-menus {
+    /* background: rgba( 144, 0, 40, 0.50 ); */
+    background-attachment: fixed;
+    width: calc( 200px + 220px ) !important;
+    display: table-cell;
+    position: relative;
+    vertical-align: top;
+    padding: 0px;
+}
+
+.main-menu {
+    width: 200px;
+    background: rgba( 120, 0, 255, 0.10 );
+    display: block;
+}
+
+.sub-menu {
+    left: 200px;
+    background: white;
+    display: block;
+    width: 220px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 500;
+    overflow: auto;
+    overflow-x: hidden;
+    border-right: 1px solid #dadfe6;
+}
+
+#sub-title {
+    height: 61px;
+    width: 100%;
+    /* border-bottom: 1px solid #d5d8dc; */
+    padding: 10px;
+    background: white;
+    /* background: white; */
+    /* background: rgba( 255, 0, 0, 0.25 ); */
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: bottom;
+    color: #900028;
+    font-family: 'Roboto', sans-serif;
+    font-weight: semibold;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#sub-title-container {
+    background: #f4e5e9;
+    padding: 3px 15px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    height: 40px;
+}
+
+#sub-category {
+    padding: 5px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+    font-size: 13px;
+    margin-top: 18px;
+}
+
+#sub-link {
+    width: 100%;
+}
+
+#sub-link a:link,
+#sub-link a:active,
+#sub-link a:visited {
+    display: block;
+    margin: 0px 10px;
+    padding: 8px 10px;
+    text-decoration: none;
+    color: rgba( 144, 0, 40, 1.0 );
+    font-size: 13px;
+}
+
+#sub-link a:hover {
+    background: rgba( 0, 0, 0, 0.025 );
+    border-radius: 5px;
+}
+
+.right-content {
+    padding-top: 60px;
+    width: 100%;
+    background: #f9f2f4;
+    display: table-cell;
+    position: relative;
+    vertical-align: top;
+    padding: 70px 10px 10px 10px;
+}
+
+.right-content h1 {
+    color: #900028;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    font-size: 34px;
+    font-family: 'Trooper Roman', 'Georgia', 'Garamond', 'Times New Roman', serif;
+}
+
+.right-content h2 {
+    color: #900028;
+    letter-spacing: 1px;
+    margin-top: 11px;
+    font-size: 30px;
+    font-family: 'Trooper Roman', 'Georgia', 'Garamond', 'Times New Roman', serif;
+}
+
+.right-content h3 {
+    color: #900028;
+    letter-spacing: 1px;
+    margin-top: 7px;
+    font-size: 26px;
+    font-family: 'Trooper Roman', 'Georgia', 'Garamond', 'Times New Roman', serif;
+}
+
+.right-content h4 {
+    color: #900028;
+    letter-spacing: 1px;
+    margin-top: 3px;
+    font-size: 22px;
+    font-family: 'Trooper Roman', 'Georgia', 'Garamond', 'Times New Roman', serif;
+}
+
+.right-content h5 {
+    color: #900028;
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-family: 'Trooper Roman', 'Georgia', 'Garamond', 'Times New Roman', serif;
+}
+
+.right-content p {
+    font-size: 13px;
+    margin: 5px 0px 16px 0px;
+    line-height: 16px;
+}
+
+#logo {
+    font-family: 'Trooper Roman', Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex: 0 1 auto;
+    width: 200px;
+    flex-basis: auto;
+    letter-spacing: 2px;
+    border-bottom: 1px solid black;
+}
+
+#logo a:link,
+#logo a:active,
+#logo a:visited {
+    color: white;
+    text-decoration: none;
+    line-height: 60px;
+    width: 100%;
+    height: 61px;
+    text-align: center;
+}
+
+#logo a:hover {
+    background: rgba( 255, 255, 255, 0.25 );
+}
+
+#nav {
+
+    font-size: 12px;
+    display: block;
+}
+
+#nav a:link,
+#nav a:active,
+#nav a:visited {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    display: block;
+    padding: 20px 10px;
+}
+
+#nav a:hover {
+    background: rgba( 255, 255, 255, 0.25 );
+}
+
+#nav a:link:first-child {
+    background: white;
+}
+
+.box {
+    background: white;
+    padding: 35px 20px;
+    border-radius: 5px;
+    vertical-align: top;
+    border: 1px solid #dadfe6;
+}
+
+.box p {
+    margin: 0px;
+}
+
+.box h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.box h2 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.box h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.box h4 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.box h5 {
+    font-family: 'Roboto', sans-serif;
+}
